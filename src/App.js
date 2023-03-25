@@ -1,7 +1,7 @@
 import './App.css';
 import * as React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Test from './pages/issue_code/test';
+import Test from './pages/signUp';
 
 function App() {
   return (
