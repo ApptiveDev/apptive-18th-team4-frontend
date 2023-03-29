@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import axios from 'axios'
 
-export default function Test () {
+export default function SignUp () {
     const [memberId, setID] = useState('');
     const [password, setPW] = useState('');
     const [checkedPassword, setPW2] = useState('');
@@ -65,7 +65,7 @@ export default function Test () {
     }
 
     return (
-        <div>
+        <div className='signUp'>
             <div className='enterID'>
                 <label htmlFor='memberId'>아이디</label>
                 <input name='memberId' onChange={handleID} value={memberId} className="memberId"/>
