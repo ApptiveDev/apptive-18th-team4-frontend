@@ -19,11 +19,11 @@ export default function SignUp () {
     
     const handleSignup = (e) => {
         e.preventDefault()
-        if (email.length === 0) alert("아이디를 입력해주세요")
-        else if (password.length === 0) alert("비밀번호를 입력해주세요")
-        else if (password !== checkedPassword) alert ("비밀번호가 일치하지 않습니다")
-        else if (findQuesNum == 0 && findAnswer.length !== 0) alert("아이디 확인 질문을 선택해주세요")
-        else if (findQuesNum != 0 && findAnswer.length === 0) alert("아이디 확인 질문의 답을 입력해주세요")
+        if (email.length === 0) alert("아이디를 입력해주세요.")
+        else if (password.length < 6) alert("비밀번호는 6자리 이상으로 설정해주세요.")
+        else if (password !== checkedPassword) alert ("비밀번호가 일치하지 않습니다.")
+        else if (findQuesNum == 0 && findAnswer.length !== 0) alert("아이디 확인 질문을 선택해주세요.")
+        else if (findQuesNum != 0 && findAnswer.length === 0) alert("아이디 확인 질문의 답을 최소 1자 이상 입력해주세요.")
         else if (!isChecked) alert("약관에 동의하지 않을 경우, 회원가입이 어렵습니다.")
         else {
             const form = new FormData()
@@ -33,7 +33,7 @@ export default function SignUp () {
             form.append('findQuesNum', findQuesNum)
             form.append('findAnswer', findAnswer)
 
-            axios.post("http://3.34.82.40:8080/auth/signup", form, { headers: { "Content-Type": `application/json`} })
+            axios.post("http://3.34.82.40:8080/auth/signup", form, { headers: { 'Content-Type': 'application/json'} })
             .then(function(response) {
                 console.log(response)
             }) .catch(function(error) {
@@ -44,48 +44,50 @@ export default function SignUp () {
 
     return (
         <div className='signUp'>
-            <div className='enterEmail'>
-                <label htmlFor='email'>아이디</label>
-                <input name='email' onChange={e => setEmail(e.target.value)} value={email} type="email" className="email"/>
-            </div>
+            <form onSubmit={handleSignup}>
+                <div className='enterEmail'>
+                    <label htmlFor='email'>아이디</label>
+                    <input name='email' onChange={e => setEmail(e.target.value)} value={email} type="email" className="email"/>
+                </div>
 
-            <div className='enterPW'>
-                <label htmlFor='password'>비밀번호</label>
-                <input name='password' onChange={e => setPW(e.target.value)} value={password} className="password"/>
-            </div>
+                <div className='enterPW'>
+                    <label htmlFor='password'>비밀번호</label>
+                    <input name='password' onChange={e => setPW(e.target.value)} value={password} className="password"/>
+                </div>
 
-            <div className='checkPW'>
-                <label htmlFor='check_password'>비밀번호 확인</label>
-                <input name='checkedPassword' onChange={e => setPW2(e.target.value)} value={checkedPassword} className="password2"/>
-            </div>
+                <div className='checkPW'>
+                    <label htmlFor='check_password'>비밀번호 확인</label>
+                    <input name='checkedPassword' onChange={e => setPW2(e.target.value)} value={checkedPassword} className="password2"/>
+                </div>
 
-            <div className='enterNickname'>
-                <label htmlFor='nickname'>닉네임</label>
-                <input name='nickname' onChange={e => setNickname(e.target.value)} value={nickname} className="nickname"/>
-            </div>
+                <div className='enterNickname'>
+                    <label htmlFor='nickname'>닉네임</label>
+                    <input name='nickname' onChange={e => setNickname(e.target.value)} value={nickname} className="nickname"/>
+                </div>
 
-            <div className='selectMajor'>
-                <label htmlFor='state'>아이디 확인 질문</label>
-                <select name={findQuesNum} onChange={e => setQuesNum(parseInt(e.target.value, 10))} value={findQuesNum} className="major">
-                    {question_list.map((question, idx) => (
-                        <option value={idx} key={idx}> {question} </option>
-                    ))}
-                </select>
-            </div>
+                <div className='selectMajor'>
+                    <label htmlFor='state'>아이디 확인 질문</label>
+                    <select name={findQuesNum} onChange={e => setQuesNum(parseInt(e.target.value, 10))} value={findQuesNum} className="major">
+                        {question_list.map((question, idx) => (
+                            <option value={idx} key={idx}> {question} </option>
+                        ))}
+                    </select>
+                </div>
 
-            <div className='enterAnswer'>
-                <label htmlFor='findAnswer'>답</label>
-                <input name='findAnswer' onChange={e => setAnswer(e.target.value)} value={findAnswer} className="findAnswer"/>
-            </div>
+                <div className='enterAnswer'>
+                    <label htmlFor='findAnswer'>답</label>
+                    <input name='findAnswer' onChange={e => setAnswer(e.target.value)} value={findAnswer} className="findAnswer"/>
+                </div>
 
-            <div className='agreement'>
-                <input type="checkbox" checked={isChecked} onChange={e => setIsChecked(e.target.checked)} className="agreement"/>
-                <label htmlFor='agreement'>이용약관 및 개인정보 취급방침에 동의합니다.</label>
-            </div>
+                <div className='agreement'>
+                    <input type="checkbox" checked={isChecked} onChange={e => setIsChecked(e.target.checked)} className="agreement"/>
+                    <label htmlFor='agreement'>이용약관 및 개인정보 취급방침에 동의합니다.</label>
+                </div>
 
-            <div>
-                <button onClick={handleSignup}>회원가입</button> 
-            </div>
+                <div>
+                    <button type="submit">회원가입</button> 
+                </div>
+            </form>
         </div>
     )
 }
