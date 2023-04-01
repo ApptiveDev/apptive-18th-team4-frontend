@@ -30,7 +30,7 @@ export default function Login() {
             axios.post("http://3.34.82.40:8080/auth/login", {
                     email: email, 
                     password: password
-                }, { headers: { "Content-Type": `application/json`} })
+                }, { headers: { 'Content-Type': 'application/json'} })
             .then({onLoginSuccess}) 
             .catch(function(error) {
                 console.log(error)
