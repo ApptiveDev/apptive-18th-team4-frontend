@@ -3,16 +3,8 @@ import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
 export default function Login() {
-    const [memberId, setID] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPW] = useState('');
-
-    const handleID = (e) => {
-        setID(e.target.value)
-    }
-    
-    const handlePW = (e) => {
-        setPW(e.target.value)
-    }
 
     const getLoginInfo = () => {
         const accessToken = localStorage.getItem('accessToken')
@@ -32,13 +24,13 @@ export default function Login() {
 
     const handleLogin = (e) => {
         e.preventDefault()
-        if (memberId.length === 0) alert("아이디를 입력해주세요")
+        if (email.length === 0) alert("아이디를 입력해주세요")
         else if (password.length === 0) alert("비밀번호를 입력해주세요")
         else {
-            axios.post("url", {
-                    memberId: memberId, 
+            axios.post("http://3.34.82.40:8080/auth/login", {
+                    email: email, 
                     password: password
-                }, { headers: { "Content-Type": `application/json`} })
+                }, { headers: { 'Content-Type': 'application/json'} })
             .then({onLoginSuccess}) 
             .catch(function(error) {
                 console.log(error)
@@ -58,7 +50,7 @@ export default function Login() {
             isRefreshing = true;
         }
     
-        axios.post("재발급 url", {
+        axios.post("http://3.34.82.40:8080/auth/reissue", {
                   accessToken: accessToken,
                   refreshToken: refreshToken
                 }, { headers: { 'Content-Type': 'application/json'} })
@@ -96,14 +88,14 @@ export default function Login() {
     
     return (
         <div className='login'>
-            <div className='enterID'>
-                <label htmlFor='memberId'>아이디</label>
-                <input name='memberId' onChange={handleID} value={memberId} className="memberId"/>
+            <div className='enterEmail'>
+                <label htmlFor='email'>아이디</label>
+                <input name='email' onChange={e => setEmail(e.target.value)} value={email} className="email"/>
             </div>
 
             <div className='enterPW'>
                 <label htmlFor='password'>비밀번호</label>
-                <input name='password' onChange={handlePW} value={password} className="password"/>
+                <input name='password' onChange={e => setPW(e.target.value)} value={password} className="password"/>
             </div>
 
             <div>
