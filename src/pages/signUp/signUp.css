@@ -1,0 +1,69 @@
+.signUp .logo_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signUp .logo_container img {
+  width: 3rem;
+  height: 3rem;
+}
+.signUp .logo_container p {
+  font-weight: 500;
+  font-size: 32px;
+  background-color: blue;
+}
+.signUp .form_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signUp .form_container form label {
+  font-weight: 400;
+  font-size: 16px;
+  color: #666666;
+}
+.signUp .form_container form input {
+  width: 578px;
+  height: 56px;
+  border: 1px solid rgba(102, 102, 102, 0.35);
+  border-radius: 12px;
+  margin-top: 4px;
+}
+.signUp .form_container form .enterPW p {
+  font-weight: 400;
+  font-size: 14px;
+  color: #666666;
+  background-color: blue;
+}
+.signUp .form_container form .selectMajor select {
+  width: 578px;
+  height: 56px;
+  border: 1px solid rgba(102, 102, 102, 0.35);
+  border-radius: 12px;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+.signUp .form_container form .agreement {
+  /*input[type=checkbox]:checked {
+      background: #111111;
+  }*/
+}
+.signUp .form_container form .agreement input[type=checkbox] {
+  width: 24px;
+  height: 24px;
+}
+.signUp .form_container form .agreement label {
+  font-weight: 400;
+  font-size: 16px;
+  color: #333333;
+}
+.signUp .form_container form button[type=submit] {
+  width: 578px;
+  height: 56px;
+  background: pink;
+  border-radius: 40px;
+  border: none;
+  font-weight: 500;
+  font-size: 22px;
+  color: #FFFFFF;
+}/*# sourceMappingURL=signUp.css.map */

@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import axios from 'axios'
+import './signUp.scss'
 
 export default function SignUp () {
     const [email, setEmail] = useState('')
@@ -44,50 +45,57 @@ export default function SignUp () {
 
     return (
         <div className='signUp'>
-            <form onSubmit={handleSignup}>
-                <div className='enterEmail'>
-                    <label htmlFor='email'>아이디</label>
-                    <input name='email' onChange={e => setEmail(e.target.value)} value={email} type="email" className="email"/>
-                </div>
+            <div className='logo_container'>
+                <img src="/assets/img/logo.jpg"/>
+                <p>회원가입</p>
+            </div>
+            <div className='form_container'>
+                <form onSubmit={handleSignup}>
+                    <div className='enterEmail'>
+                        <div><label htmlFor='email'>아이디</label></div>
+                        <input name='email' onChange={e => setEmail(e.target.value)} value={email} type="email" className="email"/>
+                    </div>
 
-                <div className='enterPW'>
-                    <label htmlFor='password'>비밀번호</label>
-                    <input name='password' onChange={e => setPW(e.target.value)} value={password} className="password"/>
-                </div>
+                    <div className='enterPW'>
+                        <div><label htmlFor='password'>비밀번호</label></div>
+                        <input name='password' onChange={e => setPW(e.target.value)} value={password} className="password"/>
+                        <p>최소 6자리 이상</p>
+                    </div>
 
-                <div className='checkPW'>
-                    <label htmlFor='check_password'>비밀번호 확인</label>
-                    <input name='checkedPassword' onChange={e => setPW2(e.target.value)} value={checkedPassword} className="password2"/>
-                </div>
+                    <div className='checkPW'>
+                        <div><label htmlFor='check_password'>비밀번호 확인</label></div>
+                        <input name='checkedPassword' onChange={e => setPW2(e.target.value)} value={checkedPassword} className="password2"/>
+                    </div>
 
-                <div className='enterNickname'>
-                    <label htmlFor='nickname'>닉네임</label>
-                    <input name='nickname' onChange={e => setNickname(e.target.value)} value={nickname} className="nickname"/>
-                </div>
+                    <div className='enterNickname'>
+                        <div><label htmlFor='nickname'>닉네임</label></div>
+                        <input name='nickname' onChange={e => setNickname(e.target.value)} value={nickname} className="nickname"/>
+                    </div>
 
-                <div className='selectMajor'>
-                    <label htmlFor='state'>아이디 확인 질문</label>
-                    <select name={findQuesNum} onChange={e => setQuesNum(parseInt(e.target.value, 10))} value={findQuesNum} className="major">
-                        {question_list.map((question, idx) => (
-                            <option value={idx} key={idx}> {question} </option>
-                        ))}
-                    </select>
-                </div>
+                    <div className='selectMajor'>
+                        <div><label htmlFor='state'>아이디 확인 질문</label></div>
+                        <select name={findQuesNum} onChange={e => setQuesNum(parseInt(e.target.value, 10))} value={findQuesNum} className="major">
+                            {question_list.map((question, idx) => (
+                                <option value={idx} key={idx}> {question} </option>
+                            ))}
+                        </select>
+                    </div>
 
-                <div className='enterAnswer'>
-                    <label htmlFor='findAnswer'>답</label>
-                    <input name='findAnswer' onChange={e => setAnswer(e.target.value)} value={findAnswer} className="findAnswer"/>
-                </div>
+                    <div className='enterAnswer'>
+                        <div><label htmlFor='findAnswer'>답</label></div>
+                        <input name='findAnswer' onChange={e => setAnswer(e.target.value)} value={findAnswer} className="findAnswer"/>
+                    </div>
 
-                <div className='agreement'>
-                    <input type="checkbox" checked={isChecked} onChange={e => setIsChecked(e.target.checked)} className="agreement"/>
-                    <label htmlFor='agreement'>이용약관 및 개인정보 취급방침에 동의합니다.</label>
-                </div>
+                    <div className='agreement'>
+                        <input type="checkbox" checked={isChecked} onChange={e => setIsChecked(e.target.checked)} className="agreement"/>
+                        <label htmlFor='agreement'>이용약관 및 개인정보 취급방침에 동의합니다.</label>
+                    </div>
 
-                <div>
-                    <button type="submit">회원가입</button> 
-                </div>
-            </form>
+                    <div>
+                        <button type="submit">회원가입</button> 
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
