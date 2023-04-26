@@ -1,7 +1,7 @@
-import useGeolocation from "react-hook-geolocation";
+import useGeoLocation from "./useGeoLocation"
 
 export default function Test() {
-    const location = useGeolocation();
+    const location = useGeoLocation();
     console.log(location);
     return (
         <div>
