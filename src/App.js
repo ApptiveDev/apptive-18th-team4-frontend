@@ -5,6 +5,8 @@ import Home from './pages/home/home'
 import SignUp from './pages/signUp/signUp'
 import Login from './pages/login/login'
 
+import Test from './pages/geolocation/index'
+
 function App() {
   return (
     <div className="App">
@@ -13,6 +15,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+
+          <Route path="/test" element={<Test />} />
         </Routes> 
       </Router>
     </div>
