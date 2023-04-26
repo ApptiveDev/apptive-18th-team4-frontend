@@ -1,0 +1,105 @@
+.signUp {
+    .logo_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 80px;
+        img {
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+    .title_container {
+        display: flex;
+        justify-content: center;
+        margin-top: 8px;
+        margin-bottom: 129px;
+        font-weight: 500;
+        font-size: 32px;
+    }
+    .form_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        form {
+            label {
+                font-weight: 400;
+                font-size: 16px;
+                color: #666666;
+            }
+            input {
+                width: 578px;
+                height: 56px;
+                border: 1px solid rgba(102, 102, 102, 0.35);
+                border-radius: 12px;
+                margin-top: 4px;
+                margin-bottom: 24px;
+                //padding-left: 24px;
+            }
+            ::placeholder {
+                font-weight: 400;
+                font-size: 16px;
+                color: rgba(102, 102, 102, 0.6);
+                padding-left: 24px;
+              }
+            .enterPW {
+                input {
+                    margin-bottom: 0px;
+                }
+                .limitation {
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: #666666;
+                    margin-top: 4px;
+                    margin-bottom: 24px;
+                }
+            }
+            .selectMajor {
+                select {
+                    width: 578px;
+                    height: 56px;
+                    border: 1px solid rgba(102, 102, 102, 0.35);
+                    border-radius: 12px;
+                    margin-top: 4px;
+                    margin-bottom: 24px;
+                    font-weight: 400;
+                    font-size: 16px;
+                    color: rgba(102, 102, 102, 0.6);
+                    padding-left: 24px;
+                }
+            }
+            .agreement {
+                display: flex;
+                input[type='checkbox'] {
+                    width: 24px;
+                    height: 24px;
+                    accent-color: #111111;
+                }
+                label {
+                    padding-top: 5px;
+                    margin-left: 11px;
+                    font-weight: 400;
+                    font-size: 16px;
+                    color: #333333;
+                }
+            }
+            button[type='submit'] {
+                margin-top: 112px;
+                width: 578px;
+                height: 56px;
+                background: rgba(102, 102, 102, 0.35);
+                border-radius: 40px;
+                border: none;
+                font-weight: 500;
+                font-size: 22px;
+                color: #FFFFFF;
+            }
+            .link_to_login {
+                display: flex;
+                justify-content: center;
+                margin-top: 18px;
+                margin-bottom: 256px;
+            }
+        }
+    }
+}

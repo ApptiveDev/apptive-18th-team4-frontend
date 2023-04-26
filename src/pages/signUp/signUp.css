@@ -1,0 +1,102 @@
+.signUp .logo_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+}
+.signUp .logo_container img {
+  width: 3rem;
+  height: 3rem;
+}
+.signUp .title_container {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  margin-bottom: 129px;
+  font-weight: 500;
+  font-size: 32px;
+}
+.signUp .form_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signUp .form_container form label {
+  font-weight: 400;
+  font-size: 16px;
+  color: #666666;
+}
+.signUp .form_container form input {
+  width: 578px;
+  height: 56px;
+  border: 1px solid rgba(102, 102, 102, 0.35);
+  border-radius: 12px;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+.signUp .form_container form ::-moz-placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(102, 102, 102, 0.6);
+  padding-left: 24px;
+}
+.signUp .form_container form ::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(102, 102, 102, 0.6);
+  padding-left: 24px;
+}
+.signUp .form_container form .enterPW input {
+  margin-bottom: 0px;
+}
+.signUp .form_container form .enterPW .limitation {
+  font-weight: 400;
+  font-size: 14px;
+  color: #666666;
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+.signUp .form_container form .selectMajor select {
+  width: 578px;
+  height: 56px;
+  border: 1px solid rgba(102, 102, 102, 0.35);
+  border-radius: 12px;
+  margin-top: 4px;
+  margin-bottom: 24px;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(102, 102, 102, 0.6);
+  padding-left: 24px;
+}
+.signUp .form_container form .agreement {
+  display: flex;
+}
+.signUp .form_container form .agreement input[type=checkbox] {
+  width: 24px;
+  height: 24px;
+  accent-color: #111111;
+}
+.signUp .form_container form .agreement label {
+  padding-top: 5px;
+  margin-left: 11px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #333333;
+}
+.signUp .form_container form button[type=submit] {
+  margin-top: 112px;
+  width: 578px;
+  height: 56px;
+  background: rgba(102, 102, 102, 0.35);
+  border-radius: 40px;
+  border: none;
+  font-weight: 500;
+  font-size: 22px;
+  color: #FFFFFF;
+}
+.signUp .form_container form .link_to_login {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+  margin-bottom: 256px;
+}/*# sourceMappingURL=signUp.css.map */
