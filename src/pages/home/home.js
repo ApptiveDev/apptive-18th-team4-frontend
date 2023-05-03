@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import './home.scss'
+import './home.css'
 
 export default function Home() {
     return (
@@ -34,7 +34,10 @@ export default function Home() {
                 <div className='annual_plan'>
                     <div className='bottom_container1'>
                         <span>학사일정</span>
-                        <img src='/assets/img/plus_button.png' />
+                        <Link to="/annualPlan">
+                            <img src='/assets/img/plus_button.png' />
+                        </Link>
+                        
                     </div>
                 </div>
                 <div className='near_building'>
