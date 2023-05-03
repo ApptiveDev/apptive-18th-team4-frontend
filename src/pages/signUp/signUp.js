@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import './signUp.scss'
+import './signUp.css'
 
 export default function SignUp () {
     const [email, setEmail] = useState('')
