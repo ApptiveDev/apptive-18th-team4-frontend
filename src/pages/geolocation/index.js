@@ -8,6 +8,7 @@ export default function Test() {
            {location.loaded
             ? JSON.stringify(location)
             : "Location data not available yet."} 
+            <div>테스트입니다</div>
         </div>
     )
 }
