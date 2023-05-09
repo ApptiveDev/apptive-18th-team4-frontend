@@ -42,6 +42,14 @@ export default function AnnualPlan() {
     }
     return _dates;
   }
+  
+  const dot_style = (color) => ({
+    width: '4px',
+    height: '4px',
+    backgroundColor: color,
+    borderRadius: '50%',
+    marginLeft: '0.063rem',
+  });
 
   return (
     <div className="calendar_container">
@@ -55,10 +63,27 @@ export default function AnnualPlan() {
           tileContent={({ date, view }) => { // 날짜 타일에 컨텐츠 추가하기 (html 태그)
             // 추가할 html 태그를 변수 초기화
             let html = [];
+            /*
             // 현재 날짜가 post 작성한 날짜 배열(mark)에 있다면, dot div 추가
             if (mark.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-              html.push(<div className="dot_container"><div className="dot"></div></div>);
+              html.push(
+              <div className="dot_container">
+                {data.map((item) => {
+                  <div style={dot_style(item.color)}></div>
+                })}
+              </div>);
             }
+            */
+            if (mark.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
+              html.push(<div className="dot_container">
+                {data.map((item) => {
+                  if(moment(date).isBetween(moment(item.startDate, 'YYYY.MM.DD'), moment(item.endDate, 'YYYY.MM.DD'), null, '[]')) {
+                    return <div style={dot_style(item.color)}></div>
+                  }
+                })}
+              </div>);
+            }
+            
             // 다른 조건을 주어서 html.push 에 추가적인 html 태그를 적용할 수 있음.
             return (
               <>
@@ -75,13 +100,13 @@ export default function AnnualPlan() {
           </div>
 
           <div>
-            {data.map((context) => {
-              const start = moment(context.startDate, 'YYYY.MM.DD');
-              const end = moment(context.endDate, 'YYYY.MM.DD');
+            {data.map((item) => {
+              const start = moment(item.startDate, 'YYYY.MM.DD');
+              const end = moment(item.endDate, 'YYYY.MM.DD');
               //isBetween 메소드로 특정 기간 내에 해당하는지 판단
               //[]:시작일과 종료일 포함한다는 뜻
               if (moment(date).isBetween(start, end, null, '[]')) {
-                return <div style={{fontSize: '13px'}}>{context.context}</div>;
+                return <div style={{fontSize: '13px'}}>{item.context}</div>;
               }
             })}
           </div>

@@ -203,12 +203,14 @@
   justify-content: center;
  }
 
+ /*
  .dot {
   width: 4px;
   height: 4px;
   background-color: #f87171;
   border-radius: 50%;
  }
+*/
 
  /*클릭한 날짜의 일정 표시*/
  .context_container {
