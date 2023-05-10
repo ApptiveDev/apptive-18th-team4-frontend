@@ -1,6 +1,7 @@
-import {useState, useEffect} from 'react'
-import {useNavigate} from 'react-router-dom'
-import axios from 'axios'
+import {useState, useEffect} from 'react';
+import {useNavigate, Link} from 'react-router-dom';
+import axios from 'axios';
+import './login.css';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -88,18 +89,50 @@ export default function Login() {
     
     return (
         <div className='login'>
-            <div className='enterEmail'>
-                <label htmlFor='email'>아이디</label>
-                <input name='email' onChange={e => setEmail(e.target.value)} value={email} className="email"/>
+            <div className='gradation'>
+                <div style={{display: 'flex', justifyContent: 'center', marginTop: '74.38px'}}>
+                    <div className='logo' style={{width: '538px'}}>
+                        <img src="/assets/img/logo_home.png" />
+                    </div>
+                </div>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <div className='gradation_box'>
+                        <div style={{marginLeft: '66px'}}>
+                            <div style={{color: '#F8F9FF'}}>PNU</div>
+                            <div style={{color: '#0B0039'}}>Allime</div>
+                        </div>
+                        <div className='slogan'>여러분의 소중한 시간을 지켜드리는</div>
+                    </div>
+                </div>
             </div>
 
-            <div className='enterPW'>
-                <label htmlFor='password'>비밀번호</label>
-                <input name='password' onChange={e => setPW(e.target.value)} value={password} className="password"/>
-            </div>
+            <div style={{marginLeft: '105px'}}>
+                <div className='navbar'>
+                    <div><Link to='/' style={{color: '#666666'}}>Home</Link></div>
+                    <div><Link to='/login'>Log in</Link></div>
+                    <div><Link to='/signUp' style={{color: '#666666'}}>Sign up</Link></div>
+                </div>
 
-            <div>
-                <button onClick={handleLogin}>로그인</button> 
+                <div className='title'>
+                    Log In
+                </div>
+
+                <div className='enterEmail'>
+                    <input name='email' onChange={e => setEmail(e.target.value)} value={email} className="email" placeholder='ID'/>
+                </div>
+
+                <div className='enterPW'>
+                    <input name='password' onChange={e => setPW(e.target.value)} value={password} className="password" placeholder='Password'/>
+                </div>
+
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <button onClick={handleLogin}>Log In</button> 
+                </div>
+
+                <div className='link_to_signUp' style={{marginLeft: '60px'}}>
+                    <div>아직 회원이 아니라면? <Link to='/signUp'>회원가입</Link></div>
+                    <div style={{marginTop: '2px', color: '#AEC0F0'}}><Link to='/login'>아이디 찾기</Link> / <Link to='/login'>비밀번호 찾기</Link></div>
+                </div>
             </div>
         </div> 
     )

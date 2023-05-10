@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Monda&family=Poppins&display=swap");
+.login {
+  display: flex;
+}
+.login .gradation {
+  width: 720px;
+  height: 1024px;
+  border-radius: 0 45px 0 0;
+  background-image: url("/public/assets/img/gradation_background.png");
+  background-repeat: no-repeat;
+  position: relative;
+}
+.login .gradation .gradation_box {
+  margin-top: 125.25px;
+  width: 538px;
+  height: 526px;
+  background-color: rgba(255, 255, 255, 0.28);
+  border: 1px #FFFFFF;
+  font-family: "Monda";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 96px;
+}
+.login .gradation .gradation_box .slogan {
+  margin-left: 66px;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+  position: relative;
+  z-index: 1;
+}
+.login .navbar {
+  display: flex;
+  margin-top: 73.56px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: "Inter";
+}
+.login .navbar a {
+  color: black;
+  text-decoration: none;
+  margin-right: 7.5rem;
+}
+.login .title {
+  margin-top: 202.44px;
+  font-style: normal;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 36px;
+  letter-spacing: 0.04em;
+}
+.login .enterEmail {
+  margin-top: 73px;
+}
+.login .enterEmail input {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 20px;
+  color: #A0A0A0;
+  width: 403px;
+  height: 30px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #EAEAEA;
+}
+.login .enterEmail input::-moz-placeholder {
+  color: #A0A0A0;
+}
+.login .enterEmail input::placeholder {
+  color: #A0A0A0;
+}
+.login .enterEmail input:focus {
+  outline: none;
+}
+.login .enterPW {
+  margin-top: 22px;
+  margin-bottom: 40px;
+}
+.login .enterPW input {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 20px;
+  color: #A0A0A0;
+  width: 403px;
+  height: 30px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #EAEAEA;
+}
+.login .enterPW input::-moz-placeholder {
+  color: #A0A0A0;
+}
+.login .enterPW input::placeholder {
+  color: #A0A0A0;
+}
+.login .enterPW input:focus {
+  outline: none;
+}
+.login button {
+  width: 385px;
+  height: 40px;
+  background: #AEC0F0;
+  border-radius: 19px;
+  border: none;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  color: white;
+}
+.login .link_to_signUp {
+  margin-top: 92px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+}
+.login .link_to_signUp a {
+  color: #AEC0F0;
+  text-decoration: none;
+}/*# sourceMappingURL=login.css.map */
