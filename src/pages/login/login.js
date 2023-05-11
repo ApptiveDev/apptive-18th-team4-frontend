@@ -97,8 +97,8 @@ export default function Login() {
                 </div>
                 <div style={{display: 'flex', justifyContent: 'center'}}>
                     <div className='gradation_box'>
-                        <div style={{marginLeft: '66px'}}>
-                            <div style={{color: '#F8F9FF'}}>PNU</div>
+                        <div style={{marginLeft: '66px', whiteSpace: 'pre-line'}}>
+                            <div style={{color: '#F8F9FF', marginTop: '56px', height: '100px'}}>PNU</div>
                             <div style={{color: '#0B0039'}}>Allime</div>
                         </div>
                         <div className='slogan'>여러분의 소중한 시간을 지켜드리는</div>
