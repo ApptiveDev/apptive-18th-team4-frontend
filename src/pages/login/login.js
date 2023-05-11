@@ -116,7 +116,11 @@ export default function Login() {
 
                 <div className='link_to_signUp' style={{marginLeft: '60px'}}>
                     <div>아직 회원이 아니라면? <Link to='/signUp'>회원가입</Link></div>
-                    <div style={{marginTop: '2px', color: '#AEC0F0'}}><Link to='/login'>아이디 찾기</Link> / <Link to='/login'>비밀번호 찾기</Link></div>
+                    <div style={{marginTop: '2px', color: '#AEC0F0'}}>
+                        <Link to='/findId'>아이디 찾기 </Link>
+                        / 
+                        <Link to='/findPW'> 비밀번호 찾기</Link>
+                    </div>
                 </div>
             </div>
         </div> 
