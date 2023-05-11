@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import axios from 'axios';
 import './login.css';
+import GradationBox from '../../components/gradation_box/gradation_box';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -89,23 +90,7 @@ export default function Login() {
     
     return (
         <div className='login'>
-            <div className='gradation'>
-                <div style={{display: 'flex', justifyContent: 'center', marginTop: '74.38px'}}>
-                    <div className='logo' style={{width: '538px'}}>
-                        <img src="/assets/img/logo_home.png" />
-                    </div>
-                </div>
-                <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <div className='gradation_box'>
-                        <div style={{marginLeft: '66px', whiteSpace: 'pre-line'}}>
-                            <div style={{color: '#F8F9FF', marginTop: '56px', height: '100px'}}>PNU</div>
-                            <div style={{color: '#0B0039'}}>Allime</div>
-                        </div>
-                        <div className='slogan'>여러분의 소중한 시간을 지켜드리는</div>
-                    </div>
-                </div>
-            </div>
-
+            <GradationBox />
             <div style={{marginLeft: '105px'}}>
                 <div className='navbar'>
                     <div><Link to='/' style={{color: '#666666'}}>Home</Link></div>
