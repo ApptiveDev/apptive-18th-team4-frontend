@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {useNavigate, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './find_id.css';
 import GradationBox from '../../components/gradation_box/gradation_box';
