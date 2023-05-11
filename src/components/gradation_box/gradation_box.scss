@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Monda&family=Poppins&display=swap');
+
+.gradation {
+    width: 720px;
+    height: 1024px;
+    border-radius: 0 45px 0 0;
+    background-image: url("/public/assets/img/gradation_background.png");
+    background-repeat: no-repeat;
+    .gradation_box {
+        margin-top: 125.25px;
+        width: 538px;
+        height: 526px;
+        background-color: rgba(255, 255, 255, 0.28);
+        border: 1px #FFFFFF;
+        .slogan {
+            margin-left: 66px;
+            margin-top: 139px;
+            font-family: 'Inter';
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 24px;
+            color: #FFFFFF;
+        }
+        font-family: 'Monda';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 96px;
+    }
+}

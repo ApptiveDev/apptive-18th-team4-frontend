@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Monda&family=Poppins&display=swap");
+.find_pw {
+  display: flex;
+}
+.find_pw .navbar {
+  display: flex;
+  margin-top: 73.56px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: "Inter";
+}
+.find_pw .navbar a {
+  color: black;
+  text-decoration: none;
+  display: flex;
+  margin-right: 7.5rem;
+}
+.find_pw .title {
+  margin-top: 119.44px;
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 36px;
+}
+.find_pw label {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 16px;
+}
+.find_pw .enterEmail {
+  margin-top: 40px;
+}
+.find_pw .enterEmail input {
+  margin-top: 6px;
+  margin-bottom: 24px;
+  width: 386px;
+  height: 35px;
+  border: 1px solid #A0A0A0;
+  border-radius: 8px;
+}
+.find_pw .enterEmail input:focus {
+  outline: none;
+}
+.find_pw .enterCode input {
+  margin-top: 6px;
+  width: 386px;
+  height: 35px;
+  border: 1px solid #A0A0A0;
+  border-radius: 8px;
+}
+.find_pw .enterCode input:focus {
+  outline: none;
+}
+.find_pw .sendCode {
+  margin-top: 51px;
+  margin-bottom: 80px;
+}
+.find_pw .sendCode button {
+  width: 386px;
+  height: 35px;
+  background-color: white;
+  border: 1px solid #A0A0A0;
+  border-radius: 8px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+}
+.find_pw .findPW_btn {
+  width: 385px;
+  height: 40px;
+  background: #AEC0F0;
+  border-radius: 19px;
+  border: none;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  color: white;
+}/*# sourceMappingURL=find_pw.css.map */

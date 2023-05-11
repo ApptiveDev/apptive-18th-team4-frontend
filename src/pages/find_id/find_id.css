@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Monda&family=Poppins&display=swap");
+.find_id {
+  display: flex;
+}
+.find_id .navbar {
+  display: flex;
+  margin-top: 73.56px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: "Inter";
+}
+.find_id .navbar a {
+  color: black;
+  text-decoration: none;
+  display: flex;
+  margin-right: 7.5rem;
+}
+.find_id .title {
+  margin-top: 119.44px;
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 36px;
+}
+.find_id label {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 16px;
+}
+.find_id .enterNickname {
+  margin-top: 40px;
+}
+.find_id .enterNickname input {
+  margin-top: 6px;
+  margin-bottom: 24px;
+  width: 386px;
+  height: 35px;
+  border: 1px solid #A0A0A0;
+  border-radius: 8px;
+}
+.find_id .enterNickname input:focus {
+  outline: none;
+}
+.find_id .selectQues select {
+  margin-top: 6px;
+  margin-bottom: 24px;
+  width: 386px;
+  height: 35px;
+  border: 1px solid #A0A0A0;
+  border-radius: 8px;
+  background: url("../../../public/assets/img/dropdown_arrow.png") no-repeat 93% 50%/0.938rem auto;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding-left: 10px;
+}
+.find_id .selectQues select:focus {
+  outline: none;
+}
+.find_id .enterAnswer input {
+  margin-top: 6px;
+  margin-bottom: 88px;
+  width: 386px;
+  height: 35px;
+  border: 1px solid #A0A0A0;
+  border-radius: 8px;
+}
+.find_id .enterAnswer input:focus {
+  outline: none;
+}
+.find_id button {
+  width: 385px;
+  height: 40px;
+  background: #AEC0F0;
+  border-radius: 19px;
+  border: none;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  color: white;
+}/*# sourceMappingURL=find_id.css.map */

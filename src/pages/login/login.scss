@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Monda&family=Poppins&display=swap');
+
+.login {
+    display: flex;
+    .navbar {
+        display: flex;
+        margin-top: 73.56px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        font-family: 'Inter';
+        a {
+            color: black;
+            text-decoration: none;
+            display: flex;
+            margin-right: 7.5rem;
+        }
+    }
+    .title {
+        margin-top: 202.44px;
+        font-style: normal;
+        font-family: 'Poppins';
+        font-weight: 600;
+        font-size: 36px;
+        letter-spacing: 0.04em;
+    }
+    .enterEmail {
+        margin-top: 73px;
+        input {
+            font-family: 'Poppins';
+            font-weight: 400;
+            font-size: 20px;
+            color: #A0A0A0;
+            width: 403px;
+            height: 30px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 1px solid #EAEAEA;
+        }
+        input::placeholder {
+            color: #A0A0A0;
+        }  
+        input:focus {
+            outline: none;
+        }
+    }
+    .enterPW {
+        margin-top: 22px;
+        margin-bottom: 40px;
+        input {
+            font-family: 'Poppins';
+            font-weight: 400;
+            font-size: 20px;
+            color: #A0A0A0;
+            width: 403px;
+            height: 30px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 1px solid #EAEAEA;
+        }
+        input::placeholder {
+            color: #A0A0A0;
+        }  
+        input:focus {
+            outline: none;
+        }
+    }
+    button {
+        width: 385px;
+        height: 40px;
+        background: #AEC0F0;
+        border-radius: 19px;
+        border: none;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        color: white;
+    }
+    .link_to_signUp {
+        margin-top: 92px;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        letter-spacing: 0.04em;
+        a {
+            color: #AEC0F0;
+            text-decoration: none;
+        }
+    }
+}
