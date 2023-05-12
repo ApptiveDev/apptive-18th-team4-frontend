@@ -2,52 +2,43 @@ import { Link } from 'react-router-dom'
 import './home.css'
 
 export default function Home() {
+
     return (
-        <div className="home_container">
-            <div className='top_container'>
-                <div className='top_container1'>
-                    <img src="/assets/img/logo_home.png" />
-                    <p>부산대 알리미</p>
+        <div className="home">
+            <div className="header" style={{display: 'flex', justifyContent: 'space-between'}}>
+                <Link className="logo-button" to="/home">
+                    <img src="/assets/img/logo.png" alt="Logo" />
+                </Link>
+                <div className="nav-links" style={{display: 'flex', alignItems: 'center'}}>
+                    <Link to="/home">Home</Link>
+                    <Link to="/updates">Updates</Link>
+                    <Link to="/service">Service</Link>
                 </div>
-                
-                <div className='top_container2'>
-                    <Link to="/signUp">
-                        <button name="SignUp">SignUp</button>
+
+                <div className="auth-buttons" style={{display: 'flex', alignItems: 'center'}}>
+                <Link to="/signUp">
+                        <button className="signup-button">
+                            <img src="/assets/img/signup.png" alt="Sign Up" />
+                        </button>
                     </Link>
+
                     <Link to="/login">
-                        <button name="Login">Login</button>
-                    </Link>
+                        <button className="login-button">Login</button>
+                    </Link> 
                 </div>
+            </div>
+            <div className="main-content">
+                <button className="main-button">
+                    <img src="/assets/img/Button_빈강의실찾기.png" alt="Main Button" />
+                </button>
+                <div className="square-image">
+                    <img src="/assets/img/Button_학사일정.png" alt="Square" />
+                    <img className="overlay-image" src="/assets/img/Group21.png" alt="Overlay" />
+                </div>
+                <h1 className="title">부산대 알리미</h1>
             </div>
 
-            <div className='middle_container'>
-                여러분의 소중한 시간을 지켜드리는<br/>부산대 알리미
-            </div>
-
-            <div className='bottom_container'>
-                <div className='notice'>
-                    <div className='bottom_container1'>
-                        <span>공지사항</span>
-                        <img src='/assets/img/plus_button.png' />
-                    </div>
-                </div>
-                <div className='annual_plan'>
-                    <div className='bottom_container1'>
-                        <span>학사일정</span>
-                        <Link to="/annualPlan">
-                            <img src='/assets/img/plus_button.png' />
-                        </Link>
-                        
-                    </div>
-                </div>
-                <div className='near_building'>
-                    <div className='bottom_container1'>
-                        <span>빈 강의실 찾기</span>
-                        <img src='/assets/img/plus_button.png' />
-                    </div>
-                </div>
-            </div>
-                
+            <Butt0on>test</Button>
         </div>
     )
 }

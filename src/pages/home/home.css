@@ -1,88 +1,98 @@
-.home_container {
-  background-image: url("../../../public/assets/img/background_home.png");
+.home {
+  position: absolute;
+  width: 100%;
+  height: 695px;
+  left: 0px;
+  background-image: url("../../../public/assets/img/Background.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
-.home_container .top_container {
+.home .header {
+  position: absolute;
+  top: 29.38px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
-.home_container .top_container .top_container1 {
-  display: flex;
-  align-items: center;
+.home .header .logo-button {
+  left: 233px;
+  width: 18.16px;
+  height: 12.37px;
+  background: #FFFFFF;
+  border: 1px solid #FFFFFF;
 }
-.home_container .top_container .top_container1 img {
-  width: 19.09px;
-  height: 13px;
-  margin-left: 95px;
-  margin-right: 17px;
+.home .header .logo-button img {
+  width: 100%;
+  height: auto;
 }
-.home_container .top_container .top_container1 p {
-  font-weight: 400;
-  font-size: 20px;
-  color: #FFFFFF;
+.home .header .nav-links {
+  margin-left: 342.42px;
 }
-.home_container .top_container .top_container2 {
-  margin-right: 122px;
+.home .header .nav-links a {
+  margin-right: 325px;
 }
-.home_container .top_container .top_container2 button[name=SignUp] {
-  margin-right: 20px;
+.home .header .auth-buttons button {
   width: 102px;
   height: 35px;
   border: 1px solid #FFFFFF;
   border-radius: 5px;
+  font-weight: 500;
+  font-size: 16px;
+}
+.home .header .auth-buttons button .signup-button {
   background-color: transparent;
-  font-weight: 500;
-  font-size: 16px;
   color: #FFFFFF;
 }
-.home_container .top_container .top_container2 button[name=Login] {
-  width: 102px;
-  height: 35px;
-  border: 1px solid #FFFFFF;
-  border-radius: 5px;
+.home .header .auth-buttons button .login-button {
   background-color: #FFFFFF;
-  font-weight: 500;
-  font-size: 16px;
   color: #3563E9;
 }
-.home_container .middle_container {
-  margin-top: 163px;
-  margin-bottom: 247px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 46px;
-  text-align: center;
-  letter-spacing: 0.08em;
-  color: #FFFFFF;
+.home .main-content .main-button {
+  position: absolute;
+  width: 192px;
+  height: 66px;
+  left: 778px;
+  top: 522px;
+  background: #08002B;
+  border-radius: 39.5px;
 }
-.home_container .bottom_container {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 9px;
+.home .main-content .main-button img {
+  width: 100%;
+  height: auto;
 }
-.home_container .bottom_container .notice, .home_container .bottom_container .annual_plan, .home_container .bottom_container .near_building {
-  width: 460px;
-  height: 460px;
+.home .main-content .square-image {
+  position: absolute;
+  width: 114px;
+  height: 114px;
+  left: 210px;
+  top: 312px;
   background: #FFFFFF;
-  border-radius: 25px;
-  margin-right: 15px;
+  border-radius: 13px;
 }
-.home_container .bottom_container .notice .bottom_container1, .home_container .bottom_container .annual_plan .bottom_container1, .home_container .bottom_container .near_building .bottom_container1 {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 45px;
+.home .main-content .square-image img {
+  width: 100%;
+  height: auto;
 }
-.home_container .bottom_container .notice .bottom_container1 span, .home_container .bottom_container .annual_plan .bottom_container1 span, .home_container .bottom_container .near_building .bottom_container1 span {
-  margin-left: 41px;
+.home .main-content .square-image .overlay-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+.home .main-content .title {
+  position: absolute;
+  width: 557px;
+  height: 64px;
+  left: 210px;
+  top: 465px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
   font-weight: 600;
-  font-size: 25px;
+  font-size: 72px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #13005E;
 }
-.home_container .bottom_container .notice .bottom_container1 img, .home_container .bottom_container .annual_plan .bottom_container1 img, .home_container .bottom_container .near_building .bottom_container1 img {
-  width: 50px;
-  height: 50px;
-  margin-right: 46px;
-}/*# sourceMappingURL=home.css.map */
+
+/*# sourceMappingURL=home.css.map */
