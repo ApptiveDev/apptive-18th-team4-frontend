@@ -19,6 +19,9 @@
   font-size: 0.875rem;
   letter-spacing: 0.013rem;
 }
+.nav_bar a:hover {
+  color: black;
+}
 .nav_bar .home {
   width: 5.063rem;
   height: 1.75rem;
