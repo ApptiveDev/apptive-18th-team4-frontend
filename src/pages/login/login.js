@@ -30,7 +30,7 @@ export default function Login() {
         else if (password.length === 0) alert("비밀번호를 입력해주세요")
         else {
             axios.post("http://3.34.82.40:8080/auth/login", {
-                    email: email, 
+                    username: email, 
                     password: password
                 }, { headers: { 'Content-Type': 'application/json'} })
             .then({onLoginSuccess}) 

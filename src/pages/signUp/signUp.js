@@ -29,12 +29,13 @@ export default function SignUp () {
         else if (!isChecked) alert("약관에 동의하지 않을 경우, 회원가입이 어렵습니다.")
         else {
             const form = new FormData()
-            form.append('email', email)
+            form.append('username', email)
             form.append('password', password)
             form.append('nickname', nickname)
+            form.append('state', 1) //수정해야 됨
             form.append('findQuesNum', findQuesNum)
             form.append('findAnswer', findAnswer)
-
+            console.log(form)
             axios.post("http://3.34.82.40:8080/auth/signup", form, { headers: { 'Content-Type': 'application/json'} })
             .then(function(response) {
                 console.log(response)

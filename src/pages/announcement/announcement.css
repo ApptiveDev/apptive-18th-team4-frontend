@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap&family=Montserrat&display=swap");
+.announcement_container .title {
+  display: flex;
+  align-items: center;
+  margin-top: 5.25%;
+  padding-left: 16.8%;
+  font-weight: 600;
+  font-size: 3rem;
+  letter-spacing: 0.013rem;
+}
+.announcement_container .notification_container {
+  margin-top: 3.92%;
+  width: 71.11%;
+  height: 18.11%;
+  border-radius: 2.25rem;
+  background-color: #DADADA;
+}
+.announcement_container .notification_container .notification_element {
+  display: flex;
+  align-items: center;
+  padding: 1.73% 2.43%;
+  border-radius: 1.875rem;
+  background: #DADADA;
+}
+.announcement_container .notification_container .notification_element .bell_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.875rem;
+  height: 2.688rem;
+  background: #FFFFFF;
+  border-radius: 0.875rem;
+}
+.announcement_container .notification_container .notification_element .bell_container img {
+  width: 1.25rem;
+  height: 1.5rem;
+}
+.announcement_container .notification_container .notification_element span {
+  font-family: "Asap";
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-left: 4%;
+  width: 80%;
+}
+.announcement_container .notification_container .notification_element .showBtn {
+  font-weight: 600;
+  font-size: 0.75rem;
+  width: 4.188rem;
+  height: 1.75rem;
+  background: #AEC0F0;
+  border-radius: 2.469rem;
+  border: none;
+  color: #FFFFFF;
+  margin-right: 0.75rem;
+}
+.announcement_container .notification_container .notification_element .removeBtn {
+  font-weight: 600;
+  font-size: 0.75rem;
+  width: 4.188rem;
+  height: 1.75rem;
+  background: #AEC0F0;
+  border-radius: 2.469rem;
+  border: none;
+  color: #FFFFFF;
+}
+.announcement_container .notification_container .isClickedDiv {
+  display: flex;
+  font-weight: 500;
+  font-size: 1.25rem;
+  padding: 1.73% 2.43%;
+}
+.announcement_container .notification_container .isClickedDiv a {
+  color: black;
+  text-decoration: none;
+}
+.announcement_container .checkbox_container {
+  display: flex;
+  justify-content: flex-end;
+  width: 20%;
+}
+.announcement_container .checkbox_container label {
+  display: flex;
+  align-items: center;
+}
+.announcement_container .checkbox_container input[type=checkbox] {
+  width: 1.313rem;
+  height: 1.313rem;
+  accent-color: white;
+}
+.announcement_container .searchBtn {
+  height: 1.75rem;
+  background: #AEC0F0;
+  border: none;
+  border-radius: 2.469rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: white;
+}
+.announcement_container select {
+  display: flex;
+  appearance: none;
+  border: none;
+  border-bottom: 1px solid #000000;
+  outline: none;
+  background: url("../../../public/assets/img/dropdown_arrow2.png") no-repeat 93% 50%/0.938rem auto;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-left: 0.938rem;
+  margin-left: 4%;
+  height: 2rem;
+}
+.announcement_container #classification {
+  width: 20%;
+}
+.announcement_container #college {
+  width: 20%;
+}
+.announcement_container #dept {
+  width: 35%;
+}
+.announcement_container #instt {
+  width: 20%;
+}
+.announcement_container .enterKeyword {
+  width: 13%;
+  border: none;
+  border-bottom: 1px solid #000000;
+  outline: none;
+  margin: 0 2.5%;
+  padding-left: 0.938rem;
+}
+.announcement_container .keywords {
+  height: 1.75rem;
+  background-color: white;
+  border: 2px solid #AEC0F0;
+  border-radius: 2.469rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: #AEC0F0;
+}
+.announcement_container .result {
+  margin-top: 8.34%;
+  padding: 0 14.4%;
+  height: 307px;
+  border: 1px solid #000000;
+  border-radius: 20px;
+}
+
+.notification_list.opened {
+  border-radius: 1.875rem;
+  background-color: #F2F2F2;
+}/*# sourceMappingURL=announcement.css.map */
