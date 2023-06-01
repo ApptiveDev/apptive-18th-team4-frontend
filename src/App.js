@@ -10,6 +10,8 @@ import FindPw from './pages/find_pw/find_pw';
 import Announcement from './pages/announcement/announcement';
 import AnnualPlan from './pages/annual_plan/annual_plan';
 import NearBuilding from './pages/nearBuilding/nearBuilding';
+
+import MessageComponent from './pages/message_test/firebase-message-sw';
 import Test from './pages/geolocation/index'
 
 function App() {
@@ -28,6 +30,7 @@ function App() {
           <Route path="/nearBuilding" element={<NearBuilding />} />
 
           <Route path="/test" element={<Test />} />
+          <Route path="/msg" element={<MessageComponent />} />
         </Routes> 
       </Router>
     </div>
