@@ -1,44 +1,157 @@
-.modal {
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    .modal-content {
-        width: 90%;
-        .close {
-            background-color: blue;
-            color: #aaa;
-            cursor: pointer;
-        }
-        .select_time {
-            width: 3.75rem;
-            height: 1.25rem;
-            background: #D9D9D9;
-            border-radius: 0.625rem;
-            font-weight: 700;
-            font-size: 10px;
-            letter-spacing: 0.013rem;
-            border: none;
-        }
-        .color_container {
-            display: flex;
-            .select_color {
-                width: 1.813rem;
-                height: 1.813rem;
-                border-radius: 50%;
+.modal_container {
+    
+    .modal {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        //
+        width: 534px;
+        height: 680px;
+        background: #FFFFFF;
+        box-shadow: 6px 10px 11px rgba(0, 0, 0, 0.25);
+        border-radius: 34px;
+        margin: 30px 0;
+        //
+        .modal-content {
+            width: 90%;
+            //
+            .close_container {
+                display: flex;
+                justify-content: flex-end;
+                padding-right: 10px;
+                padding-bottom: 30px;;
+                .close {
+                    cursor: pointer;
+                    width: 16px;
+                    height: 16px;
+                    background: #E50000;
+                    border-radius: 50%;
+                    color: #150000;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 23px;
+                }
             }
-        }
-        .add_schedule {
-            //width: 196px;
-            //height: 31px;
-            background: #D6DCF5;
-            border-radius: 0.375rem;
-            border: none
+            .schedule_name, .location, .memo {
+                width: 452px;
+                height: 64px;   
+                margin-bottom: 25px;
+                font-weight: 700;
+                font-size: 24px;
+                display: flex;
+                align-items: center;
+                letter-spacing: 0.2px;
+                color: #959595;
+                padding-left: 20px;
+            }
+            .start_date, .end_date {
+                width: 213px;
+                height: 64px;   
+                margin-bottom: 25px;
+                font-weight: 700;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                letter-spacing: 0.2px;
+                color: #150000;
+                padding-left: 20px;
+                
+            }
+            input::placeholder {
+                font-weight: 700;
+                font-size: 24px;
+                display: flex;
+                align-items: center;
+                letter-spacing: 0.2px;
+                color: #959595;
+            }
+            .time_container {
+                border: 1px solid black;
+                width: 475px;
+                height: 64px;
+                display: flex;
+                margin-bottom: 25px;
+                span {
+                    display: flex;
+                    justify-content: center;
+                    font-weight: 700;
+                    font-size: 24px;
+                    display: flex;
+                    align-items: center;
+                    letter-spacing: 0.2px;
+                    color: #08001F;
+                    margin-right: 83px; 
+                    margin-left: 22px;
+                }
+            }
+            .color_container {
+                border: 1px solid black;
+                width: 475px;
+                height: 64px;
+                display: flex;
+                margin-bottom: 25px;
+                span {
+                    display: flex;
+                    justify-content: center;
+                    font-weight: 700;
+                    font-size: 24px;
+                    display: flex;
+                    align-items: center;
+                    letter-spacing: 0.2px;
+                    color: #08001F;
+                    margin-right: 83px; 
+                    margin-left: 22px;
+                }
+                .select_color {
+                    margin-right: 14px;
+                }
+            }
+            .add_schedule {
+                width: 196px;
+                height: 31px;
+                background: #D6DCF5;
+                border-radius: 6px;
+                font-weight: 700;
+                font-size: 14px;
+                text-align: center;
+                letter-spacing: 0.2px;
+            }
+            //
+            .select_time {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 3.75rem;
+                height: 1.25rem;
+                background: #D9D9D9;
+                border-radius: 0.625rem;
+                font-weight: 700;
+                font-size: 10px;
+                letter-spacing: 0.013rem;
+                border: none;
+                margin-right: 30px;/*수정해야함*/
+            }
+            .color_container {
+                display: flex;
+                .select_color {
+                    width: 1.813rem;
+                    height: 1.813rem;
+                    border-radius: 50%;
+                }
+            }
+            .add_schedule {
+                //width: 196px;
+                //height: 31px;
+                background: #D6DCF5;
+                border-radius: 0.375rem;
+                border: none
+            }
         }
     }
 }
-
 /**/
 
   
