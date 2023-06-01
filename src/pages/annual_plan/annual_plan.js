@@ -2,6 +2,7 @@ import { useState } from "react";
 import Calendar from 'react-calendar';
 import moment from 'moment';
 import axios from 'axios';
+import Modal from "../../components/modal/modal";
 //import 'react-calendar/dist/Calendar.css';
 import './annual_plan.css'
 import data from './data.json'; //나중에 삭제
@@ -97,6 +98,7 @@ export default function AnnualPlan() {
         <div className="context_container">
           <div>
             {moment(date).format("YYYY년 MM월 DD일")}
+            <Modal selectedDate={moment(date).format("MM.DD")} selectedDayWeek={date.getDay()}/> {/* 모달에 선택한 날짜 전달 */}
           </div>
 
           <div>
