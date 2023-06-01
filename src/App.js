@@ -7,7 +7,9 @@ import Login from './pages/login/login'
 import FindId from './pages/find_id/find_id';
 import FindPw from './pages/find_pw/find_pw';
 
+import Announcement from './pages/announcement/announcement';
 import AnnualPlan from './pages/annual_plan/annual_plan';
+import NearBuilding from './pages/nearBuilding/nearBuilding';
 import Test from './pages/geolocation/index'
 
 function App() {
@@ -21,7 +23,10 @@ function App() {
           <Route path="/findId" element={<FindId />} />
           <Route path="/findPw" element={<FindPw />} />
 
+          <Route path="/announcement" element={<Announcement />} />
           <Route path='/annualPlan' element={<AnnualPlan />} />
+          <Route path="/nearBuilding" element={<NearBuilding />} />
+
           <Route path="/test" element={<Test />} />
         </Routes> 
       </Router>
