@@ -64,42 +64,53 @@ export default function Announcement() {
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div className='notification_container'>
                     {data.map((item, index) => (
-                        <div key={index} className={`notification_list ${clickedIndexes.includes(index) ? 'opened' : ''}`}>
-                            <div className='notification_element' style={{ display: 'flex', alignItems: 'center' }}>
-                                <div className="bell_container">
-                                    <img src="/assets/img/bell_mini.png" alt="알림 아이콘" />
+                        <div style={{}}>
+                            <div style={{width: '100%', height: '100%'}}>
+                            <div key={index} className={`notification_list ${clickedIndexes.includes(index) ? 'opened' : ''}`}>
+                                <div className='notification_element' style={{ 
+                                    display: 'flex', 
+                                    alignItems: 'center', 
+                                    borderTopRightRadius: clickedIndexes.includes(index - 1) || index == 0 ? '1.875rem' : 0,
+                                    borderTopLeftRadius: clickedIndexes.includes(index - 1) || index == 0 ? '1.875rem' : 0,
+                                    borderBottomRightRadius: data.length - 1  == index || clickedIndexes.includes(index) ? '1.875rem' : 0,
+                                    borderBottomLeftRadius: data.length - 1 == index || clickedIndexes.includes(index) ? '1.875rem' : 0,
+                                }}>
+                                    <div className="bell_container">
+                                        <img src="/assets/img/bell_mini.png" alt="알림 아이콘" />
+                                    </div>
+                                    <span>{item.department}</span>
+                                    <button className="showBtn" onClick={() => handleShowing(index)}>
+                                        {clickedIndexes.includes(index) ? '닫기' : '보기'}
+                                    </button>
+                                    <button className="removeBtn">제거</button>
                                 </div>
-                                <span>{item.department}</span>
-                                <button className="showBtn" onClick={() => handleShowing(index)}>
-                                    {clickedIndexes.includes(index) ? '닫기' : '보기'}
-                                </button>
-                                <button className="removeBtn">제거</button>
-                            </div>
 
-                            <div>
-                                {clickedIndexes.includes(index) &&
-                                    item.content.slice(startIndex, endIndex).map((notice) => (
-                                    <div key={notice.id} className="isClickedDiv">
-                                        <span>{notice.id}</span>
-                                        <div style={{ width: '90%', marginLeft: '3.75%' }}>
-                                        <a href={notice.link}>{notice.title}</a>
+                                <div style={{BorderBottomLeftRadius: '1.875rem', borderBottomLeftRadius: '1.875rem'}}>
+                                    {clickedIndexes.includes(index) &&
+                                        item.content.slice(startIndex, endIndex).map((notice) => (
+                                        <div key={notice.id} className="isClickedDiv">
+                                            <span>{notice.id}</span>
+                                            <div style={{ width: '90%', marginLeft: '3.75%' }}>
+                                            <a href={notice.link}>{notice.title}</a>
+                                            </div>
+                                            <span>{notice.date}</span>
                                         </div>
-                                        <span>{notice.date}</span>
-                                    </div>
-                                    ))}
-                                {clickedIndexes.includes(index) && (
-                                    <div className="pagination">
-                                        <Pagination
-                                            activePage={page}
-                                            itemsCountPerPage={itemsPerPage}
-                                            totalItemsCount={item.content.length}
-                                            pageRangeDisplayed={5}
-                                            prevPageText="‹"
-                                            nextPageText="›"
-                                            onChange={handlePageChange}
-                                        />
-                                    </div>
-                                )}
+                                        ))}
+                                    {clickedIndexes.includes(index) && (
+                                        <div className="pagination">
+                                            <Pagination
+                                                activePage={page}
+                                                itemsCountPerPage={itemsPerPage}
+                                                totalItemsCount={item.content.length}
+                                                pageRangeDisplayed={5}
+                                                prevPageText="‹"
+                                                nextPageText="›"
+                                                onChange={handlePageChange}
+                                            />
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
                             </div>
                         </div>
                     ))}
