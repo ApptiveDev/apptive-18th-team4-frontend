@@ -16,12 +16,15 @@
         height: 18.11%;
         border-radius: 2.25rem;
         //background-color: pink;
-        background-color: #DADADA;
+        background-color: transparent;
+        .notification_element:first-child {
+            border-top-left-radius: 1.875rem;
+            border-top-right-radius: 1.875rem;
+        }
         .notification_element {
             display: flex;
             align-items: center;
             padding: 1.73% 2.43%;
-            border-radius: 1.875rem;
             background: #DADADA;
             .bell_container {
                 display: flex;
@@ -156,5 +159,5 @@
 
 .notification_list.opened {
     border-radius: 1.875rem;
-    background-color: #F2F2F2;
+    background-color: #f2f2f2;
 }
