@@ -18,7 +18,7 @@ const Modal = ({selectedDate, selectedDayWeek}) => {
 
     return (
         <div className='modal_container'>
-            <button onClick={openModal}>모달 열기</button>
+            <button onClick={openModal} className='calendar_sub'>+</button>
         {isOpen && (
             <div className='modal'>
                 <div className="modal-content">
@@ -58,7 +58,7 @@ const Modal = ({selectedDate, selectedDayWeek}) => {
                         <span>색상</span>
 
                         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                        <div className='select_color' style={{backgroundColor: '#FF3737'}}/>
+                        <div className='select_color' style={{backgroundColor: '#FF7979'}}/>
                         <div className='select_color' style={{backgroundColor: '#FFB571'}}/>
                         <div className='select_color' style={{backgroundColor: '#FFD910'}}/>
                         <div className='select_color' style={{backgroundColor: '#9BD3A1'}}/>

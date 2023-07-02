@@ -6,6 +6,7 @@ import Modal from "../../components/modal/modal";
 //import 'react-calendar/dist/Calendar.css';
 import './annual_plan.css'
 import data from './data.json'; //나중에 삭제
+import Navbar from '../../components/nav_bar/nav_bar'
 
 export default function AnnualPlan() {
   /*
@@ -45,16 +46,39 @@ export default function AnnualPlan() {
   }
   
   const dot_style = (color) => ({
-    width: '4px',
-    height: '4px',
+    height: '2.0625rem',
+    width: '100%',
+    //height: '2.0625rem',
     backgroundColor: color,
-    borderRadius: '50%',
-    marginLeft: '0.063rem',
+    display: 'block',
+    borderRadius: '0.6875rem',
+    boxShadow: '8px 8px 8px 0px rgba(0, 0, 0, 0.25)'
   });
 
+  //메모 띄우기
+  const [showMemo, setShow] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShow(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShow(false);
+  };
+
   return (
-    <div className="calendar_container">
-      <div>
+    <div>
+      <Navbar />
+      <div style={{display: 'flex', justifyContent: 'center', marginTop: '4.813rem'}}>
+        <div style={{display: 'flex', justifyContent: 'flex-end', width: '64rem'}}>
+          <Modal selectedDate={moment(date).format("MM.DD")} selectedDayWeek={date.getDay()} style={{marginRight: '0.625rem'}}/> {/* 모달에 선택한 날짜 전달 */}
+          <button className="calendar_sub" style={{marginLeft: '0.625rem'}}>
+            <img src="/assets/img/gear.png" />
+          </button>
+        </div>
+      </div>
+
+      <div className="calendar_container">
         <Calendar
           onChange={showDate} // useState로 포커스 변경 시 현재 날짜 받아오기
           formatDay={(locale, date) => moment(date).format("DD")} // 날'일' 제외하고 숫자만 보이도록 설정
@@ -79,7 +103,9 @@ export default function AnnualPlan() {
               html.push(<div className="dot_container">
                 {data.map((item) => {
                   if(moment(date).isBetween(moment(item.startDate, 'YYYY.MM.DD'), moment(item.endDate, 'YYYY.MM.DD'), null, '[]')) {
-                    return <div style={dot_style(item.color)}></div>
+                    return <div style={dot_style(item.color)}>
+                      {/*날짜에 맞는 item.context (일정) 보여주기*/}
+                    </div>
                   }
                 })}
               </div>);
@@ -94,25 +120,54 @@ export default function AnnualPlan() {
               </>
             );
           }} />
-
+      </div>
+        
+      <div style={{display: 'flex', justifyContent: 'center'}}>
         <div className="context_container">
-          <div>
-            {moment(date).format("YYYY년 MM월 DD일")}
-            <Modal selectedDate={moment(date).format("MM.DD")} selectedDayWeek={date.getDay()}/> {/* 모달에 선택한 날짜 전달 */}
-          </div>
+            <div>
+              {/*
+              {moment(date).format("YYYY년 MM월 DD일")}
+              */}
+            </div>
 
-          <div>
-            {data.map((item) => {
-              const start = moment(item.startDate, 'YYYY.MM.DD');
-              const end = moment(item.endDate, 'YYYY.MM.DD');
-              //isBetween 메소드로 특정 기간 내에 해당하는지 판단
-              //[]:시작일과 종료일 포함한다는 뜻
-              if (moment(date).isBetween(start, end, null, '[]')) {
-                return <div style={{fontSize: '13px'}}>{item.context}</div>;
-              }
-            })}
+            <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', width: '64rem'}}>
+              {data.map((item) => {
+                const start = moment(item.startDate, 'YYYY.MM.DD');
+                const end = moment(item.endDate, 'YYYY.MM.DD');
+                //isBetween 메소드로 특정 기간 내에 해당하는지 판단
+                //[]:시작일과 종료일 포함한다는 뜻
+                if (moment(date).isBetween(start, end, null, '[]')) {
+                  return (
+                    <div>
+                      <div style={{display: 'flex', justifyContent: 'flex-end', marginRight: '0.8rem', marginBottom: '0.1rem'}}><div className="speech_bubble">{item.memo}</div></div>
+                      {/*
+                      {showMemo && <div style={{display: 'flex', justifyContent: 'flex-end', marginRight: '0.8rem', marginBottom: '0.1rem'}}><div className="speech_bubble">{item.memo}</div></div>}
+                      */}
+                      <div className="content_container">
+                        
+                        <div style={{ width: '4.4375rem', height: '0.5625rem', background: '#080038' }}></div>
+                        <div style={{ display: 'flex' }}>
+                          <div style={{ textAlign: 'center', width: '4.4375rem', marginRight: '0.625rem' }}>
+                            <div style={{ fontWeight: '600' }}>{moment(date).format("D")}</div>
+                            <div style={{ fontSize: '0.75rem' }}>{moment(date).format("ddd")}</div>
+                          </div>
+                          <div style={{width: '20rem', margin: '0 0.625rem', display: 'flex', justifyContent: 'space-between'}} >
+                            <div style={{ display: 'flex', alignItems: 'center', fontSize: '0.875rem' }}>{item.context}</div>
+                            <div style={{display: 'flex', alignItems: 'center'}}>
+                              <img src="/assets/img/memo.png" style={{marginRight: '0.54rem'}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}/>
+                              <img src="/assets/img/gear_colored.png" style={{width: '1.25rem', height: '1.25rem'}} />
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  );
+                }
+              })}
+            </div>
+
           </div>
-        </div>
       </div>
     </div>
   )
