@@ -1,7 +1,52 @@
-import { Link } from 'react-router-dom'
-import './home.css'
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import useGeoLocation from '../geolocation/useGeoLocation';
+import './home.css';
 
 export default function Home() {
+    const [select, setSelect] = useState('거리순');
+
+    /*현재 위치 가져오기 */
+    const location = useGeoLocation();
+    const [lat, setLat] = useState('');
+    const [lang, setLang] = useState('');
+
+    useEffect(() => {
+        setLat(location.coordinates.lat);
+        setLang(location.coordinates.lang);
+    })
+
+    /*현재 위치를 마커로 표시 */
+    const { kakao } = window;
+
+    useEffect(() => {
+        drawMap();
+    });
+
+    const drawMap = () => {
+        let container = document.getElementById("map");
+        let options = {
+            center: new kakao.maps.LatLng(lat, lang),
+            level: 3,
+        };
+        
+        const map = new kakao.maps.Map(container, options);
+
+        // 마커가 표시될 위치
+        let markerPosition = new kakao.maps.LatLng(
+            lat,
+            lang
+        );
+
+        // 마커 생성
+        let marker = new kakao.maps.Marker({
+            position: markerPosition,
+        });
+
+        // 지도 위에 마커 표시
+        marker.setMap(map);
+    }
+
     return (
         <div>
             <div className="top_container">
@@ -79,12 +124,62 @@ export default function Home() {
                 </div>
             </div>
             
-            <div id="s1">
-                <img src="/assets/img/home_icon1.png" style={{backgroundColor: 'black'}}/>
-                빈 강의실
+            <div style={{padding: '0 14%'}}>
+                <div id="s1" className='section1'>
+                    <div className='section1_top'>
+                        <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                fontSize: '1.5rem',
+                                fontWeight: '600',
+                                width: '40%',
+                            }}>
+                            <img src="/assets/img/home_icon1_black.png"
+                                style={{marginRight: '0.87rem'}} />
+                            빈 강의실 찾기
+                        </div>
+                        <div style={{
+                            fontSize: '1.5rem',
+                            fontWeight: '600',
+                            color: '#A4A4A4',
+                            cursor: 'pointer'
+                        }}>
+                            <span onClick={() => setSelect('거리순')}
+                                style={{color: select === '거리순' ? 'black' : '#A4A4A4', marginRight: '2.69rem'}}>
+                                    거리순
+                            </span>
+                            <span onClick={() => setSelect('즐겨찾기')}
+                                style={{color: select === '즐겨찾기' ? 'black' : '#A4A4A4'}}>
+                                    즐겨찾기
+                            </span>
+                        </div>
+                    </div>
+                    
+
+                    {select === '거리순' &&
+                        <div>
+                            <div id="map" style={{ width: "500px", height: "500px" }}>
+
+                            </div>
+                        </div>
+                    }
+
+                    {select === '즐겨찾기' &&
+                        <div>
+                            즐겨찾기
+                            <div id="map" style={{ width: "500px", height: "500px" }}>
+
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+
+                <div id="s2">학사일정</div>
+                <div id="s3">공지사항</div>
+
             </div>
-            <div id="s2">학사일정</div>
-            <div id="s3">공지사항</div>
 
         </div>
     )

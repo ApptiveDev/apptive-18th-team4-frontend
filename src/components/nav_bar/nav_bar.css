@@ -32,6 +32,7 @@
   font-family: "Montserrat";
   font-weight: 500;
   font-size: 0.75rem;
+  cursor: pointer;
 }
 .nav_bar .logout {
   width: 5.063rem;
@@ -43,4 +44,5 @@
   font-family: "Montserrat";
   font-weight: 500;
   font-size: 0.75rem;
+  cursor: pointer;
 }/*# sourceMappingURL=nav_bar.css.map */
