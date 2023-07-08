@@ -5,6 +5,8 @@ import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import './home.css';
 import WeeklyCalendar from './weeklyCalendar';
 
+import data from './data.json'
+
 export default function Home() {
     const [select, setSelect] = useState('거리순');
 
@@ -195,10 +197,59 @@ export default function Home() {
 
                 </div>
 
-                <div id="s2" style={{padding: '1.25rem 14%'}}>
+                <div id="s2" 
+                    className='section2'
+                    style={{padding: '1.25rem 14%'}}>
                     <WeeklyCalendar />
                 </div>
-                <div id="s3">공지사항</div>
+
+                <div id="s3" 
+                    className='section3'
+                    style={{padding: '0 14% 5% 14%'}}>
+                    <div className='section3-box'>
+                        <div className='section3_top'>
+                            <img src="/assets/img/bell_black.png" 
+                                style={{
+                                    marginRight: '2.6rem'
+                                }}/>
+                                <div style={{
+                                    display: 'flex', 
+                                    justifyContent: 'space-between', 
+                                    alignItems: 'center',
+                                    width: '100%'
+                                }}>
+                                    공지사항
+                                    <Link to="/announcement">
+                                        <img src="/assets/img/plusButton.png" 
+                                            style={{cursor: 'pointer'}}/>
+                                    </Link>
+                                </div>   
+                        </div>
+                        
+                        <div className='section3_content'>
+                            {data.map((notice, index) => (                                
+                                <div className='single-notice'>
+                                    <div className='section3_num'>{index + 1}</div>
+                                    <div style={{
+                                        display: 'flex', 
+                                        justifyContent: 'space-between',
+                                        width: '90%'}}>
+                                        <Link to={notice.urls}>
+                                            <div>{notice.title}</div>
+                                        </Link>
+                                        <div style={{
+                                            
+                                        }}>
+                                            {notice.date}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                            
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
 

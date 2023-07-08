@@ -96,4 +96,39 @@
 }
 .home .section1 .card-container span {
   font-weight: 600;
+}
+.home .section3 .section3-box {
+  background: #fff;
+  height: 18rem;
+  border-radius: 1.5625rem;
+  padding: 3.5rem;
+  font-weight: 600;
+}
+.home .section3 .section3-box .section3_top {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+.home .section3 .section3-box .section3_content {
+  margin-top: 2.69rem;
+  font-size: 1.25rem;
+}
+.home .section3 .section3-box .section3_content .single-notice {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.44rem;
+}
+.home .section3 .section3-box .section3_content a {
+  color: black;
+  text-decoration: none;
+}
+.home .section3 .section3-box .section3_content .section3_num {
+  width: 2.875rem;
+  height: 2.6875rem;
+  border-radius: 0.875rem;
+  background: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2rem;
 }/*# sourceMappingURL=home.css.map */

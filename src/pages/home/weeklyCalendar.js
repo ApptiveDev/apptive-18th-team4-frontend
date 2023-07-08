@@ -22,7 +22,6 @@ const WeeklyCalendar = () => {
             const currentDate = new Date(startOfWeek);
             currentDate.setDate(startOfWeek.getDate() + i);
             dates.push(currentDate);
-            console.log(currentDate)
         }
         return dates;
     };
