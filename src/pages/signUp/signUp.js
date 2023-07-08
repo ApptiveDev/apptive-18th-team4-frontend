@@ -1,7 +1,10 @@
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import './signUp.css'
+import api from '../../api';
+
 
 export default function SignUp () {
     const [email, setEmail] = useState('')
@@ -18,6 +21,8 @@ export default function SignUp () {
     console.log(nickname)
     console.log(findQuesNum)
     console.log(findAnswer)
+
+    const navigate = useNavigate();
     
     const handleSignup = (e) => {
         e.preventDefault()
@@ -36,11 +41,22 @@ export default function SignUp () {
             form.append('findQuesNum', findQuesNum)
             form.append('findAnswer', findAnswer)
             console.log(form)
-            axios.post("http://3.34.82.40:8080/auth/signup", form, { headers: { 'Content-Type': 'application/json'} })
+            api.post("/auth/signup", form)
             .then(function(response) {
                 console.log(response)
+
+                if(response.data.nickname){
+                    //alert --님 회원가입 환영합니다.
+                    alert(`${response.data.nickname}님, 회원가입을 환영합니다!`)
+                } else {
+                    alert('회원가입을 환영합니다!');
+                }
+
+                // 메인 페이지 리다이렉트
+                navigate('/');
+
             }) .catch(function(error) {
-                console.log(error)
+                alert(error)
             })
         }
     }
