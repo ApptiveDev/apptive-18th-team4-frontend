@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useGeoLocation from '../geolocation/useGeoLocation';
+import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import './home.css';
+import WeeklyCalendar from './weeklyCalendar';
 
 export default function Home() {
     const [select, setSelect] = useState('거리순');
@@ -27,7 +29,7 @@ export default function Home() {
         let container = document.getElementById("map");
         let options = {
             center: new kakao.maps.LatLng(lat, lang),
-            level: 3,
+            level: 2,
         };
         
         const map = new kakao.maps.Map(container, options);
@@ -48,7 +50,7 @@ export default function Home() {
     }
 
     return (
-        <div>
+        <div className='home'>
             <div className="top_container">
                 {/*상단 navbar*/}
                 <div style={{padding: '0 14%'}} className='home_nav'>
@@ -124,7 +126,7 @@ export default function Home() {
                 </div>
             </div>
             
-            <div style={{padding: '0 14%'}}>
+            <div style={{background: '#f3f3f3'}}>
                 <div id="s1" className='section1'>
                     <div className='section1_top'>
                         <div style={{
@@ -157,10 +159,28 @@ export default function Home() {
                     
 
                     {select === '거리순' &&
-                        <div>
-                            <div id="map" style={{ width: "500px", height: "500px" }}>
-
+                        <div style={{
+                            display: 'flex',
+                            marginTop: '4.6rem'
+                            }}>
+                            <div className='card-container'>
+                                <div id="map" className='card'></div>
+                                <span>현재 위치</span>
                             </div>
+                            <div className='card-container'>
+                                <div className='card'></div>
+                                <span>빈 강의실 : 1순위</span>
+                            </div>
+                            {/*
+                            <div className='card-container'>
+                                <div className='card'></div> 
+                                <span>빈 강의실 : 2순위</span>
+                            </div>
+                            <div className='card-container'>
+                                <div className='card'></div> 
+                                <span>빈 강의실 : 3순위</span>
+                            </div>
+                        */}
                         </div>
                     }
 
@@ -175,8 +195,9 @@ export default function Home() {
 
                 </div>
 
-
-                <div id="s2">학사일정</div>
+                <div id="s2" style={{padding: '1.25rem 14%'}}>
+                    <WeeklyCalendar />
+                </div>
                 <div id="s3">공지사항</div>
 
             </div>

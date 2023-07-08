@@ -1,0 +1,17 @@
+.weekly-calendar {
+    background-color: #fff;
+    height: 21.125rem;
+    border-radius: 1.5625rem;
+}
+
+.calendar-dayname {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.calendar-date {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}

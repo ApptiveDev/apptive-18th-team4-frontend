@@ -1,33 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
-.top_container {
+.home {
+  font-family: Montserrat;
+}
+.home .top_container {
   width: 100%;
   height: 40rem;
   background: url("../../../public/assets/img/background_home.png") no-repeat;
   background-size: cover;
   border-radius: 0 0 2.8125rem 2.8125rem;
 }
-.top_container .home_nav {
+.home .top_container .home_nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 3.813rem;
   border-bottom: 0.0625rem solid #FFF;
 }
-.top_container .home_nav .logo {
+.home .top_container .home_nav .logo {
   width: 1.135rem;
   height: 0.773rem;
 }
-.top_container .home_nav a {
+.home .top_container .home_nav a {
   color: #FFFFFF;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 0.013rem;
 }
-.top_container .home_nav a:hover {
+.home .top_container .home_nav a:hover {
   color: black;
 }
-.top_container .home_nav .home {
+.home .top_container .home_nav .home {
   width: 5.063rem;
   height: 1.75rem;
   background: none;
@@ -39,7 +42,7 @@
   font-size: 0.75rem;
   cursor: pointer;
 }
-.top_container .home_nav .logout {
+.home .top_container .home_nav .logout {
   width: 5.063rem;
   height: 1.75rem;
   background: #FFFFFF;
@@ -51,13 +54,13 @@
   font-size: 0.75rem;
   cursor: pointer;
 }
-.top_container .sub_container {
+.home .top_container .sub_container {
   height: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.top_container .sub_container .shortcutBtn {
+.home .top_container .sub_container .shortcutBtn {
   padding: 1.25rem 1.8rem;
   border-radius: 2.46875rem;
   background-color: #08002B;
@@ -67,18 +70,30 @@
   font-weight: 600;
   margin-left: 1.31rem;
 }
-.top_container .sub_container .shortcutBtn img {
+.home .top_container .sub_container .shortcutBtn img {
   margin-right: 0.5rem;
 }
-.top_container .sub_container a {
+.home .top_container .sub_container a {
   text-decoration: none;
   color: #fff;
 }
-
-.section1 {
+.home .section1 {
+  padding: 0 0 0 14%;
   margin-top: 4.69rem;
+  background-color: #fff;
+  padding-bottom: 9rem;
 }
-.section1 .section1_top {
+.home .section1 .section1_top {
   display: flex;
   align-items: center;
+}
+.home .section1 .card-container .card {
+  margin-right: 1.31rem;
+  border-radius: 1.25rem;
+  background: #D9D9D9;
+  width: 25.8125rem;
+  height: 17rem;
+}
+.home .section1 .card-container span {
+  font-weight: 600;
 }/*# sourceMappingURL=home.css.map */
