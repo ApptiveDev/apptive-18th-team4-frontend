@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import "./modal.css";
 
-const Modal = ({selectedDate, selectedDayWeek}) => {
+const Modal_annualPlan = ({selectedDate, selectedDayWeek}) => {
     console.log(selectedDayWeek)
     const [isOpen, setIsOpen] = useState(false);
 
@@ -77,4 +77,4 @@ const Modal = ({selectedDate, selectedDayWeek}) => {
     );
 };
 
-export default Modal;
+export default Modal_annualPlan;

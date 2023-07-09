@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+.nearBuilding {
+  height: 100%;
+  font-family: Montserrat;
+  padding: 3.62rem 14%;
+}
+.nearBuilding .current-location {
+  width: 9.125rem;
+  height: 2.625rem;
+  color: #fff;
+  background: #00045F;
+  border-radius: 1.56rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}/*# sourceMappingURL=nearBuilding.css.map */
