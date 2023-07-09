@@ -1,14 +1,24 @@
 [
     {
-      "startDate": "2023.05.09",
-      "endDate": "2023.05.11",
+      "startDate": "2023.07.09",
+      "endDate": "2023.07.11",
       "context": "국문ㆍ영문 교수계획표 입력",
-      "color": "#f87171"
+      "color": "#f87171",
+      "memo" : "메모1"
     },
     {
-      "startDate": "2023.05.11",
-      "endDate": "2023.05.12",
+      "startDate": "2023.07.11",
+      "endDate": "2023.07.12",
       "context": "학사학위취득유예신청기간",
-      "color": "#71a9f8"
+      "color": "#71a9f8",
+      "memo" : "메모2"
+    }
+    ,
+    {
+      "startDate": "2023.07.11",
+      "endDate": "2023.07.15",
+      "context": "test",
+      "color": "yellow",
+      "memo" : "메모3"
     }
 ]

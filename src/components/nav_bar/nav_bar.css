@@ -30,8 +30,9 @@
   border-radius: 2.469rem;
   color: #FFFFFF;
   font-family: "Montserrat";
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.75rem;
+  cursor: pointer;
 }
 .nav_bar .logout {
   width: 5.063rem;
@@ -41,6 +42,7 @@
   border-radius: 2.469rem;
   margin-left: 0.75rem;
   font-family: "Montserrat";
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.75rem;
+  cursor: pointer;
 }/*# sourceMappingURL=nav_bar.css.map */

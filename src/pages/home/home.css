@@ -1,88 +1,134 @@
-.home_container {
-  background-image: url("../../../public/assets/img/background_home.png");
-  background-repeat: no-repeat;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+.home {
+  font-family: Montserrat;
+}
+.home .top_container {
+  width: 100%;
+  height: 40rem;
+  background: url("../../../public/assets/img/background_home.png") no-repeat;
   background-size: cover;
+  border-radius: 0 0 2.8125rem 2.8125rem;
 }
-.home_container .top_container {
+.home .top_container .home_nav {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
+  height: 3.813rem;
+  border-bottom: 0.0625rem solid #FFF;
 }
-.home_container .top_container .top_container1 {
-  display: flex;
-  align-items: center;
+.home .top_container .home_nav .logo {
+  width: 1.135rem;
+  height: 0.773rem;
 }
-.home_container .top_container .top_container1 img {
-  width: 19.09px;
-  height: 13px;
-  margin-left: 95px;
-  margin-right: 17px;
-}
-.home_container .top_container .top_container1 p {
-  font-weight: 400;
-  font-size: 20px;
+.home .top_container .home_nav a {
   color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.013rem;
 }
-.home_container .top_container .top_container2 {
-  margin-right: 122px;
+.home .top_container .home_nav a:hover {
+  color: black;
 }
-.home_container .top_container .top_container2 button[name=SignUp] {
-  margin-right: 20px;
-  width: 102px;
-  height: 35px;
-  border: 1px solid #FFFFFF;
-  border-radius: 5px;
-  background-color: transparent;
+.home .top_container .home_nav .home {
+  width: 5.063rem;
+  height: 1.75rem;
+  background: none;
+  border: 2px solid #FFFFFF;
+  border-radius: 2.469rem;
+  color: #FFFFFF;
+  font-family: "Montserrat";
   font-weight: 500;
-  font-size: 16px;
-  color: #FFFFFF;
+  font-size: 0.75rem;
+  cursor: pointer;
 }
-.home_container .top_container .top_container2 button[name=Login] {
-  width: 102px;
-  height: 35px;
-  border: 1px solid #FFFFFF;
-  border-radius: 5px;
-  background-color: #FFFFFF;
+.home .top_container .home_nav .logout {
+  width: 5.063rem;
+  height: 1.75rem;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 2.469rem;
+  margin-left: 0.75rem;
+  font-family: "Montserrat";
   font-weight: 500;
-  font-size: 16px;
-  color: #3563E9;
+  font-size: 0.75rem;
+  cursor: pointer;
 }
-.home_container .middle_container {
-  margin-top: 163px;
-  margin-bottom: 247px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 46px;
-  text-align: center;
-  letter-spacing: 0.08em;
-  color: #FFFFFF;
-}
-.home_container .bottom_container {
+.home .top_container .sub_container {
+  height: 90%;
   display: flex;
   justify-content: center;
-  padding-bottom: 9px;
+  align-items: center;
 }
-.home_container .bottom_container .notice, .home_container .bottom_container .annual_plan, .home_container .bottom_container .near_building {
-  width: 460px;
-  height: 460px;
-  background: #FFFFFF;
-  border-radius: 25px;
-  margin-right: 15px;
-}
-.home_container .bottom_container .notice .bottom_container1, .home_container .bottom_container .annual_plan .bottom_container1, .home_container .bottom_container .near_building .bottom_container1 {
+.home .top_container .sub_container .shortcutBtn {
+  padding: 1.25rem 1.8rem;
+  border-radius: 2.46875rem;
+  background-color: #08002B;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 45px;
-}
-.home_container .bottom_container .notice .bottom_container1 span, .home_container .bottom_container .annual_plan .bottom_container1 span, .home_container .bottom_container .near_building .bottom_container1 span {
-  margin-left: 41px;
+  justify-content: center;
+  align-items: center;
   font-weight: 600;
-  font-size: 25px;
+  margin-left: 1.31rem;
 }
-.home_container .bottom_container .notice .bottom_container1 img, .home_container .bottom_container .annual_plan .bottom_container1 img, .home_container .bottom_container .near_building .bottom_container1 img {
-  width: 50px;
-  height: 50px;
-  margin-right: 46px;
+.home .top_container .sub_container .shortcutBtn img {
+  margin-right: 0.5rem;
+}
+.home .top_container .sub_container a {
+  text-decoration: none;
+  color: #fff;
+}
+.home .section1 {
+  padding: 0 0 0 14%;
+  margin-top: 4.69rem;
+  background-color: #fff;
+  padding-bottom: 9rem;
+}
+.home .section1 .section1_top {
+  display: flex;
+  align-items: center;
+}
+.home .section1 .card-container .card {
+  margin-right: 1.31rem;
+  border-radius: 1.25rem;
+  background: #D9D9D9;
+  width: 25.8125rem;
+  height: 17rem;
+}
+.home .section1 .card-container span {
+  font-weight: 600;
+}
+.home .section3 .section3-box {
+  background: #fff;
+  height: 18rem;
+  border-radius: 1.5625rem;
+  padding: 3.5rem;
+  font-weight: 600;
+}
+.home .section3 .section3-box .section3_top {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+.home .section3 .section3-box .section3_content {
+  margin-top: 2.69rem;
+  font-size: 1.25rem;
+}
+.home .section3 .section3-box .section3_content .single-notice {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.44rem;
+}
+.home .section3 .section3-box .section3_content a {
+  color: black;
+  text-decoration: none;
+}
+.home .section3 .section3-box .section3_content .section3_num {
+  width: 2.875rem;
+  height: 2.6875rem;
+  border-radius: 0.875rem;
+  background: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2rem;
 }/*# sourceMappingURL=home.css.map */
