@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./find_pw.css";
 import GradationBox from "../../components/gradation_box/gradation_box";
-import api from "../../api";
+import { instance } from "../../components/ApiContoller";
 
 export default function FindPw() {
   const [email, setEmail] = useState("");
@@ -14,8 +14,7 @@ export default function FindPw() {
     if (email.length === 0) alert("아이디를 입력해주세요");
     else if (nickname.length === 0) alert("인증번호를 입력해주세요");
     else {
-      //요청 url 수정해야함
-      api
+      instance
         .post("/auth/send-email", {
           username: email,
           nickname: nickname,

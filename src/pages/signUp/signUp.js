@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./signUp.css";
-import api from "../../api";
+import { instance } from '../../components/ApiContoller';
+
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPW] = useState("");
@@ -26,7 +27,7 @@ export default function SignUp() {
   const navigate = useNavigate();
   const handleCheckNickname = (e) => {
     e.preventDefault();
-    api
+    instance
       .get("/auth/checknickname", { params: { nickname } })
       .then((response) => {
         if (response.data === true) {
@@ -64,7 +65,7 @@ export default function SignUp() {
       form.append("findQuesNum", findQuesNum);
       form.append("findAnswer", findAnswer);
       console.log(form);
-      api
+      instance
         .post("/auth/signup", form)
         .then(function (response) {
           console.log(response);

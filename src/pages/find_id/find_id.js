@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./find_id.css";
 import GradationBox from "../../components/gradation_box/gradation_box";
-import api from "../../api";
+import { instance } from "../../components/ApiContoller";
 
 export default function FindId() {
   const [nickname, setNickname] = useState("");
@@ -24,7 +24,7 @@ export default function FindId() {
       alert("아이디 확인 질문을 선택해주세요");
     else if (findAnswer.length === 0) alert("아이디 확인 답을 입력해주세요");
     else {
-      api
+      instance
         .post("/auth/findingId", {
           nickname: nickname,
           findQuesNum: parseInt(findQuesNum, 10),

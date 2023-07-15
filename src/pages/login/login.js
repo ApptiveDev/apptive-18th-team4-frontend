@@ -3,7 +3,7 @@ import {useNavigate, Link} from 'react-router-dom';
 import axios from 'axios';
 import './login.css';
 import GradationBox from '../../components/gradation_box/gradation_box';
-import api from '../../api';
+import { instance } from '../../components/ApiContoller'
 
 export default function Login() {
 
@@ -44,7 +44,7 @@ export default function Login() {
         if (email.length === 0) alert("아이디를 입력해주세요")
         else if (password.length === 0) alert("비밀번호를 입력해주세요")
         else {
-            api.post("/auth/login", {
+            instance.post("/auth/login", {
                     username: email, 
                     password: password
                 })
@@ -82,7 +82,7 @@ export default function Login() {
             isRefreshing = true;
         }
     
-        api.post("/auth/reissue", {
+        instance.post("/auth/reissue", {
                   accessToken: accessToken,
                   refreshToken: refreshToken
                 })
@@ -115,8 +115,7 @@ export default function Login() {
 
     //동적으로 받아오는 로직 작성해도 좋음
     const JWT_EXPIRY_TIME = 0.5 * 3600 * 1000; // 만료 시간 (30분 밀리 초로 표현)
-
-
+    
     //onLoginSuccess
     function onLoginSuccess(response) {
         const { accessToken, refreshToken } = response.data;
