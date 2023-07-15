@@ -103,17 +103,20 @@ export default function Announcement() {
 
     let likeReqURL = '';
     const handleLike = () => {
-        if (selectedVal === "학사 공지사항") likeReqURL = `/api/announce/${selectedDept}/like`;
-        else if (selectedVal === "기관 공지사항") likeReqURL = `/api/announce/${selectedInstt}/like`;
-        instance.post(likeReqURL)
-            .then(() => {
-                alert("즐겨찾기 추가되었습니다.");
-                window.location.reload();
-            })
-            .catch((err) => {
-                console.log(err);
-                alert("즐겨찾기를 실패하였습니다.")
-            });
+        if (!isLogin) alert("즐겨찾기는 로그인 후 사용 가능합니다");
+        else {
+            if (selectedVal === "학사 공지사항") likeReqURL = `/api/announce/${selectedDept}/like`;
+            else if (selectedVal === "기관 공지사항") likeReqURL = `/api/announce/${selectedInstt}/like`;
+            instance.post(likeReqURL)
+                .then(() => {
+                    alert("즐겨찾기 추가되었습니다.");
+                    window.location.reload();
+                })
+                .catch((err) => {
+                    console.log(err);
+                    alert("즐겨찾기를 실패하였습니다.")
+                });
+        }
     }
 
     return (
