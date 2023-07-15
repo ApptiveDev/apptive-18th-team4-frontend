@@ -16,7 +16,7 @@ export default function Home() {
         if (localStorage.getItem('accessToken') !== null) {
             setIsLogin(true)
         }
-    })
+    }, [isLogin]);
 
     const navigate = useNavigate();
     const handleLogOut = () => {
@@ -26,6 +26,7 @@ export default function Home() {
             accessToken: accessToken, 
             refreshToken: refreshToken
         })
+        setIsLogin(false);
         navigate('/');
         localStorage.clear();
     }

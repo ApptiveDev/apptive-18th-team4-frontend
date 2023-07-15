@@ -76,20 +76,6 @@
   color: black;
   text-decoration: none;
 }
-.announcement_container .checkbox_container {
-  display: flex;
-  justify-content: flex-end;
-  width: 20%;
-}
-.announcement_container .checkbox_container label {
-  display: flex;
-  align-items: center;
-}
-.announcement_container .checkbox_container input[type=checkbox] {
-  width: 1.313rem;
-  height: 1.313rem;
-  accent-color: white;
-}
 .announcement_container .searchBtn {
   height: 1.75rem;
   background: #AEC0F0;
