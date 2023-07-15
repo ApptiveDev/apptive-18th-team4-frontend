@@ -1,0 +1,332 @@
+[
+    {
+        "buildingNum": 107,
+        "buildingName": "제8공학관",
+        "buildingLat": 35.2327844362398,
+        "buildingLng": 129.083790204696,
+        "availableLectureRooms": [
+            {
+                "id": 15,
+                "roomNum": "8209",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 33,
+                        "startTime": "18:00:00",
+                        "runTime": "01:40:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 15
+                    },
+                    "inProgressLectureEndTime": null,
+                    "inProgressLecture": false,
+                    "marginTimeLecture": false
+                }
+            },
+            {
+                "id": 16,
+                "roomNum": "8306",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 35,
+                        "startTime": "15:00:00",
+                        "runTime": "01:15:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 16
+                    },
+                    "inProgressLectureEndTime": "2023-04-24T14:45:00+09:00",
+                    "inProgressLecture": true,
+                    "marginTimeLecture": true
+                }
+            },
+            {
+                "id": 18,
+                "roomNum": "8308",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 39,
+                        "startTime": "15:00:00",
+                        "runTime": "01:15:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 18
+                    },
+                    "inProgressLectureEndTime": null,
+                    "inProgressLecture": false,
+                    "marginTimeLecture": true
+                }
+            },
+            {
+                "id": 19,
+                "roomNum": "8403",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 43,
+                        "startTime": "15:00:00",
+                        "runTime": "01:15:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 19
+                    },
+                    "inProgressLectureEndTime": "2023-04-24T14:45:00+09:00",
+                    "inProgressLecture": true,
+                    "marginTimeLecture": true
+                }
+            },
+            {
+                "id": 20,
+                "roomNum": "8404",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 47,
+                        "startTime": "15:00:00",
+                        "runTime": "01:15:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 20
+                    },
+                    "inProgressLectureEndTime": "2023-04-24T14:45:00+09:00",
+                    "inProgressLecture": true,
+                    "marginTimeLecture": true
+                }
+            },
+            {
+                "id": 21,
+                "roomNum": "8405",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 51,
+                        "startTime": "15:00:00",
+                        "runTime": "01:15:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 21
+                    },
+                    "inProgressLectureEndTime": "2023-04-24T14:45:00+09:00",
+                    "inProgressLecture": true,
+                    "marginTimeLecture": true
+                }
+            }
+        ]
+    },
+    {
+        "buildingNum": 108,
+        "buildingName": "제9공학관",
+        "buildingLat": 35.2331519630294,
+        "buildingLng": 129.084216965962,
+        "availableLectureRooms": [
+            {
+                "id": 22,
+                "roomNum": "9301",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 55,
+                        "startTime": "15:00:00",
+                        "runTime": "01:15:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 22
+                    },
+                    "inProgressLectureEndTime": "2023-04-24T14:45:00+09:00",
+                    "inProgressLecture": true,
+                    "marginTimeLecture": true
+                }
+            },
+            {
+                "id": 23,
+                "roomNum": "9302",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 59,
+                        "startTime": "15:00:00",
+                        "runTime": "01:15:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 23
+                    },
+                    "inProgressLectureEndTime": "2023-04-24T14:45:00+09:00",
+                    "inProgressLecture": true,
+                    "marginTimeLecture": true
+                }
+            },
+            {
+                "id": 24,
+                "roomNum": "9306",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 62,
+                        "startTime": "15:00:00",
+                        "runTime": "01:15:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 24
+                    },
+                    "inProgressLectureEndTime": "2023-04-24T14:45:00+09:00",
+                    "inProgressLecture": true,
+                    "marginTimeLecture": true
+                }
+            },
+            {
+                "id": 25,
+                "roomNum": "9405",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 67,
+                        "startTime": "15:00:00",
+                        "runTime": "01:15:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 25
+                    },
+                    "inProgressLectureEndTime": "2023-04-24T14:45:00+09:00",
+                    "inProgressLecture": true,
+                    "marginTimeLecture": true
+                }
+            },
+            {
+                "id": 26,
+                "roomNum": "9406",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 71,
+                        "startTime": "15:00:00",
+                        "runTime": "01:15:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 26
+                    },
+                    "inProgressLectureEndTime": null,
+                    "inProgressLecture": false,
+                    "marginTimeLecture": true
+                }
+            }
+        ]
+    },
+    {
+        "buildingNum": 207,
+        "buildingName": "제10공학관",
+        "buildingLat": 35.2332759116324,
+        "buildingLng": 129.082880194352,
+        "availableLectureRooms": [
+            {
+                "id": 49,
+                "roomNum": "10103",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 139,
+                        "startTime": "18:30:00",
+                        "runTime": "04:00:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 49
+                    },
+                    "inProgressLectureEndTime": null,
+                    "inProgressLecture": false,
+                    "marginTimeLecture": false
+                }
+            },
+            {
+                "id": 50,
+                "roomNum": "10113",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 141,
+                        "startTime": "15:00:00",
+                        "runTime": "01:15:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 50
+                    },
+                    "inProgressLectureEndTime": null,
+                    "inProgressLecture": false,
+                    "marginTimeLecture": true
+                }
+            },
+            {
+                "id": 51,
+                "roomNum": "10115",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 144,
+                        "startTime": "15:00:00",
+                        "runTime": "01:15:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 51
+                    },
+                    "inProgressLectureEndTime": "2023-04-24T14:45:00+09:00",
+                    "inProgressLecture": true,
+                    "marginTimeLecture": true
+                }
+            },
+            {
+                "id": 52,
+                "roomNum": "10116",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 148,
+                        "startTime": "16:30:00",
+                        "runTime": "01:40:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 52
+                    },
+                    "inProgressLectureEndTime": null,
+                    "inProgressLecture": false,
+                    "marginTimeLecture": false
+                }
+            },
+            {
+                "id": 53,
+                "roomNum": "10301",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 150,
+                        "startTime": "15:00:00",
+                        "runTime": "01:15:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 53
+                    },
+                    "inProgressLectureEndTime": null,
+                    "inProgressLecture": false,
+                    "marginTimeLecture": true
+                }
+            },
+            {
+                "id": 54,
+                "roomNum": "10303",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 154,
+                        "startTime": "15:00:00",
+                        "runTime": "01:15:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 54
+                    },
+                    "inProgressLectureEndTime": "2023-04-24T14:45:00+09:00",
+                    "inProgressLecture": true,
+                    "marginTimeLecture": true
+                }
+            },
+            {
+                "id": 55,
+                "roomNum": "10507",
+                "lectures": null,
+                "earliestLectureInfoDto": {
+                    "lectureDto": {
+                        "id": 157,
+                        "startTime": "15:00:00",
+                        "runTime": "04:00:00",
+                        "dayOfWeek": 0,
+                        "lectureRoomId": 55
+                    },
+                    "inProgressLectureEndTime": null,
+                    "inProgressLecture": false,
+                    "marginTimeLecture": true
+                }
+            }
+        ]
+    }
+]

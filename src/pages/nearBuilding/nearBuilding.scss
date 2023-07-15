@@ -14,4 +14,53 @@
         font-weight: 600;
         margin-bottom: 1rem;
     }
+
+    .select-condition {
+        margin-top: 1rem;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 20rem;
+        height: 3.125rem;
+        border-radius: 0.625rem;
+        background: #FFF;
+        font-size: 1.25rem;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .modal_nearbuilding {
+        font-weight: 600;
+        .container {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+            .dayOfWeek {
+                margin-left: 1.62rem;
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #BABDFA;
+                cursor: pointer;
+            }
+        }    
+    }
+
+    .finish {
+        width: 2.25rem;
+        height: 1.5625rem;
+        border-radius: 0.4375rem;
+        background: #11195B;
+        border: none;
+        color: #FFF;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-left: 2rem;
+        cursor: pointer;
+    }
 }
