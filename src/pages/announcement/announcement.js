@@ -40,6 +40,13 @@ export default function Announcement() {
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
 
+    const [pageRes, setPageRes] = useState(1);
+    const handleResPageChange = (pageNumber) => {
+        setPageRes(pageNumber);
+    }
+    const startIndex_res = (pageRes - 1) * 10;
+    const endIndex_res = startIndex_res + 10;
+
     //단과대학 및 학부(학과) 또는 기관 선택
     const [selectedVal, setVal] = useState('학사 공지사항');
     const [selectedCollege, setSelectedCollege] = useState('');
@@ -236,7 +243,7 @@ export default function Announcement() {
                 
 
                 <div className="result">
-                    {show && res !== null && res.map ((item) => (
+                    {show && res !== null && res.slice(startIndex_res, endIndex_res).map((item) => (
                         <div>
                             <div>
                                 <button onClick={handleLike}>즐겨찾기</button>
@@ -249,6 +256,19 @@ export default function Announcement() {
                         </div>
                         
                     ))}
+
+                    {show && res !== null && <div>
+                        <Pagination
+                            activePage={pageRes}
+                            itemsCountPerPage={10}
+                            totalItemsCount={res.length}
+                            pageRangeDisplayed={5}
+                            prevPageText="‹"
+                            nextPageText="›"
+                            onChange={handleResPageChange}
+                        />
+                    </div>}
+                    
                 </div>
             </div>        
         </div>
