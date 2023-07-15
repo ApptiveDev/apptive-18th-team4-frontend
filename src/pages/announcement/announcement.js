@@ -18,7 +18,7 @@ export default function Announcement() {
             .then((res) => setData(res.data))
             .catch((err) => console.log(err));
         }
-    }, [isLogin]);
+    }, [isLogin, data]);
 
     // click한 div의 index 저장하는 배열
     const [clickedIndexes, setClickedIndexes] = useState([]);
