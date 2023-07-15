@@ -1,13 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Pagination from 'react-js-pagination';
+import { Link } from "react-router-dom";
 import Navbar from "../../components/nav_bar/nav_bar";
 import { majors, institutions } from "../../components/dropdown";
 import './pagination.css';
 import './announcement.css';
-import data from './fakeDB.json';
-import keywords from './fakeDB_keywords.json';
+import { instance } from "../../components/ApiContoller";
 
 export default function Announcement() {
+    // 로그인 여부에 따라 다른 elem 보여주기
+    const [isLogin, setIsLogin] = useState(false);
+    const [data, setData] = useState(null);
+    useEffect(() => {
+        if (localStorage.getItem('accessToken') !== null) {
+            setIsLogin(true);
+            instance.get('/api/announce/my')
+            .then((res) => setData(res.data))
+            .catch((err) => console.log(err));
+        }
+    }, [isLogin, data]);
+
     // click한 div의 index 저장하는 배열
     const [clickedIndexes, setClickedIndexes] = useState([]);
 
@@ -51,7 +63,58 @@ export default function Announcement() {
         setInstt(e.target.value);
     }
 
-    const [keyword, setKeyword] = useState('');
+    const [keyword, setKeyword] = useState(null);
+    const [res, setRes] = useState(null);
+    const [show, setShow] = useState(false);
+
+    let requestURL = '';
+    const handleResult = () => {
+        if (selectedDept === '' && selectedInstt === '') {
+            alert("학과 또는 기관을 선택해주세요.");
+        } else {
+            if (selectedVal === "학사 공지사항") {
+                if (keyword) {
+                    requestURL = `/api/announce/${selectedDept}` + `?keyword=${keyword}`;
+                } else {
+                    requestURL = `/api/announce/${selectedDept}`;
+                }
+                instance.post(requestURL)
+                    .then((res) => {
+                        setRes(res.data.content);
+                        setShow(true);
+                    })
+                    .catch((err) => console.log(err));
+            } 
+            else if (selectedVal === "기관 공지사항") {
+                if (keyword) {
+                    requestURL = `/api/announce/${selectedInstt}` + `?keyword=${keyword}`;
+                } else {
+                    requestURL = `/api/announce/${selectedInstt}`;
+                }
+                instance.post(requestURL)
+                    .then((res) => {
+                        setRes(res.data.content);
+                        setShow(true);
+                    })
+                    .catch((err) => console.log(err));
+            }
+        }
+    }
+
+    let likeReqURL = '';
+    const handleLike = () => {
+        if (selectedVal === "학사 공지사항") likeReqURL = `/api/announce/${selectedDept}/like`;
+        else if (selectedVal === "기관 공지사항") likeReqURL = `/api/announce/${selectedInstt}/like`;
+        instance.post(likeReqURL)
+            .then(() => {
+                alert("즐겨찾기 추가되었습니다.");
+                window.location.reload();
+            })
+            .catch((err) => {
+                console.log(err);
+                alert("즐겨찾기를 실패하였습니다.")
+            });
+    }
 
     return (
         <div className="announcement_container">
@@ -61,61 +124,62 @@ export default function Announcement() {
                 <span style={{ paddingLeft: '1.92%' }}>공지사항</span>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <div className='notification_container'>
-                    {data.map((item, index) => (
-                        <div style={{}}>
-                            <div style={{width: '100%', height: '100%'}}>
-                            <div key={index} className={`notification_list ${clickedIndexes.includes(index) ? 'opened' : ''}`}>
-                                <div className='notification_element' style={{ 
-                                    display: 'flex', 
-                                    alignItems: 'center', 
-                                    borderTopRightRadius: clickedIndexes.includes(index - 1) || index == 0 ? '1.875rem' : 0,
-                                    borderTopLeftRadius: clickedIndexes.includes(index - 1) || index == 0 ? '1.875rem' : 0,
-                                    borderBottomRightRadius: data.length - 1  == index || clickedIndexes.includes(index) ? '1.875rem' : 0,
-                                    borderBottomLeftRadius: data.length - 1 == index || clickedIndexes.includes(index) ? '1.875rem' : 0,
-                                }}>
-                                    <div className="bell_container">
-                                        <img src="/assets/img/bell_mini.png" alt="알림 아이콘" />
+            {isLogin && data !== null (
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <div className='notification_container'>
+                        {data.map((item, index) => (
+                            <div style={{}}>
+                                <div style={{width: '100%', height: '100%'}}>
+                                <div key={index} className={`notification_list ${clickedIndexes.includes(index) ? 'opened' : ''}`}>
+                                    <div className='notification_element' style={{ 
+                                        display: 'flex', 
+                                        alignItems: 'center', 
+                                        borderTopRightRadius: clickedIndexes.includes(index - 1) || index == 0 ? '1.875rem' : 0,
+                                        borderTopLeftRadius: clickedIndexes.includes(index - 1) || index == 0 ? '1.875rem' : 0,
+                                        borderBottomRightRadius: data.length - 1  == index || clickedIndexes.includes(index) ? '1.875rem' : 0,
+                                        borderBottomLeftRadius: data.length - 1 == index || clickedIndexes.includes(index) ? '1.875rem' : 0,
+                                    }}>
+                                        <div className="bell_container">
+                                            <img src="/assets/img/bell_mini.png" alt="알림 아이콘" />
+                                        </div>
+                                        <span>{item.departmentName}</span>
+                                        <button className="showBtn" onClick={() => handleShowing(index)}>
+                                            {clickedIndexes.includes(index) ? '닫기' : '보기'}
+                                        </button>
+                                        <button className="removeBtn">제거</button>
                                     </div>
-                                    <span>{item.department}</span>
-                                    <button className="showBtn" onClick={() => handleShowing(index)}>
-                                        {clickedIndexes.includes(index) ? '닫기' : '보기'}
-                                    </button>
-                                    <button className="removeBtn">제거</button>
-                                </div>
 
-                                <div style={{BorderBottomLeftRadius: '1.875rem', borderBottomLeftRadius: '1.875rem'}}>
-                                    {clickedIndexes.includes(index) &&
-                                        item.content.slice(startIndex, endIndex).map((notice) => (
-                                        <div key={notice.id} className="isClickedDiv">
-                                            <span>{notice.id}</span>
-                                            <div style={{ width: '90%', marginLeft: '3.75%' }}>
-                                            <a href={notice.link}>{notice.title}</a>
+                                    <div style={{BorderBottomLeftRadius: '1.875rem', borderBottomLeftRadius: '1.875rem'}}>
+                                        {clickedIndexes.includes(index) &&
+                                            item.announcements.slice(startIndex, endIndex).map((notice) => (
+                                            <div className="isClickedDiv">
+                                                <div style={{ width: '90%'}}>
+                                                    <a href={notice.urls}>{notice.title}</a>
+                                                </div>
+                                                <span>{notice.date}</span>
                                             </div>
-                                            <span>{notice.date}</span>
-                                        </div>
-                                        ))}
-                                    {clickedIndexes.includes(index) && (
-                                        <div className="pagination">
-                                            <Pagination
-                                                activePage={page}
-                                                itemsCountPerPage={itemsPerPage}
-                                                totalItemsCount={item.content.length}
-                                                pageRangeDisplayed={5}
-                                                prevPageText="‹"
-                                                nextPageText="›"
-                                                onChange={handlePageChange}
-                                            />
-                                        </div>
-                                    )}
+                                            ))}
+                                        {clickedIndexes.includes(index) && (
+                                            <div className="pagination">
+                                                <Pagination
+                                                    activePage={page}
+                                                    itemsCountPerPage={itemsPerPage}
+                                                    totalItemsCount={item.announcements.length}
+                                                    pageRangeDisplayed={5}
+                                                    prevPageText="‹"
+                                                    nextPageText="›"
+                                                    onChange={handlePageChange}
+                                                />
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
                                 </div>
                             </div>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
-            </div>
+            )}
 
             <div style={{padding: '4.84% 14.4%'}}>
                 <div style={{display: 'flex', alignItems: 'center'}}>
@@ -124,7 +188,6 @@ export default function Announcement() {
 
                             <select id="classification" value={selectedVal} onChange={handleValChange}>
                                 <option value="학사 공지사항">학사 공지사항</option>           
-                                <option value="석사 공지사항">석사 공지사항</option>   
                                 <option value="기관 공지사항">기관 공지사항</option>                           
                             </select>
   
@@ -158,35 +221,31 @@ export default function Announcement() {
                             )}
 
                     </div>
-
-                    <div className="checkbox_container">
-                        <label><input type="checkbox" name="학사" value="학사" />학사</label>
-                        <label><input type="checkbox" name="석사" value="석사" />석사</label>
-                        <label><input type="checkbox" name="휴학" value="휴학" />휴학</label>
-                    </div>
                 </div>
                 
                 <div style={{display: 'flex', alignItems: 'center', marginTop: '3.48%'}}>
-                    <button className="searchBtn" style={{width: '5.313rem'}} />
                     <input className="enterKeyword" onChange={(e) => setKeyword(e.target.value)}/>
-                    <button className="searchBtn" style={{width: '4.688rem'}}>조회</button>
+                    <button 
+                        onClick={handleResult}
+                        className="searchBtn" 
+                        style={{width: '4.688rem'}}>조회</button>
                 </div>
                 
-                <div style={{display: 'flex', justifyContent: 'center', marginTop: '2.69%'}}>
-                    <div style={{display: 'flex', justifyContent: 'space-between', width: '70%'}}>
-                        <div>
-                            <button className="searchBtn" style={{width: '5.938rem'}}>추천 키워드</button>
-                        </div>
-                        <div style={{display: 'flex', justifyContent: 'space-between', width: '70%'}}>
-                            {keywords.map((keyword) => (
-                                <button className="keywords" style={{width: '5.063rem'}}>{keyword}</button>
-                            ))}
-                        </div>
-                    </div>
-                </div>
 
                 <div className="result">
-
+                    {show && res !== null && res.map ((item) => (
+                        <div>
+                            <div>
+                                <button onClick={handleLike}>즐겨찾기</button>
+                                {selectedDept || selectedInstt}
+                            </div>
+                            <a href={item.urls} style={{color: '#000', textDecoration: 'none'}}>
+                                {item.title}
+                            </a>
+                            {item.date}
+                        </div>
+                        
+                    ))}
                 </div>
             </div>        
         </div>

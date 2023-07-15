@@ -80,22 +80,6 @@
         }
     }
     
-    .checkbox_container {
-        display: flex;
-        justify-content: flex-end;
-        width: 20%;
-        //background-color: pink;
-        label {
-            display: flex;
-            align-items: center;
-        }
-        input[type='checkbox'] {
-            width: 1.313rem;
-            height: 1.313rem;
-            accent-color: white;
-        }
-    }
-    
     .searchBtn {
         height: 1.75rem;
         background: #AEC0F0;

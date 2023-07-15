@@ -1,13 +1,36 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useGeoLocation from '../geolocation/useGeoLocation';
 import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import './home.css';
 import WeeklyCalendar from './weeklyCalendar';
+import { instance } from '../../components/ApiContoller';
 
 import data from './data.json'
 
 export default function Home() {
+    /*로그인, 로그아웃 관련 처리 */
+    const [isLogin, setIsLogin] = useState(false);
+
+    useEffect(() => {
+        if (localStorage.getItem('accessToken') !== null) {
+            setIsLogin(true)
+        }
+    }, [isLogin]);
+
+    const navigate = useNavigate();
+    const handleLogOut = () => {
+        const accessToken = localStorage.getItem('accessToken');
+        const refreshToken = localStorage.getItem('refreshToken');
+        instance.post("/auth/logout", {
+            accessToken: accessToken, 
+            refreshToken: refreshToken
+        })
+        setIsLogin(false);
+        navigate('/');
+        localStorage.clear();
+    }
+
     const [select, setSelect] = useState('거리순');
 
     /*현재 위치 가져오기 */
@@ -61,11 +84,19 @@ export default function Home() {
                     <Link to="/annualPlan">학사일정</Link>
                     <Link to="/announcement">공지사항</Link>
                     <div className='button_container'>
+                    {!isLogin ? (
                         <Link to="/signup">
                             <button className='home'>Sign Up</button>
                         </Link>
-                        <button className='logout'>Log Out</button>
-                    </div>
+                    ) : (
+                        <button className='logout' onClick={handleLogOut}>Log Out</button>
+                    )}
+                    {!isLogin && (
+                        <Link to="/login">
+                            <button className='logout'>Log In</button>
+                        </Link>  
+                    )}
+                </div>
                 </div>
                 {/*상단 로고, 아이콘*/}
                 <div className="sub_container">
