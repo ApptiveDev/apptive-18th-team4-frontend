@@ -50,7 +50,7 @@
             }
             .start_date, .end_date {
                 width: 213px;
-                height: 64px;   
+                height: 50px;   
                 margin-bottom: 25px;
                 font-weight: 700;
                 font-size: 20px;
@@ -107,6 +107,7 @@
                     margin-left: 22px;
                 }
                 .select_color {
+                    cursor: pointer;
                     margin-right: 14px;
                 }
             }

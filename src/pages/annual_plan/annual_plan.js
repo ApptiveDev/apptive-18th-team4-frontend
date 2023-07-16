@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Calendar from 'react-calendar';
 import moment from 'moment';
-import axios from 'axios';
 import Modal_annualPlan from "../../components/modal_annualPlan/modal";
 //import 'react-calendar/dist/Calendar.css';
 import './annual_plan.css'
@@ -20,7 +19,7 @@ export default function AnnualPlan() {
       .catch(error => {
         console.error(error);
       });
-  }, []);
+  }, [data]);
   */
 
   const [date, showDate] = useState(new Date());
@@ -71,7 +70,7 @@ export default function AnnualPlan() {
       <Navbar />
       <div style={{display: 'flex', justifyContent: 'center', marginTop: '4.813rem'}}>
         <div style={{display: 'flex', justifyContent: 'flex-end', width: '64rem'}}>
-          <Modal_annualPlan selectedDate={moment(date).format("MM.DD")} selectedDayWeek={date.getDay()} style={{marginRight: '0.625rem'}}/> {/* 모달에 선택한 날짜 전달 */}
+          <Modal_annualPlan selectedDate={moment(date).format("YYYY-MM-DD")} selectedDayWeek={date.getDay()} style={{marginRight: '0.625rem'}}/> {/* 모달에 선택한 날짜 전달 */}
           <button className="calendar_sub" style={{marginLeft: '0.625rem'}}>
             <img src="/assets/img/gear.png" />
           </button>

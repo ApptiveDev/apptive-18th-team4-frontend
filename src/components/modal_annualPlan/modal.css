@@ -48,7 +48,7 @@
 }
 .modal_container .modal .modal-content .start_date, .modal_container .modal .modal-content .end_date {
   width: 213px;
-  height: 64px;
+  height: 50px;
   margin-bottom: 25px;
   font-weight: 700;
   font-size: 20px;
@@ -113,6 +113,7 @@
   margin-left: 22px;
 }
 .modal_container .modal .modal-content .color_container .select_color {
+  cursor: pointer;
   margin-right: 14px;
 }
 .modal_container .modal .modal-content .add_schedule {
