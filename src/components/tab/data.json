@@ -1,0 +1,110 @@
+[
+    {
+        "buildingName": "제9공학관",
+        "availableNow": [
+            {
+                "roomNum": "9201",
+                "endTime": "18:30"
+            },
+            {
+                "roomNum": "9202",
+                "endTime": "18:40"
+            },
+            {
+                "roomNum": "9203",
+                "endTime": "18:50"
+            }
+        ],
+        "availableSoon": [
+            {
+                "roomNum": "9301",
+                "startTime": "15:00",
+                "endTime": "17:30"
+            },
+            {
+                "roomNum": "9302",
+                "startTime": "16:15",
+                "endTime": "17:40"
+            },
+            {
+                "roomNum": "9203",
+                "startTime": "16:30",
+                "endTime": "17:40"
+            }
+        ],
+        "buildingLat": 35.2331519630294,
+        "buildingLng": 129.084216965962
+    },
+    {
+        "buildingName": "제8공학관",
+        "availableNow": [
+            {
+                "roomNum": "8201",
+                "endTime": "18:30"
+            },
+            {
+                "roomNum": "8202",
+                "endTime": "18:40"
+            },
+            {
+                "roomNum": "8203",
+                "endTime": "18:50"
+            }
+        ],
+        "availableSoon": [
+            {
+                "roomNum": "9301",
+                "startTime": "15:00",
+                "endTime": "17:30"
+            },
+            {
+                "roomNum": "9302",
+                "startTime": "16:15",
+                "endTime": "17:40"
+            },
+            {
+                "roomNum": "9203",
+                "startTime": "16:30",
+                "endTime": "17:40"
+            }
+        ],
+        "buildingLat": 35.2331519630294,
+        "buildingLng": 129.084216965962
+    },
+    {
+        "buildingName": "제7공학관",
+        "availableNow": [
+            {
+                "roomNum": "7201",
+                "endTime": "18:30"
+            },
+            {
+                "roomNum": "7202",
+                "endTime": "18:40"
+            },
+            {
+                "roomNum": "7203",
+                "endTime": "18:50"
+            }
+        ],
+        "availableSoon": [
+            {
+                "roomNum": "7301",
+                "startTime": "15:00",
+                "endTime": "17:30"
+            },
+            {
+                "roomNum": "7302",
+                "startTime": "16:15",
+                "endTime": "17:40"
+            },
+            {
+                "roomNum": "7203",
+                "startTime": "16:30",
+                "endTime": "17:40"
+            }
+        ],
+        "buildingLat": 35.2331519630294,
+        "buildingLng": 129.084216965962
+    }
+]

@@ -4,6 +4,27 @@
   font-family: Montserrat;
   padding: 3.62rem 14%;
 }
+.nearBuilding .category-btn {
+  width: 8rem;
+  height: 1.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.nearBuilding .category-btn-clicked {
+  width: 8rem;
+  height: 1.75rem;
+  background: #00045F;
+  border-radius: 1.28rem;
+  color: #FFF;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
 .nearBuilding .current-location {
   width: 9.125rem;
   height: 2.625rem;
@@ -13,40 +34,6 @@
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
-}
-.nearBuilding .select-condition {
-  margin-top: 1rem;
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 20rem;
-  height: 3.125rem;
-  border-radius: 0.625rem;
-  background: #FFF;
-  font-size: 1.25rem;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-}
-.nearBuilding .modal_nearbuilding {
-  font-weight: 600;
-}
-.nearBuilding .modal_nearbuilding .container {
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;
-}
-.nearBuilding .modal_nearbuilding .container .dayOfWeek {
-  margin-left: 1.62rem;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #BABDFA;
-  cursor: pointer;
 }
 .nearBuilding .finish {
   width: 2.25rem;

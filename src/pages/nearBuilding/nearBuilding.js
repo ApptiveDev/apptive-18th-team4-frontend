@@ -1,87 +1,65 @@
 import { useState, useEffect } from "react";
 import Navbar from "../../components/nav_bar/nav_bar";
+import Modal_nearBuilding from "../../components/modal_nearBuilding/modal";
 import Tab from "../../components/tab/tab";
 import Map from "../../components/map_nearBuilding/map";
+import Search from "../../components/search/search";
 import './nearBuilding.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import data from './data.json';
-import useGeoLocation from "../geolocation/useGeoLocation";
-import { instance } from "../../components/ApiContoller";
 
 export default function NearBuilding() {
     const [isLogin, setIsLogin] = useState(false);
     const [selectedTime, setTime] = useState('');
     const timeZones = ['0.5', '1', '2', '3'];
 
+    const [category, setCategory] = useState('위치순');
+
     useEffect(() => {
         if (localStorage.getItem('accessToken') !== null) {
             setIsLogin(true)
         }
     }, [isLogin]);
-    
-    const location = useGeoLocation();
-    const [lat, setLat] = useState('');
-    const [lang, setLang] = useState('');
 
-    useEffect(() => {
-        setLat(location.coordinates.lat);
-        setLang(location.coordinates.lang);
-    }, [])
-    
-    let requestURL = '';
-    const handleResult = () => {
-        if (selectedTime === '') requestURL = `/api/nearest-buildings/byloc?user_latitude=${lat}&user_longitude=${lang}`;
-        else requestURL = `/api/nearest-buildings/byloc?user_latitude=${lat}&user_longitude=${lang}&user_settime=${selectedTime * 60}`;
-        instance.get(requestURL)
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
-    }
+    const [selectedBuilding, setSelectedBuilding] = useState('');
 
-    //console.log(data.slice(0, 3))
+    const handleBuildingSelect = (buildingName) => {
+        setSelectedBuilding(buildingName);
+    };
 
     return(
         <div style={{background: '#F9F9F9'}}>
             <Navbar />
             <div className="nearBuilding">
-                <span style={{
-                    fontSize: '2.25rem',
-                    fontWeight: '600'
-                }}>
-                    빈 강의실 찾기
-                </span>    
-                <div style={{marginTop: '3rem'}}>
-                    <span style={{marginRight: '2rem'}}>내 위치로 가져오기</span>
-                    {isLogin && <span>즐겨찾기로 가져오기</span>}
-                </div>
-                <div className="select-condition">
-                    {selectedTime !== '' ? `${selectedTime}시간 이상` : '조건을 설정해주세요'}
-                    {/*<img src="/assets/img/arrow_right.png"></img>*/}
+                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                    <span style={{
+                        fontSize: '2.25rem',
+                        fontWeight: '600'
+                    }}>
+                        빈 강의실 찾기
+                    </span>  
+
+                    {isLogin && <div style={{display: 'flex'}}>
+                        <div 
+                            className={category === '위치순' ? "category-btn-clicked": "category-btn" }
+                            onClick={() => setCategory('위치순')}>위치순</div>
+                        <div 
+                            className={category === '즐겨찾기순' ? "category-btn-clicked": "category-btn" }
+                            onClick={() => setCategory('즐겨찾기순')}>즐겨찾기순</div>
+                    </div>}
                 </div>
 
-                <div className="modal_nearbuilding">
-                    <div className="container">
-                        <label>사용할 시간</label>
-                        {timeZones.map((timeZone) => (
-                            <div className="dayOfWeek"
-                                key={timeZone}
-                                onClick={() => setTime(timeZone)}>
-                                {timeZone}
-                            </div>
-                        ))}
-                        <label style={{marginLeft: '1.56rem'}}>시간 이상</label>
-                        <button className="finish"
-                            onClick={handleResult}>
-                            조회
-                        </button>
-                    </div>
+                <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                    <Modal_nearBuilding />
+                    <Search onBuildingSelect={handleBuildingSelect} />
                 </div>
 
-                <Tab />
-                <div style={{marginTop: '5rem'}}>
-                    <button className="current-location">현재 위치</button>
+                <Tab selectedBuilding={selectedBuilding} />
+
+                <div style={{marginTop: '2.25rem'}}>
+                    <label style={{fontWeight: '600', fontSize: '1.5rem'}}>현재 위치</label>
                     <Map />
                 </div>
-                
             </div>
             
         </div>

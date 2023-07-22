@@ -1,0 +1,71 @@
+.condition-container {
+  display: flex;
+}
+.condition-container .select-condition {
+  background: #00045F;
+  color: #fff;
+  border-radius: 0.625rem;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 27.5rem;
+  height: 3.125rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+.condition-container .modal_nearbuilding {
+  font-weight: 600;
+  height: 8rem;
+  border-radius: 1rem;
+  border: 1px solid #C4C4C4;
+  background: #FFF;
+  box-shadow: 5px 6px 10px 0px rgba(0, 0, 0, 0.25);
+  padding: 0 2rem;
+  position: relative;
+  position: absolute;
+  margin-left: 34%;
+  z-index: 3;
+}
+.condition-container .modal_nearbuilding .close_container {
+  display: flex;
+  justify-content: flex-end;
+  color: #150000;
+  margin-top: 0.5rem;
+}
+.condition-container .modal_nearbuilding .container {
+  display: flex;
+}
+.condition-container .modal_nearbuilding .container .time-now {
+  font-size: 1.125rem;
+  font-weight: 600;
+  width: 6.25rem;
+  height: 1.5625rem;
+  border-radius: 0.5rem;
+  background: #E2E2E2;
+  text-align: center;
+}
+.condition-container .modal_nearbuilding .container .dayOfWeek {
+  margin-right: 0.8rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #BABDFA;
+  cursor: pointer;
+}
+.condition-container .finish {
+  width: 2.25rem;
+  height: 1.5625rem;
+  border-radius: 0.4375rem;
+  background: #11195B;
+  border: none;
+  color: #FFF;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}/*# sourceMappingURL=modal.css.map */

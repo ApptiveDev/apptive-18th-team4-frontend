@@ -44,13 +44,13 @@ export default function Map() {
     }
 
     return (
-        <div>
-            <div id="map" 
-                style={{
-                    width: '22rem',
-                    height: '15rem',
-                    borderRadius: '0.5rem'
-                }}></div>
+        <div id="map" 
+            style={{
+                width: '22rem',
+                height: '15rem',
+                borderRadius: '0.5rem',
+                marginTop: '0.5rem'
+            }}>
         </div>
     )
 }
