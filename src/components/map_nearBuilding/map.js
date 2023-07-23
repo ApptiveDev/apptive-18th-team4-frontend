@@ -46,10 +46,9 @@ export default function Map() {
     return (
         <div id="map" 
             style={{
-                width: '22rem',
-                height: '15rem',
-                borderRadius: '0.5rem',
-                marginTop: '0.5rem'
+                width: '48%',
+                height: '20rem',
+                borderRadius: '0.5rem'
             }}>
         </div>
     )
