@@ -59,7 +59,7 @@ export default function AnnualPlan() {
   });
 
   //메모 띄우기
-  const [showMemo, setShow] = useState(false);
+  const [showMemo, setShow] = useState(true);
 
   const handleMouseEnter = () => {
     setShow(true);
@@ -68,8 +68,7 @@ export default function AnnualPlan() {
   const handleMouseLeave = () => {
     setShow(false);
   };
-  console.log(mark)
-  console.log(data)
+
   return (
     <div>
       <Navbar />
@@ -145,20 +144,29 @@ export default function AnnualPlan() {
                 if (moment(date).isBetween(start, end, null, '[]')) {
                   return (
                     <div>
-                      {showMemo && <div style={{display: 'flex', justifyContent: 'flex-end', marginRight: '0.8rem', marginBottom: '0.1rem'}}><div className="speech_bubble">{item.description}</div></div>}
+                      {showMemo && <div style={{background: 'pink', display: 'flex', justifyContent: 'flex-end', marginRight: '0.8rem', marginBottom: '0.1rem'}}>
+                        <div className="speech_bubble">{item.description}</div>
+                      </div>}
 
                       <div className="content_container">
-                        <div style={{ width: '4.4375rem', height: '0.5625rem', background: '#080038' }}></div>
+                        <div style={{ width: '4.4375rem', height: '1.136rem', background: '#080038' }}></div>
                         <div style={{ display: 'flex' }}>
-                          <div style={{ textAlign: 'center', width: '4.4375rem', marginRight: '0.625rem' }}>
+                          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', alignItems: 'center', marginRight: '0.625rem', width: '4.4375rem', height: '5.3rem'}}>
                             <div style={{ fontWeight: '600' }}>{moment(date).format("D")}</div>
                             <div style={{ fontSize: '0.75rem' }}>{moment(date).format("ddd")}</div>
                           </div>
-                          <div style={{width: '20rem', margin: '0 0.625rem', display: 'flex', justifyContent: 'space-between'}} >
-                            <div style={{ display: 'flex', alignItems: 'center', fontSize: '0.875rem' }}>{item.title}</div>
-                            <div style={{display: 'flex', alignItems: 'center'}}>
-                              <img src="/assets/img/memo.png" style={{marginRight: '0.54rem'}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}/>
-                              <img src="/assets/img/gear_colored.png" style={{width: '1.25rem', height: '1.25rem'}} />
+                          <div style={{margin: '0 0.625rem', display: 'flex'}} >
+                            <div style={{height: '5.3rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
+                              <div style={{width: '20rem', fontSize: '1.25rem', display: 'flex', justifyContent: 'space-between'}}>
+                                <div>{item.title}</div>
+                                <div>
+                                  <img src="/assets/img/memo.png" style={{marginRight: '0.54rem'}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}/>
+                                  <img src="/assets/img/pencil.png" style={{width: '1.25rem', height: '1.25rem'}} />
+                                </div>
+                              </div>
+                              <div style={{color: '#ABABAB'}}>
+                                {item.startTime.slice(11, 16)} ~ {item.endTime.slice(11, 16)}, {item.location}
+                              </div>
                             </div>
                           </div>
                         </div>

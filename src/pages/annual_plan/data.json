@@ -11,6 +11,17 @@
       "alarmTime": 30
   },
   {
+    "eventId": 5,
+    "memberId": null,
+    "title": "test3",
+    "description": "This is a new event2.",
+    "location": "Seoul",
+    "startTime": "2023-06-24T10:00:00",
+    "endTime": "2023-07-24T12:00:00",
+    "color": "yellow",
+    "alarmTime": 30
+  },
+  {
       "eventId": 6,
       "memberId": null,
       "title": "6월,7월 이벤트 추가테스트",

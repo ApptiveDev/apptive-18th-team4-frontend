@@ -77,13 +77,13 @@ const Modal_annualPlan = ({selectedDate, selectedDayWeek}) => {
     return (
         <div className='modal_container'>
             <button onClick={openModal} className='calendar_sub'>+</button>
-        {isOpen && (
+            {isOpen && (
             <div className='modal'>
                 <div className="modal-content">
                     <div className='close_container' onClick={closeModal}>
                         <div className='close'>&times;</div>
                     </div>
-                    <div>
+                    <div style={{width: '100%', height: '60%', background: 'pink'}}>
                         <input className='schedule_name' onChange={(e) => setTitle(e.target.value)} placeholder='일정 이름'/>
                         <div style={{display: 'flex'}}>
                             <input className='start_date' onChange={(e) => setStartDate(e.target.value)} type='date' placeholder='시작시간' value={`${selectedDate}`} />
@@ -120,7 +120,7 @@ const Modal_annualPlan = ({selectedDate, selectedDayWeek}) => {
                         <span>색상</span>
 
                         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                            <div className='select_color' style={{backgroundColor: '#FF7979'}} onClick={() => setColor('#FF7979')}/>
+                            <div className='select_color' style={{backgroundColor: '#FF7979'}} onClick={() => setColor('#FF7979')}>&#10003;</div>
                             <div className='select_color' style={{backgroundColor: '#FFB571'}} onClick={() => setColor('#FFB571')}/>
                             <div className='select_color' style={{backgroundColor: '#FFD910'}} onClick={() => setColor('#FFD910')}/>
                             <div className='select_color' style={{backgroundColor: '#9BD3A1'}} onClick={() => setColor('#9BD3A1')}/>
@@ -134,7 +134,7 @@ const Modal_annualPlan = ({selectedDate, selectedDayWeek}) => {
                     </div>
                 </div>
             </div>
-        )}
+            )}
         </div>
     );
 };
