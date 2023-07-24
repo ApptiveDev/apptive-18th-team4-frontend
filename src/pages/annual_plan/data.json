@@ -1,24 +1,24 @@
 [
-    {
-      "startDate": "2023.07.09",
-      "endDate": "2023.07.11",
-      "context": "국문ㆍ영문 교수계획표 입력",
-      "color": "#f87171",
-      "memo" : "메모1"
-    },
-    {
-      "startDate": "2023.07.11",
-      "endDate": "2023.07.12",
-      "context": "학사학위취득유예신청기간",
-      "color": "#71a9f8",
-      "memo" : "메모2"
-    }
-    ,
-    {
-      "startDate": "2023.07.11",
-      "endDate": "2023.07.15",
-      "context": "test",
-      "color": "yellow",
-      "memo" : "메모3"
-    }
+  {
+      "eventId": 4,
+      "memberId": null,
+      "title": "new event",
+      "description": "This is a new event.",
+      "location": "Seoul",
+      "startTime": "2023-07-24T10:00:00",
+      "endTime": "2023-07-24T12:00:00",
+      "color": "#FF3737",
+      "alarmTime": 30
+  },
+  {
+      "eventId": 6,
+      "memberId": null,
+      "title": "6월,7월 이벤트 추가테스트",
+      "description": "This is a new event2.",
+      "location": "Seoul",
+      "startTime": "2023-06-24T10:00:00",
+      "endTime": "2023-07-24T12:00:00",
+      "color": "#9BD3A1",
+      "alarmTime": 30
+  }
 ]

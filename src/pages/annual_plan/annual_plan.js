@@ -22,12 +22,17 @@ export default function AnnualPlan() {
   }, [data]);
   */
 
+  /*날짜 형식 바꾸기*/
+  const formatDate = (date) => {
+    return date.split("T")[0];
+  };
+
   const [date, showDate] = useState(new Date());
   //startdate와 enddate를 mark 배열에 저장
   const mark = [];
-  data.forEach(({startDate, endDate}) => {
-    const start = moment(startDate, 'YYYY.MM.DD').format('YYYY-MM-DD');
-    const end = moment(endDate, 'YYYY.MM.DD').format('YYYY-MM-DD');
+  data.forEach(({startTime, endTime}) => {
+    const start = formatDate(startTime)
+    const end = formatDate(endTime)
     const dates = getDatesBetween(start, end);
     mark.push(...dates);
   });
@@ -45,13 +50,12 @@ export default function AnnualPlan() {
   }
   
   const dot_style = (color) => ({
-    height: '2.0625rem',
-    width: '100%',
-    //height: '2.0625rem',
+    height: '0.5rem',
+    width: '0.5rem',
+    margin: '0 0.1rem',
     backgroundColor: color,
     display: 'block',
-    borderRadius: '0.6875rem',
-    boxShadow: '8px 8px 8px 0px rgba(0, 0, 0, 0.25)'
+    borderRadius: '50%'
   });
 
   //메모 띄우기
@@ -101,9 +105,9 @@ export default function AnnualPlan() {
             if (mark.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
               html.push(<div className="dot_container">
                 {data.map((item) => {
-                  if(moment(date).isBetween(moment(item.startDate, 'YYYY.MM.DD'), moment(item.endDate, 'YYYY.MM.DD'), null, '[]')) {
+                  if(moment(date).isBetween(formatDate(item.startTime), formatDate(item.endTime)), null, '[]') {
                     return <div style={dot_style(item.color)}>
-                      {/*날짜에 맞는 item.context (일정) 보여주기*/}
+                      {/*날짜에 맞는 item.title (일정) 보여주기*/}
                     </div>
                   }
                 })}
@@ -131,19 +135,16 @@ export default function AnnualPlan() {
 
             <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', width: '64rem'}}>
               {data.map((item) => {
-                const start = moment(item.startDate, 'YYYY.MM.DD');
-                const end = moment(item.endDate, 'YYYY.MM.DD');
+                const start = formatDate(item.startTime);
+                const end = formatDate(item.endTime);
                 //isBetween 메소드로 특정 기간 내에 해당하는지 판단
                 //[]:시작일과 종료일 포함한다는 뜻
                 if (moment(date).isBetween(start, end, null, '[]')) {
                   return (
                     <div>
-                      <div style={{display: 'flex', justifyContent: 'flex-end', marginRight: '0.8rem', marginBottom: '0.1rem'}}><div className="speech_bubble">{item.memo}</div></div>
-                      {/*
-                      {showMemo && <div style={{display: 'flex', justifyContent: 'flex-end', marginRight: '0.8rem', marginBottom: '0.1rem'}}><div className="speech_bubble">{item.memo}</div></div>}
-                      */}
+                      {showMemo && <div style={{display: 'flex', justifyContent: 'flex-end', marginRight: '0.8rem', marginBottom: '0.1rem'}}><div className="speech_bubble">{item.description}</div></div>}
+
                       <div className="content_container">
-                        
                         <div style={{ width: '4.4375rem', height: '0.5625rem', background: '#080038' }}></div>
                         <div style={{ display: 'flex' }}>
                           <div style={{ textAlign: 'center', width: '4.4375rem', marginRight: '0.625rem' }}>
@@ -151,7 +152,7 @@ export default function AnnualPlan() {
                             <div style={{ fontSize: '0.75rem' }}>{moment(date).format("ddd")}</div>
                           </div>
                           <div style={{width: '20rem', margin: '0 0.625rem', display: 'flex', justifyContent: 'space-between'}} >
-                            <div style={{ display: 'flex', alignItems: 'center', fontSize: '0.875rem' }}>{item.context}</div>
+                            <div style={{ display: 'flex', alignItems: 'center', fontSize: '0.875rem' }}>{item.title}</div>
                             <div style={{display: 'flex', alignItems: 'center'}}>
                               <img src="/assets/img/memo.png" style={{marginRight: '0.54rem'}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}/>
                               <img src="/assets/img/gear_colored.png" style={{width: '1.25rem', height: '1.25rem'}} />
