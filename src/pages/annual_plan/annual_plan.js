@@ -68,7 +68,8 @@ export default function AnnualPlan() {
   const handleMouseLeave = () => {
     setShow(false);
   };
-
+  console.log(mark)
+  console.log(data)
   return (
     <div>
       <Navbar />
@@ -103,15 +104,17 @@ export default function AnnualPlan() {
             }
             */
             if (mark.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-              html.push(<div className="dot_container">
-                {data.map((item) => {
-                  if(moment(date).isBetween(formatDate(item.startTime), formatDate(item.endTime)), null, '[]') {
-                    return <div style={dot_style(item.color)}>
-                      {/*날짜에 맞는 item.title (일정) 보여주기*/}
-                    </div>
-                  }
-                })}
-              </div>);
+              html.push(
+                <div className="dot_container">
+                  {data.map((item) => {
+                    if (moment(date).isBetween(formatDate(item.startTime), formatDate(item.endTime), null, '[]')) {
+                      console.log(formatDate(item.startTime), formatDate(item.endTime))
+                      return <div style={dot_style(item.color)}>
+                        {/*날짜에 맞는 item.title (일정) 보여주기*/}
+                      </div>
+                    }
+                  })}
+                </div>);
             }
             
             // 다른 조건을 주어서 html.push 에 추가적인 html 태그를 적용할 수 있음.
