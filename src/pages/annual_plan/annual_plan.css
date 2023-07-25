@@ -1,4 +1,5 @@
 .calendar_sub {
+  font-size: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +21,7 @@
 /*calendar library css*/
 .react-calendar {
   width: 64rem;
-  height: 38.125rem;
+  height: 40rem;
   border-radius: 1.5625rem;
   border: 1px solid #C8C8C8;
   background: #FFF;
@@ -68,7 +69,7 @@
 }
 
 .react-calendar__navigation button {
-  color: #BAC1FF;
+  color: #090024;
   min-width: 44px;
   background: none;
   font-size: 16px;
@@ -138,21 +139,22 @@
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
   background: #f8f8fa;
-  color: #BAC1FF;
-  border-radius: 6px;
+  color: #ACB3F0;
 }
 
+/*..?*/
 .react-calendar__tile--now {
+  color: black;
   font-weight: bold;
-  background-color: #BAC1FF;
+  background-color: #ACB3F0;
 }
 
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
-  background: #BAC1FF33;
+  background: #ACB3F033;
   border-radius: 6px;
   font-weight: bold;
-  color: #BAC1FF;
+  color: #ACB3F0;
 }
 
 .react-calendar__tile--hasActive {
@@ -165,13 +167,13 @@
 }
 
 .react-calendar__tile--active {
-  background: #BAC1FF;
+  background-color: #ACB3F0;
   font-weight: bold;
 }
 
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
-  background: #BAC1FF;
+  background-color: #ACB3F0;
   color: white;
 }
 
@@ -182,7 +184,7 @@
 /*여러 날짜 걸쳐서*/
 .react-calendar__tile--range {
   background: #f8f8fa;
-  color: #BAC1FF;
+  color: #ACB3F0;
   border-radius: 0;
  }
 
@@ -191,7 +193,7 @@
   border-bottom-right-radius: 0;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
-  background: #BAC1FF;
+  background: #ACB3F0;
   color: white;
  }
 
@@ -200,7 +202,7 @@
   border-bottom-left-radius: 0;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
-  background: #BAC1FF;
+  background: #ACB3F0;
   color: white;
  }
 
@@ -210,14 +212,15 @@
   justify-content: center;
  }
 
- /*
+
  .dot {
   width: 4px;
   height: 4px;
-  background-color: #BAC1FF;
+  background-color: #ACB3F0;
   border-radius: 50%;
  }
-*/
+
+
 
  /*클릭한 날짜의 일정 표시*/
  .context_container {
@@ -226,20 +229,25 @@
  }
 
  .content_container {
+  position: relative;
+  z-index: 3;
   width: 27.25rem;
-  height: 3.1875rem;
+  height: 6.4375rem;
   border: 1px solid #080038;
+  margin-bottom: 1rem;
  }
 
  .context_container .speech_bubble {
+  position: relative;
+  z-index: 1000;
   width: 6.25rem;
   height: 4rem;
-  position: relative;
 	background: #100033;
   color: white;
  }
 
  .context_container .speech_bubble:after {
+  z-index: 10;
   content: '';
 	position: absolute;
 	bottom: 0;

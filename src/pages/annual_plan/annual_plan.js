@@ -1,34 +1,57 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Calendar from 'react-calendar';
 import moment from 'moment';
-import axios from 'axios';
 import Modal_annualPlan from "../../components/modal_annualPlan/modal";
-//import 'react-calendar/dist/Calendar.css';
-import './annual_plan.css'
-import data from './data.json'; //나중에 삭제
-import Navbar from '../../components/nav_bar/nav_bar'
+import ModalRevise from "../../components/modal_annualPlan/modal_revise";
+import ModalOverall from "../../components/modal_annualPlan/modal_overall";
+import './annual_plan.css';
+import Navbar from '../../components/nav_bar/nav_bar';
+import { instance } from "../../components/ApiContoller";
 
 export default function AnnualPlan() {
-  /*
+  const [isLogin, setIsLogin] = useState(false);
+  
+  useEffect(() => {
+      if (localStorage.getItem('accessToken') !== null) {
+          setIsLogin(true)
+      }
+  }, [isLogin]);
+
+  const navigate = useNavigate('');
+  useEffect(() => {
+    if (!isLogin) {
+      alert("학사일정 조회 및 등록은 로그인 후 이용 가능합니다.");
+      navigate('/login');
+    }
+  }, []);
+  
+
   const [data, setData] = useState([]);
+  const [date, showDate] = useState(new Date());
+  const month = moment(date).format('M');
 
   useEffect(() => {
-    axios.get('http://3.34.82.40:8080/api/annualplan/my')
+    instance.get(`/api/events?month=${month}`)
       .then(response => {
         setData(response.data);
       })
       .catch(error => {
         console.error(error);
       });
-  }, []);
-  */
+  }, [data]);
+  
 
-  const [date, showDate] = useState(new Date());
+  /*날짜 형식 바꾸기*/
+  const formatDate = (date) => {
+    return date.split("T")[0];
+  };
+
   //startdate와 enddate를 mark 배열에 저장
   const mark = [];
-  data.forEach(({startDate, endDate}) => {
-    const start = moment(startDate, 'YYYY.MM.DD').format('YYYY-MM-DD');
-    const end = moment(endDate, 'YYYY.MM.DD').format('YYYY-MM-DD');
+  data.forEach(({startTime, endTime}) => {
+    const start = formatDate(startTime)
+    const end = formatDate(endTime)
     const dates = getDatesBetween(start, end);
     mark.push(...dates);
   });
@@ -46,13 +69,12 @@ export default function AnnualPlan() {
   }
   
   const dot_style = (color) => ({
-    height: '2.0625rem',
-    width: '100%',
-    //height: '2.0625rem',
+    height: '0.5rem',
+    width: '0.5rem',
+    margin: '0 0.1rem',
     backgroundColor: color,
     display: 'block',
-    borderRadius: '0.6875rem',
-    boxShadow: '8px 8px 8px 0px rgba(0, 0, 0, 0.25)'
+    borderRadius: '50%'
   });
 
   //메모 띄우기
@@ -66,13 +88,42 @@ export default function AnnualPlan() {
     setShow(false);
   };
 
+  //수정 창 띄우기
+  const [showRevise, setShowRevise] = useState(false);
+  const [detail, setDetail] = useState([]);
+
+  const openReviseModal = (id) => {
+    console.log(id);
+    const filteredData = data.find((item) => item.eventId === id);
+    //console.log(filteredData);
+    setDetail(filteredData);
+    setShowRevise(true);
+  }
+
+  const closeReviseModal = () => {
+    setShowRevise(false);
+  };
+
+  //전체 일정 조회 창 띄우기
+  const [showOverall, setShowOverall] = useState(false);
+
+  const openOverallModal = () => {
+      setShowOverall(true);
+  };
+
+  const closeOverallModal = () => {
+    setShowOverall(false);
+  };
+
+  console.log(showOverall)
+
   return (
     <div>
       <Navbar />
       <div style={{display: 'flex', justifyContent: 'center', marginTop: '4.813rem'}}>
         <div style={{display: 'flex', justifyContent: 'flex-end', width: '64rem'}}>
-          <Modal_annualPlan selectedDate={moment(date).format("MM.DD")} selectedDayWeek={date.getDay()} style={{marginRight: '0.625rem'}}/> {/* 모달에 선택한 날짜 전달 */}
-          <button className="calendar_sub" style={{marginLeft: '0.625rem'}}>
+          <Modal_annualPlan selectedDate={moment(date).format("YYYY-MM-DD")} selectedDayWeek={date.getDay()} style={{marginRight: '0.625rem'}}/> {/* 모달에 선택한 날짜 전달 */}
+          <button className="calendar_sub" style={{marginLeft: '0.625rem', cursor: 'pointer'}} onClick={openOverallModal}>
             <img src="/assets/img/gear.png" />
           </button>
         </div>
@@ -100,15 +151,16 @@ export default function AnnualPlan() {
             }
             */
             if (mark.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-              html.push(<div className="dot_container">
-                {data.map((item) => {
-                  if(moment(date).isBetween(moment(item.startDate, 'YYYY.MM.DD'), moment(item.endDate, 'YYYY.MM.DD'), null, '[]')) {
-                    return <div style={dot_style(item.color)}>
-                      {/*날짜에 맞는 item.context (일정) 보여주기*/}
-                    </div>
-                  }
-                })}
-              </div>);
+              html.push(
+                <div className="dot_container">
+                  {data.map((item) => {
+                    if (moment(date).isBetween(formatDate(item.startTime), formatDate(item.endTime), null, '[]')) {
+                      return <div style={dot_style(item.color)}>
+                        {/*날짜에 맞는 item.title (일정) 보여주기*/}
+                      </div>
+                    }
+                  })}
+                </div>);
             }
             
             // 다른 조건을 주어서 html.push 에 추가적인 html 태그를 적용할 수 있음.
@@ -132,30 +184,36 @@ export default function AnnualPlan() {
 
             <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', width: '64rem'}}>
               {data.map((item) => {
-                const start = moment(item.startDate, 'YYYY.MM.DD');
-                const end = moment(item.endDate, 'YYYY.MM.DD');
+                const start = formatDate(item.startTime);
+                const end = formatDate(item.endTime);
                 //isBetween 메소드로 특정 기간 내에 해당하는지 판단
                 //[]:시작일과 종료일 포함한다는 뜻
                 if (moment(date).isBetween(start, end, null, '[]')) {
                   return (
                     <div>
-                      <div style={{display: 'flex', justifyContent: 'flex-end', marginRight: '0.8rem', marginBottom: '0.1rem'}}><div className="speech_bubble">{item.memo}</div></div>
-                      {/*
-                      {showMemo && <div style={{display: 'flex', justifyContent: 'flex-end', marginRight: '0.8rem', marginBottom: '0.1rem'}}><div className="speech_bubble">{item.memo}</div></div>}
-                      */}
+                      {showMemo && <div style={{background: 'pink', display: 'flex', justifyContent: 'flex-end', marginRight: '0.8rem', marginBottom: '0.1rem'}}>
+                        <div className="speech_bubble">{item.description}</div>
+                      </div>}
+
                       <div className="content_container">
-                        
-                        <div style={{ width: '4.4375rem', height: '0.5625rem', background: '#080038' }}></div>
+                        <div style={{ width: '4.4375rem', height: '1.136rem', background: '#080038' }}></div>
                         <div style={{ display: 'flex' }}>
-                          <div style={{ textAlign: 'center', width: '4.4375rem', marginRight: '0.625rem' }}>
+                          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', alignItems: 'center', marginRight: '0.625rem', width: '4.4375rem', height: '5.3rem'}}>
                             <div style={{ fontWeight: '600' }}>{moment(date).format("D")}</div>
                             <div style={{ fontSize: '0.75rem' }}>{moment(date).format("ddd")}</div>
                           </div>
-                          <div style={{width: '20rem', margin: '0 0.625rem', display: 'flex', justifyContent: 'space-between'}} >
-                            <div style={{ display: 'flex', alignItems: 'center', fontSize: '0.875rem' }}>{item.context}</div>
-                            <div style={{display: 'flex', alignItems: 'center'}}>
-                              <img src="/assets/img/memo.png" style={{marginRight: '0.54rem'}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}/>
-                              <img src="/assets/img/gear_colored.png" style={{width: '1.25rem', height: '1.25rem'}} />
+                          <div style={{margin: '0 0.625rem', display: 'flex'}} >
+                            <div style={{height: '5.3rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
+                              <div style={{width: '20rem', fontSize: '1.25rem', display: 'flex', justifyContent: 'space-between'}}>
+                                <div>{item.title}</div>
+                                <div>
+                                  <img src="/assets/img/memo.png" style={{marginRight: '0.54rem'}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}/>
+                                  <img src="/assets/img/pencil.png" onClick={() => openReviseModal(item.eventId)} style={{width: '1.25rem', height: '1.25rem', cursor: 'pointer'}} />
+                                </div>
+                              </div>
+                              <div style={{color: '#ABABAB'}}>
+                                {item.startTime.slice(11, 16)} ~ {item.endTime.slice(11, 16)}, {item.location}
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -169,6 +227,9 @@ export default function AnnualPlan() {
 
           </div>
       </div>
+
+      {showRevise && <ModalRevise isOpen={showRevise} closeModal={closeReviseModal} data={detail} />}
+      {showOverall && <ModalOverall isOpen={showOverall} closeModal={closeOverallModal} date={date} />}
     </div>
   )
 }

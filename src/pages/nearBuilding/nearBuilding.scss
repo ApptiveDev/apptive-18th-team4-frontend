@@ -4,6 +4,27 @@
     height: 100%;
     font-family: Montserrat;
     padding: 3.62rem 14%;
+    .category-btn {
+        width: 8rem;
+        height: 1.75rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .category-btn-clicked {
+        width: 8rem;
+        height: 1.75rem;
+        background: #00045F;
+        border-radius: 1.28rem;
+        color: #FFF;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
     .current-location {
         width: 9.125rem;
         height: 2.625rem;
@@ -13,5 +34,29 @@
         font-size: 1.25rem;
         font-weight: 600;
         margin-bottom: 1rem;
+    }
+
+    .finish {
+        width: 2.25rem;
+        height: 1.5625rem;
+        border-radius: 0.4375rem;
+        background: #11195B;
+        border: none;
+        color: #FFF;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-left: 2rem;
+        cursor: pointer;
+    }
+
+    .shortest-path-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 50%;
+        height: 20rem;
+        border-radius: 0.63rem;
+        background-color: #fff;
+        margin-left: 2%;
     }
 }

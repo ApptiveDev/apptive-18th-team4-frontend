@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap&display=swap");
+.modal-overall-container {
+  position: relative;
+  z-index: 1000;
+  font-family: "Asap";
+}
+.modal-overall-container .modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  width: 35%;
+  height: 95%;
+  box-shadow: 6px 10px 11px rgba(0, 0, 0, 0.25);
+  border-radius: 2.125rem;
+  background: #fff;
+}
+.modal-overall-container .modal .modal-content {
+  padding: 1rem 2.5rem;
+  width: 100%;
+}
+.modal-overall-container .modal .modal-content .close_container {
+  display: flex;
+  justify-content: end;
+}
+.modal-overall-container .modal .modal-content .close_container .close {
+  cursor: pointer;
+  width: 1rem;
+  height: 1rem;
+  background: #E50000;
+  border-radius: 50%;
+  color: #150000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-overall-container .modal .modal-content .schedule-container-top {
+  width: 100%;
+  height: 1%;
+  background: #080038;
+}
+.modal-overall-container .modal .modal-content .schedule-container-bottom {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 6%;
+}/*# sourceMappingURL=modal_overall.css.map */

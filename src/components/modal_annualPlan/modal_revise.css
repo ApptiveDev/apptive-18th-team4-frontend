@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Asap&display=swap");
-.modal_container {
+.modal-revise-container {
   position: relative;
   z-index: 1000;
   font-family: "Asap";
 }
-.modal_container .modal {
+.modal-revise-container .modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -17,17 +17,17 @@
   box-shadow: 6px 10px 11px rgba(0, 0, 0, 0.25);
   border-radius: 2.125rem;
 }
-.modal_container .modal .modal-content {
+.modal-revise-container .modal .modal-content {
   margin: 1rem 2.5rem;
   width: 100%;
   height: 100%;
 }
-.modal_container .modal .modal-content .close_container {
+.modal-revise-container .modal .modal-content .close_container {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 1.75rem;
 }
-.modal_container .modal .modal-content .close_container .close {
+.modal-revise-container .modal .modal-content .close_container .close {
   margin-right: 2%;
   cursor: pointer;
   width: 1rem;
@@ -39,7 +39,7 @@
   justify-content: center;
   align-items: center;
 }
-.modal_container .modal .modal-content .schedule_name, .modal_container .modal .modal-content .location, .modal_container .modal .modal-content .memo {
+.modal-revise-container .modal .modal-content .schedule_name, .modal-revise-container .modal .modal-content .location, .modal-revise-container .modal .modal-content .memo {
   width: 94%;
   height: 12.8571428571%;
   margin-bottom: 5%;
@@ -50,7 +50,7 @@
   color: #959595;
   padding-left: 1.25rem;
 }
-.modal_container .modal .modal-content .start_date, .modal_container .modal .modal-content .end_date {
+.modal-revise-container .modal .modal-content .start_date, .modal-revise-container .modal .modal-content .end_date {
   width: 45%;
   height: 100%;
   font-weight: 700;
@@ -61,7 +61,7 @@
   padding-left: 1.25rem;
   font-family: "Asap";
 }
-.modal_container .modal .modal-content input::-moz-placeholder {
+.modal-revise-container .modal .modal-content input::-moz-placeholder {
   font-size: 1.5rem;
   font-weight: 700;
   display: flex;
@@ -69,7 +69,7 @@
   letter-spacing: 0.0125rem;
   color: #959595;
 }
-.modal_container .modal .modal-content input::placeholder {
+.modal-revise-container .modal .modal-content input::placeholder {
   font-size: 1.5rem;
   font-weight: 700;
   display: flex;
@@ -77,17 +77,17 @@
   letter-spacing: 0.0125rem;
   color: #959595;
 }
-.modal_container .modal .modal-content input {
+.modal-revise-container .modal .modal-content input {
   outline: none;
 }
-.modal_container .modal .modal-content .time_container {
+.modal-revise-container .modal .modal-content .time_container {
   border: 1px solid #828282;
   padding: 0.2rem 1.25rem;
   display: flex;
   justify-content: space-between;
   margin-bottom: 5%;
 }
-.modal_container .modal .modal-content .time_container span {
+.modal-revise-container .modal .modal-content .time_container span {
   display: flex;
   justify-content: center;
   font-weight: 700;
@@ -96,7 +96,7 @@
   align-items: center;
   color: #08001F;
 }
-.modal_container .modal .modal-content .time_container .select_time {
+.modal-revise-container .modal .modal-content .time_container .select_time {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,28 +110,28 @@
   border: none;
   cursor: pointer;
 }
-.modal_container .modal .modal-content .color_container {
+.modal-revise-container .modal .modal-content .color_container {
   padding: 0.5rem 1.25rem;
   display: flex;
   justify-content: space-between;
   border: 1px solid #828282;
   margin-bottom: 5%;
 }
-.modal_container .modal .modal-content .color_container span {
+.modal-revise-container .modal .modal-content .color_container span {
   display: flex;
   justify-content: center;
   font-weight: 700;
   font-size: 1.5rem;
   color: #08001F;
 }
-.modal_container .modal .modal-content .color_container .select_color {
+.modal-revise-container .modal .modal-content .color_container .select_color {
   text-align: center;
   width: 1.813rem;
   height: 1.813rem;
   border-radius: 50%;
   cursor: pointer;
 }
-.modal_container .modal .modal-content .add_schedule {
+.modal-revise-container .modal .modal-content .add_schedule {
   width: 120px;
   height: 31px;
   background: #D6DCF5;
@@ -141,10 +141,10 @@
   text-align: center;
   letter-spacing: 0.2px;
 }
-.modal_container .modal .modal-content .add_schedule {
+.modal-revise-container .modal .modal-content .add_schedule {
   width: 12.25rem;
   height: 1.9375rem;
   background: #D6DCF5;
   border-radius: 0.375rem;
   border: none;
-}/*# sourceMappingURL=modal.css.map */
+}/*# sourceMappingURL=modal_revise.css.map */

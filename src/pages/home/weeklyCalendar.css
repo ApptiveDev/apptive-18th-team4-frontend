@@ -13,5 +13,24 @@
 .calendar-date {
     width: 100%;
     display: flex;
+    align-items: end;
+    align-items: center;
     justify-content: space-evenly;
+}
+
+.purple-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.25rem;
+    padding: 0 0.7rem;
+    align-items: center;
+    width: 70%;
+    height: 4.307rem;
+    border-radius: 0.6875rem;
+    background: #7312FF;
+    box-shadow: 8px 8px 8px 0px rgba(0, 0, 0, 0.25);
+    color: #FFF;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
 }
