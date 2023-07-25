@@ -5,8 +5,7 @@ import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import './home.css';
 import WeeklyCalendar from './weeklyCalendar';
 import { instance } from '../../components/ApiContoller';
-
-import data from './data.json'
+//import data from './data.json'
 
 export default function Home() {
     /*로그인, 로그아웃 관련 처리 */
@@ -73,6 +72,28 @@ export default function Home() {
         // 지도 위에 마커 표시
         marker.setMap(map);
     }
+
+    const [buildingName, setBuildingName] = useState(''); 
+    const [roomsByLoc, setRoomByLoc] = useState([]);
+    const [notices, setNotice] = useState([]);
+    useEffect(() => {
+        // 빈 강의실(거리순) -> 수정 필요
+        instance.get(`/api/nearest-buildings/test?user_latitude=${lat}&user_longitude=${lang}`)
+            .then((res) => {
+                setBuildingName(res.data[0].buildingName); //현재 위치에서 가장 가까운 건물
+                instance.get(`/api/lecture-rooms/available-with-lectures?buildingName=${res.data[0].buildingName}`)
+                    .then((response) => setRoomByLoc(response.data.availableNow)) //현재 위치에서 가장 가까운 건물의 사용 가능한 강의실
+                    .catch((error) => console.log(error))
+            })
+            .catch((err) => console.log(err));
+
+        // 빈 강의실(즐겨찾기순) -> 수정 필요
+
+        // 공지사항(학지시)
+        instance.get('/api/announce/onestop')
+            .then((res) => setNotice(res.data.content))
+            .catch((err) => console.log(err));
+    }, []);
 
     return (
         <div className='home'>
@@ -194,35 +215,46 @@ export default function Home() {
                     {select === '거리순' &&
                         <div style={{
                             display: 'flex',
-                            marginTop: '4.6rem'
+                            marginTop: '4.6rem',
+                            overflowY: 'scroll'
                             }}>
                             <div className='card-container'>
                                 <div id="map" className='card'></div>
                                 <span>현재 위치</span>
                             </div>
-                            <div className='card-container'>
-                                <div className='card'></div>
-                                <span>빈 강의실 : 1순위</span>
-                            </div>
-                            {/*
-                            <div className='card-container'>
-                                <div className='card'></div> 
-                                <span>빈 강의실 : 2순위</span>
-                            </div>
-                            <div className='card-container'>
-                                <div className='card'></div> 
-                                <span>빈 강의실 : 3순위</span>
-                            </div>
-                        */}
+                            {roomsByLoc.map((item, index) => (
+                                <div className='card-container' key={index}>
+                                    <div className='card'>
+                                        <div style={{fontSize: '2rem', fontWeight: '600', marginLeft: '2.75rem'}}>{buildingName}</div>
+                                        <div style={{fontSize: '4rem', fontWeight: '600', marginLeft: '2.75rem'}}>{item.roomNum}</div>
+                                    </div>
+                                    <span>빈 강의실 : {index + 1}순위</span>
+                                </div>
+                            ))}
                         </div>
                     }
 
                     {select === '즐겨찾기' &&
-                        <div>
-                            즐겨찾기
-                            <div id="map" style={{ width: "500px", height: "500px" }}>
-
+                        <div style={{
+                            display: 'flex',
+                            marginTop: '4.6rem',
+                            overflowY: 'scroll'
+                            }}>
+                            <div className='card-container'>
+                                <div id="map" className='card'></div>
+                                <span>현재 위치</span>
                             </div>
+                            {/*
+                            {roomsByLoc.map((item, index) => (
+                                <div className='card-container' key={index}>
+                                    <div className='card'>
+                                        <div style={{fontSize: '2rem', fontWeight: '600', marginLeft: '2.75rem'}}>{buildingName}</div>
+                                        <div style={{fontSize: '4rem', fontWeight: '600', marginLeft: '2.75rem'}}>{item.roomNum}</div>
+                                    </div>
+                                    <span>빈 강의실 : {index + 1}순위</span>
+                                </div>
+                            ))}
+                            */}
                         </div>
                     }
 
@@ -258,7 +290,7 @@ export default function Home() {
                         </div>
                         
                         <div className='section3_content'>
-                            {data.map((notice, index) => (                                
+                            {notices.map((notice, index) => (                                
                                 <div className='single-notice'>
                                     <div className='section3_num'>{index + 1}</div>
                                     <div style={{
@@ -268,9 +300,7 @@ export default function Home() {
                                         <Link to={notice.urls}>
                                             <div>{notice.title}</div>
                                         </Link>
-                                        <div style={{
-                                            
-                                        }}>
+                                        <div>
                                             {notice.date}
                                         </div>
                                     </div>

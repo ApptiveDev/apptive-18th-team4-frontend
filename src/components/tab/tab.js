@@ -53,6 +53,7 @@ function Tab ({ selectedBuilding, modalData }) {
     /*tab 추가하기*/
     useEffect(() => {
         if (selectedBuilding) {
+            //수정 필요
             instance.post(`/api/lecture-rooms/available-with-lectures?buildingName=${selectedBuilding}`)
                 .then((res) => {
                     const newData = {
