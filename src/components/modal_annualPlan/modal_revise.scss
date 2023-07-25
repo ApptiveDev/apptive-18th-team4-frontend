@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap&display=swap');
+
+.modal-revise-container {
+    position: relative;
+    z-index: 1000;
+    font-family: 'Asap';
+    width: 33.375rem;
+    height: 42.5rem;
+    .modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        width: 35%;
+        height: 95%;
+        background: #fff;
+        box-shadow: 6px 10px 11px rgba(0, 0, 0, 0.25);
+        border-radius: 2.125rem;
+        .close_container {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1.75rem;
+            .close {
+                margin-right: 2%;
+                cursor: pointer;
+                width: 1rem;
+                height: 1rem;
+                background: #E50000;
+                border-radius: 50%;
+                color: #150000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+    
+}

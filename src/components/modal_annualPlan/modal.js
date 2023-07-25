@@ -76,7 +76,7 @@ const Modal_annualPlan = ({selectedDate, selectedDayWeek}) => {
 
     return (
         <div className='modal_container'>
-            <button onClick={openModal} className='calendar_sub'>+</button>
+            <button onClick={openModal} style={{cursor: 'pointer'}} className='calendar_sub'>+</button>
             {isOpen && (
             <div className='modal'>
                 <div className="modal-content">

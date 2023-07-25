@@ -8,7 +8,7 @@
       "startTime": "2023-07-24T10:00:00",
       "endTime": "2023-07-24T12:00:00",
       "color": "#FF3737",
-      "alarmTime": 30
+      "alarmTime": 10
   },
   {
     "eventId": 5,
@@ -16,10 +16,10 @@
     "title": "test3",
     "description": "This is a new event2.",
     "location": "Seoul",
-    "startTime": "2023-06-24T10:00:00",
-    "endTime": "2023-07-24T12:00:00",
+    "startTime": "2023-07-25T10:00:00",
+    "endTime": "2023-07-27T12:00:00",
     "color": "yellow",
-    "alarmTime": 30
+    "alarmTime": 20
   },
   {
       "eventId": 6,
@@ -27,8 +27,8 @@
       "title": "6월,7월 이벤트 추가테스트",
       "description": "This is a new event2.",
       "location": "Seoul",
-      "startTime": "2023-06-24T10:00:00",
-      "endTime": "2023-07-24T12:00:00",
+      "startTime": "2023-07-28T10:00:00",
+      "endTime": "2023-07-29T12:00:00",
       "color": "#9BD3A1",
       "alarmTime": 30
   }

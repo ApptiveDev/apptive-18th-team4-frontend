@@ -1,18 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Calendar from 'react-calendar';
 import moment from 'moment';
 import Modal_annualPlan from "../../components/modal_annualPlan/modal";
-//import 'react-calendar/dist/Calendar.css';
+import ModalRevise from "../../components/modal_annualPlan/modal_revise";
+import ModalOverall from "../../components/modal_annualPlan/modal_overall";
 import './annual_plan.css'
 import data from './data.json'; //나중에 삭제
 import Navbar from '../../components/nav_bar/nav_bar'
+import { Modal } from "react-bootstrap";
 
 export default function AnnualPlan() {
+  const [isLogin, setIsLogin] = useState(false);
+  
+  useEffect(() => {
+      if (localStorage.getItem('accessToken') !== null) {
+          setIsLogin(true)
+      }
+  }, [isLogin]);
+
+  /*
+  const navigate = useNavigate('');
+  useEffect(() => {
+    if (!isLogin) {
+      alert("학사일정 조회 및 등록은 로그인 후 이용 가능합니다.");
+      navigate('/login');
+    }
+  }, []);
+  */
+
   /*
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://3.34.82.40:8080/api/annualplan/my')
+    //클릭하는 달에 따라 다른 event 가져오도록 (지금 상태로는 현재 달만 가져옴)
+    axios.get('http://3.34.82.40:8080/api/events')
       .then(response => {
         setData(response.data);
       })
@@ -59,7 +81,7 @@ export default function AnnualPlan() {
   });
 
   //메모 띄우기
-  const [showMemo, setShow] = useState(true);
+  const [showMemo, setShow] = useState(false);
 
   const handleMouseEnter = () => {
     setShow(true);
@@ -69,13 +91,37 @@ export default function AnnualPlan() {
     setShow(false);
   };
 
+  //수정 창 띄우기
+  const [showRevise, setShowRevise] = useState(false);
+
+  const openReviseModal = () => {
+    setShowRevise(true);
+  }
+
+  const closeReviseModal = () => {
+    setShowRevise(false);
+  };
+
+  //전체 일정 조회 창 띄우기
+  const [showOverall, setShowOverall] = useState(false);
+
+  const openOverallModal = () => {
+      setShowOverall(true);
+  };
+
+  const closeOverallModal = () => {
+    setShowOverall(false);
+  };
+
+  console.log(showOverall)
+
   return (
     <div>
       <Navbar />
       <div style={{display: 'flex', justifyContent: 'center', marginTop: '4.813rem'}}>
         <div style={{display: 'flex', justifyContent: 'flex-end', width: '64rem'}}>
           <Modal_annualPlan selectedDate={moment(date).format("YYYY-MM-DD")} selectedDayWeek={date.getDay()} style={{marginRight: '0.625rem'}}/> {/* 모달에 선택한 날짜 전달 */}
-          <button className="calendar_sub" style={{marginLeft: '0.625rem'}}>
+          <button className="calendar_sub" style={{marginLeft: '0.625rem', cursor: 'pointer'}} onClick={openOverallModal}>
             <img src="/assets/img/gear.png" />
           </button>
         </div>
@@ -107,7 +153,6 @@ export default function AnnualPlan() {
                 <div className="dot_container">
                   {data.map((item) => {
                     if (moment(date).isBetween(formatDate(item.startTime), formatDate(item.endTime), null, '[]')) {
-                      console.log(formatDate(item.startTime), formatDate(item.endTime))
                       return <div style={dot_style(item.color)}>
                         {/*날짜에 맞는 item.title (일정) 보여주기*/}
                       </div>
@@ -161,7 +206,7 @@ export default function AnnualPlan() {
                                 <div>{item.title}</div>
                                 <div>
                                   <img src="/assets/img/memo.png" style={{marginRight: '0.54rem'}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}/>
-                                  <img src="/assets/img/pencil.png" style={{width: '1.25rem', height: '1.25rem'}} />
+                                  <img src="/assets/img/pencil.png" onClick={() => openReviseModal(true)} style={{width: '1.25rem', height: '1.25rem'}} />
                                 </div>
                               </div>
                               <div style={{color: '#ABABAB'}}>
@@ -180,6 +225,9 @@ export default function AnnualPlan() {
 
           </div>
       </div>
+
+      {showRevise && <ModalRevise isOpen={showRevise} closeModal={closeReviseModal} />}
+      {showOverall && <ModalOverall isOpen={showOverall} closeModal={closeOverallModal} date={date} />}
     </div>
   )
 }
