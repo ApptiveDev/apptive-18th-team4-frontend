@@ -4,32 +4,32 @@
         "availableNow": [
             {
                 "roomNum": "9201",
-                "endTime": "18:30"
+                "nextLectureStartTime": null
             },
             {
                 "roomNum": "9202",
-                "endTime": "18:40"
+                "nextLectureStartTime": "18:40:00"
             },
             {
                 "roomNum": "9203",
-                "endTime": "18:50"
+                "nextLectureStartTime": "18:50:00"
             }
         ],
         "availableSoon": [
             {
                 "roomNum": "9301",
-                "startTime": "15:00",
-                "endTime": "17:30"
+                "startTime": null,
+                "endTime": "17:30:00"
             },
             {
                 "roomNum": "9302",
-                "startTime": "16:15",
-                "endTime": "17:40"
+                "startTime": "16:15:00",
+                "endTime": null
             },
             {
                 "roomNum": "9203",
-                "startTime": "16:30",
-                "endTime": "17:40"
+                "startTime": "16:30:00",
+                "endTime": "17:40:00"
             }
         ],
         "buildingLat": 35.2331519630294,
@@ -40,32 +40,32 @@
         "availableNow": [
             {
                 "roomNum": "8201",
-                "endTime": "18:30"
+                "nextLectureStartTime": "18:30:00"
             },
             {
                 "roomNum": "8202",
-                "endTime": "18:40"
+                "nextLectureStartTime": "18:40:00"
             },
             {
                 "roomNum": "8203",
-                "endTime": "18:50"
+                "nextLectureStartTime": "18:50:00"
             }
         ],
         "availableSoon": [
             {
                 "roomNum": "9301",
-                "startTime": "15:00",
-                "endTime": "17:30"
+                "startTime": "15:00:00",
+                "endTime": "17:30:00"
             },
             {
                 "roomNum": "9302",
-                "startTime": "16:15",
-                "endTime": "17:40"
+                "startTime": "16:15:00",
+                "endTime": "17:40:00"
             },
             {
                 "roomNum": "9203",
-                "startTime": "16:30",
-                "endTime": "17:40"
+                "startTime": "16:30:00",
+                "endTime": "17:40:00"
             }
         ],
         "buildingLat": 35.2331519630294,
@@ -76,32 +76,32 @@
         "availableNow": [
             {
                 "roomNum": "7201",
-                "endTime": "18:30"
+                "nextLectureStartTime": "18:30:00"
             },
             {
                 "roomNum": "7202",
-                "endTime": "18:40"
+                "nextLectureStartTime": "18:40:00"
             },
             {
                 "roomNum": "7203",
-                "endTime": "18:50"
+                "nextLectureStartTime": "18:50:00"
             }
         ],
         "availableSoon": [
             {
                 "roomNum": "7301",
-                "startTime": "15:00",
-                "endTime": "17:30"
+                "startTime": "15:00:00",
+                "endTime": "17:30:00"
             },
             {
                 "roomNum": "7302",
-                "startTime": "16:15",
-                "endTime": "17:40"
+                "startTime": "16:15:00",
+                "endTime": "17:40:00"
             },
             {
                 "roomNum": "7203",
-                "startTime": "16:30",
-                "endTime": "17:40"
+                "startTime": "16:30:00",
+                "endTime": "17:40:00"
             }
         ],
         "buildingLat": 35.2331519630294,

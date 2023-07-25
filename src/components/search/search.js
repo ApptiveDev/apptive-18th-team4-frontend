@@ -5,7 +5,6 @@ import { useState } from 'react';
 export default function Search({ onBuildingSelect }) {
     const [cur, setCur] = useState(false);
     const [building, setBuilding] = useState('');
-    //const [inp, setInput] = useState()
 
     const handleSelect = (buildingName) => {
         setBuilding(buildingName);

@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
-import sampleData from './data.json';
 import './tab.css';
 import { instance } from '../ApiContoller';
 
-function Tab ({ selectedBuilding }) {
-    const [data, setData] = useState(sampleData);
-    console.log(data)
+function Tab ({ selectedBuilding, modalData }) {
+    const [data, setData] = useState(modalData);
+
+    useEffect(() => {
+        setData(modalData);
+      }, [modalData]);
+    //console.log(data)
 
     /*로그인 여부 판단 */
     const [isLogin, setIsLogin] = useState(false);
@@ -17,7 +20,7 @@ function Tab ({ selectedBuilding }) {
     }, [isLogin]);
 
     /*선택한 tab을 selectedTab에 저장 */
-    const [selectedTab, setSelectedTab] = useState(data[0].buildingName);
+    const [selectedTab, setSelectedTab] = useState(data.length > 0 ? data[0].buildingName : '');
 
     const handleTabClick = (tabID) => {
         setSelectedTab(tabID);
@@ -46,57 +49,29 @@ function Tab ({ selectedBuilding }) {
             setData(updatedData);
         }
     }
-
+    console.log(selectedBuilding)
     /*tab 추가하기*/
     useEffect(() => {
         if (selectedBuilding) {
-            //수정 필요 (추가한 tab으로 요청 보내기)
-            //instance.post(``)
-            setData((prevData) => [
-                ...prevData, 
-                {
-                    "buildingName": selectedBuilding,
-                    "availableNow": [
-                        {
-                            "roomNum": "6201",
-                            "endTime": "18:30"
-                        },
-                        {
-                            "roomNum": "8202",
-                            "endTime": "18:40"
-                        },
-                        {
-                            "roomNum": "8203",
-                            "endTime": "18:50"
-                        }
-                    ],
-                    "availableSoon": [
-                        {
-                            "roomNum": "9301",
-                            "startTime": "15:00",
-                            "endTime": "17:30"
-                        },
-                        {
-                            "roomNum": "9302",
-                            "startTime": "16:15",
-                            "endTime": "17:40"
-                        },
-                        {
-                            "roomNum": "9203",
-                            "startTime": "16:30",
-                            "endTime": "17:40"
-                        }
-                    ],
-                    "buildingLat": 35.2331519630294,
-                    "buildingLng": 129.084216965962
-                }
-            ]);
+            instance.post(`/api/lecture-rooms/available-with-lectures?buildingName=${selectedBuilding}`)
+                .then((res) => {
+                    const newData = {
+                        buildingName: selectedBuilding,
+                        availableNow: res.data.availableNow,
+                        availableSoon: res.data.availableSoon,
+                        buildingLat: res.data.buildingLat,
+                        buildingLng: res.data.buildingLng,
+                    };
+                    //검색 결과를 기존 data에 추가
+                    setData((prevData) => [...prevData, newData]);
+                })
+                .catch((err) => console.log(err));
         }
     }, [selectedBuilding])
 
     /*tab 닫은 후 selectedTab을 남은 data 중 첫 번째 data의 건물명으로 변경*/
     useEffect(() => {
-        setSelectedTab(data[0].buildingName); 
+        setSelectedTab(data.length > 0 ? data[0].buildingName : ''); 
     }, [data]);
 
       console.log(data)
@@ -136,7 +111,7 @@ function Tab ({ selectedBuilding }) {
                         {clickedData.length !==0 && clickedData[0].availableNow.map((item) => (
                             <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '1.25rem', fontWeight: '600', fontSize: '1.25rem'}}>
                                 <div>{item.roomNum}</div>
-                                <div>~ {item.endTime}</div>
+                                <div>~ {item.nextLectureStartTime === null ? '24:00' : item.nextLectureStartTime.slice(0, 5)}</div>
                             </div>
                         ))}
                     </div>
@@ -149,7 +124,7 @@ function Tab ({ selectedBuilding }) {
                         {clickedData.length !==0 && clickedData[0].availableSoon.map((item) => (
                             <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '1.25rem', fontWeight: '600', fontSize: '1.25rem'}}>
                                 <div style={{width: '11.4rem', textAlign: 'center'}}>{item.roomNum}</div>
-                                <div style={{}}>{item.startTime} ~ {item.endTime}</div>
+                                <div>{item.startTime === null ? '24:00' : item.startTime.slice(0, 5)} ~ {item.endTime === null ? '24:00' : item.endTime.slice(0, 5)}</div>
                             </div>
                         ))}
                     </div>

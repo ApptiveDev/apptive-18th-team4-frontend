@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import './modal.css';
 import { instance } from "../ApiContoller";
 import useGeoLocation from "../../pages/geolocation/useGeoLocation";
+//import data from '../../components/tab/data.json';
 
-export default function Modal_nearBuilding() {
+export default function Modal_nearBuilding({ handleModalData }) {
     const [showModal, setShow] = useState(false);
     const dayOfWeeks = ['월', '화', '수', '목', '금'];
     const timeZones = ['0.5', '1', '2', '3'];
@@ -23,11 +24,17 @@ export default function Modal_nearBuilding() {
     let requestURL = '';
     const handleResult = () => {
         setShow(false);
-        if (selectedTime === '') requestURL = `/api/nearest-buildings/test?user_latitude=${lat}&user_longitude=${lang}`;
-        else requestURL = `/api/nearest-buildings/test?user_latitude=${lat}&user_longitude=${lang}&user_settime=${selectedTime * 60}`;
-        instance.get(requestURL)
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
+
+        if (selectedTime === '') requestURL = `/api/lecture-rooms/available-list?user_latitude=${lat}&user_longitude=${lang}`;
+        else {
+            requestURL = `/api/lecture-rooms/available-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`;
+            instance.get(requestURL)
+                .then((res) => {
+                    console.log(res.data);
+                    handleModalData(res.data.slice(0, 3));
+                })
+                .catch((err) => console.log(err));
+        }
     }
 
     /*오늘 날짜*/

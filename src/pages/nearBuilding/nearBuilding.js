@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Navbar from "../../components/nav_bar/nav_bar";
 import Modal_nearBuilding from "../../components/modal_nearBuilding/modal";
 import Tab from "../../components/tab/tab";
@@ -7,7 +6,6 @@ import Map from "../../components/map_nearBuilding/map";
 import Search from "../../components/search/search";
 import './nearBuilding.css';
 //import 'bootstrap/dist/css/bootstrap.min.css';
-import data from './data.json';
 
 export default function NearBuilding() {
     const [isLogin, setIsLogin] = useState(false);
@@ -28,9 +26,14 @@ export default function NearBuilding() {
         setSelectedBuilding(buildingName);
     };
 
+    // Tab 컴포넌트에 전달할 state와 state를 변경하는 콜백 함수 정의
+    const [modalData, setModalData] = useState([]);
+
+    const handleModalData = (buildingData) => {
+        setModalData(buildingData);
+    };
+
     /*두 지점 사이 이동 시간 및 거리 계산*/
-
-
 
     return(
         <div style={{background: '#F9F9F9'}}>
@@ -55,11 +58,11 @@ export default function NearBuilding() {
                 </div>
 
                 <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                    <Modal_nearBuilding />
+                    <Modal_nearBuilding handleModalData={handleModalData} />
                     <Search onBuildingSelect={handleBuildingSelect} />
                 </div>
 
-                <Tab selectedBuilding={selectedBuilding} />
+                <Tab selectedBuilding={selectedBuilding} modalData={modalData} />
 
                 <div style={{marginTop: '2.25rem', width: '100%'}}>
                     <label style={{fontWeight: '600', fontSize: '1.5rem'}}>현재 위치</label>
@@ -76,7 +79,7 @@ export default function NearBuilding() {
                                             </svg>
                                             <label style={{marginLeft: '1.25rem'}}>거리순</label>
                                         </div>
-                                        <span style={{color: '#BBB', fontWeight: '600'}}>제6공학관 6208</span>
+                                        <span style={{color: '#BBB', fontWeight: '600'}}>{modalData && modalData.length > 0 ? modalData[0].buildingName : ''}</span>
                                     </div>
                                     <div style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center', fontSize: '1.25rem', fontWeight: '600', marginTop: '1.25rem'}}>
                                         3 min 
