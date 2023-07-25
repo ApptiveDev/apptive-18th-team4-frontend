@@ -2,14 +2,12 @@ import './modal_overall.css';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { instance } from '../ApiContoller';
-import data from '../../pages/annual_plan/data.json'
-
 import ModalRevise from './modal_revise';
 
 
 export default function ModalOverall({ closeModal, date }) {
     const month = moment(date).format('M');
-    /*
+    
     const [data, setData] = useState([]);
     
     useEffect(() => {
@@ -17,7 +15,7 @@ export default function ModalOverall({ closeModal, date }) {
             .then((res) => setData(res.data))
             .catch((err) => console.log(err));
     },[])
-*/
+
     const getDate = (dateString) => {
         const dateObj = new Date(dateString);
         const date = dateObj.getDate();
@@ -31,19 +29,19 @@ export default function ModalOverall({ closeModal, date }) {
     };
 
     const [showRevise, setShowRevise] = useState(false);
-  const [detail, setDetail] = useState([]);
+    const [detail, setDetail] = useState([]);
 
-  const openReviseModal = (id) => {
-    console.log(id);
-    const filteredData = data.find((item) => item.eventId === id);
-    //console.log(filteredData);
-    setDetail(filteredData);
-    setShowRevise(true);
-  }
+    const openReviseModal = (id) => {
+        console.log(id);
+        const filteredData = data.find((item) => item.eventId === id);
+        //console.log(filteredData);
+        setDetail(filteredData);
+        setShowRevise(true);
+    }
 
-  const closeReviseModal = () => {
-    setShowRevise(false);
-  };
+    const closeReviseModal = () => {
+        setShowRevise(false);
+    };
 
     return(
         <div className='modal-overall-container'>

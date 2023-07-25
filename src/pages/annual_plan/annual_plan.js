@@ -5,10 +5,9 @@ import moment from 'moment';
 import Modal_annualPlan from "../../components/modal_annualPlan/modal";
 import ModalRevise from "../../components/modal_annualPlan/modal_revise";
 import ModalOverall from "../../components/modal_annualPlan/modal_overall";
-import './annual_plan.css'
-import data from './data.json'; //나중에 삭제
-import Navbar from '../../components/nav_bar/nav_bar'
-import { Modal } from "react-bootstrap";
+import './annual_plan.css';
+import Navbar from '../../components/nav_bar/nav_bar';
+import { instance } from "../../components/ApiContoller";
 
 export default function AnnualPlan() {
   const [isLogin, setIsLogin] = useState(false);
@@ -19,7 +18,6 @@ export default function AnnualPlan() {
       }
   }, [isLogin]);
 
-  /*
   const navigate = useNavigate('');
   useEffect(() => {
     if (!isLogin) {
@@ -27,14 +25,14 @@ export default function AnnualPlan() {
       navigate('/login');
     }
   }, []);
-  */
+  
 
-  /*
   const [data, setData] = useState([]);
+  const [date, showDate] = useState(new Date());
+  const month = moment(date).format('M');
 
   useEffect(() => {
-    //클릭하는 달에 따라 다른 event 가져오도록 (지금 상태로는 현재 달만 가져옴)
-    axios.get('http://3.34.82.40:8080/api/events')
+    instance.get(`/api/events?month=${month}`)
       .then(response => {
         setData(response.data);
       })
@@ -42,14 +40,13 @@ export default function AnnualPlan() {
         console.error(error);
       });
   }, [data]);
-  */
+  
 
   /*날짜 형식 바꾸기*/
   const formatDate = (date) => {
     return date.split("T")[0];
   };
 
-  const [date, showDate] = useState(new Date());
   //startdate와 enddate를 mark 배열에 저장
   const mark = [];
   data.forEach(({startTime, endTime}) => {
