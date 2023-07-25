@@ -4,8 +4,6 @@
     position: relative;
     z-index: 1000;
     font-family: 'Asap';
-    width: 33.375rem;
-    height: 42.5rem;
     .modal {
         position: fixed;
         top: 50%;
@@ -18,23 +16,130 @@
         background: #fff;
         box-shadow: 6px 10px 11px rgba(0, 0, 0, 0.25);
         border-radius: 2.125rem;
-        .close_container {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 1.75rem;
-            .close {
-                margin-right: 2%;
-                cursor: pointer;
-                width: 1rem;
-                height: 1rem;
-                background: #E50000;
-                border-radius: 50%;
-                color: #150000;
+        .modal-content {
+            margin: 1rem 2.5rem;
+            width: 100%;
+            height: 100%;
+            .close_container {
                 display: flex;
-                justify-content: center;
+                justify-content: flex-end;
+                margin-bottom: 1.75rem;
+                .close {
+                    margin-right: 2%;
+                    cursor: pointer;
+                    width: 1rem;
+                    height: 1rem;
+                    background: #E50000;
+                    border-radius: 50%;
+                    color: #150000;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+            .schedule_name, .location, .memo {
+                width: 94%;
+                height: calc(90% / 7);
+                margin-bottom: 5%;
+                font-weight: 700;
+                font-size: 1.5rem;
+                display: flex;
                 align-items: center;
+                color: #959595;
+                padding-left: 1.25rem;
+            }
+            .start_date, .end_date {
+                width: 45%;
+                height: 100%;
+                font-weight: 700;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                color: #150000;
+                padding-left: 1.25rem;
+                font-family: 'Asap';
+            }
+            input::placeholder {
+                font-size: 1.5rem;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                letter-spacing: 0.0125rem;
+                color: #959595;
+            }
+            input {
+                outline: none;
+            }
+            .time_container {
+                border: 1px solid #828282;
+                padding: 0.2rem 1.25rem;
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 5%;
+                span {
+                    display: flex;
+                    justify-content: center;
+                    font-weight: 700;
+                    font-size: 1.5rem;
+                    display: flex;
+                    align-items: center;
+                    color: #08001F;
+                }
+                .select_time {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 3.75rem;
+                    height: 1.25rem;
+                    background: #0E0061;
+                    color: #FFF;
+                    border-radius: 0.625rem;
+                    font-weight: 700;
+                    font-size: 0.625rem;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+            .color_container {
+                padding: 0.5rem 1.25rem;
+                display: flex;
+                justify-content: space-between;
+                border: 1px solid #828282;
+                margin-bottom: 5%;
+                span {
+                    display: flex;
+                    justify-content: center;
+                    font-weight: 700;
+                    font-size: 1.5rem;
+                    color: #08001F;
+                }
+                .select_color {
+                    text-align: center;
+                    width: 1.813rem;
+                    height: 1.813rem;
+                    border-radius: 50%;
+                    cursor: pointer;
+                }
+            }
+            .add_schedule {
+                width: 120px;
+                height: 31px;
+                background: #D6DCF5;
+                border-radius: 6px;
+                font-weight: 700;
+                font-size: 14px;
+                text-align: center;
+                letter-spacing: 0.2px;
+            }
+            .add_schedule {
+                width: 12.25rem;
+                height: 1.9375rem;
+                background: #D6DCF5;
+                border-radius: 0.375rem;
+                border: none;
             }
         }
     }
-    
 }
+
+  

@@ -2,28 +2,48 @@ import './modal_overall.css';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { instance } from '../ApiContoller';
+import data from '../../pages/annual_plan/data.json'
+
+import ModalRevise from './modal_revise';
+
 
 export default function ModalOverall({ closeModal, date }) {
     const month = moment(date).format('M');
+    /*
     const [data, setData] = useState([]);
-
+    
     useEffect(() => {
         instance.get(`/api/events?month=${month}`)
             .then((res) => setData(res.data))
             .catch((err) => console.log(err));
     },[])
-
+*/
     const getDate = (dateString) => {
         const dateObj = new Date(dateString);
         const date = dateObj.getDate();
         return date;
-    }
+    };
 
     const getDay = (dateString) => {
         const dateObj = new Date(dateString);
         const dayOfWeek = dateObj.toLocaleString('en-US', { weekday: 'short' });
         return dayOfWeek
-    }
+    };
+
+    const [showRevise, setShowRevise] = useState(false);
+  const [detail, setDetail] = useState([]);
+
+  const openReviseModal = (id) => {
+    console.log(id);
+    const filteredData = data.find((item) => item.eventId === id);
+    //console.log(filteredData);
+    setDetail(filteredData);
+    setShowRevise(true);
+  }
+
+  const closeReviseModal = () => {
+    setShowRevise(false);
+  };
 
     return(
         <div className='modal-overall-container'>
@@ -64,15 +84,16 @@ export default function ModalOverall({ closeModal, date }) {
                                         </div>
                                     </div>
                                     <div>
-                                        <img src="/assets/img/pencil.png" style={{width: '0.8rem', height: '0.8rem'}} />
+                                        <img src="/assets/img/pencil.png" onClick={() => openReviseModal(item.eventId)} style={{width: '0.8rem', height: '0.8rem', cursor: 'pointer'}} />
                                     </div>
                                 </div>
                             </div>
                         </>
-                    ))} 
+                    ))}  
                 </div>
             </div>
-            
+
+        {showRevise && <ModalRevise isOpen={showRevise} closeModal={closeReviseModal} data={detail} />}   
         </div>
     )
 }

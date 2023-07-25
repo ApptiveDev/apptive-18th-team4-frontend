@@ -93,8 +93,13 @@ export default function AnnualPlan() {
 
   //수정 창 띄우기
   const [showRevise, setShowRevise] = useState(false);
+  const [detail, setDetail] = useState([]);
 
-  const openReviseModal = () => {
+  const openReviseModal = (id) => {
+    console.log(id);
+    const filteredData = data.find((item) => item.eventId === id);
+    //console.log(filteredData);
+    setDetail(filteredData);
     setShowRevise(true);
   }
 
@@ -206,7 +211,7 @@ export default function AnnualPlan() {
                                 <div>{item.title}</div>
                                 <div>
                                   <img src="/assets/img/memo.png" style={{marginRight: '0.54rem'}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}/>
-                                  <img src="/assets/img/pencil.png" onClick={() => openReviseModal(true)} style={{width: '1.25rem', height: '1.25rem'}} />
+                                  <img src="/assets/img/pencil.png" onClick={() => openReviseModal(item.eventId)} style={{width: '1.25rem', height: '1.25rem', cursor: 'pointer'}} />
                                 </div>
                               </div>
                               <div style={{color: '#ABABAB'}}>
@@ -226,7 +231,7 @@ export default function AnnualPlan() {
           </div>
       </div>
 
-      {showRevise && <ModalRevise isOpen={showRevise} closeModal={closeReviseModal} />}
+      {showRevise && <ModalRevise isOpen={showRevise} closeModal={closeReviseModal} data={detail} />}
       {showOverall && <ModalOverall isOpen={showOverall} closeModal={closeOverallModal} date={date} />}
     </div>
   )

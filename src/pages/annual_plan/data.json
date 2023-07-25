@@ -2,7 +2,7 @@
   {
       "eventId": 4,
       "memberId": null,
-      "title": "new event",
+      "title": "이벤트4",
       "description": "This is a new event.",
       "location": "Seoul",
       "startTime": "2023-07-24T10:00:00",
@@ -13,7 +13,7 @@
   {
     "eventId": 5,
     "memberId": null,
-    "title": "test3",
+    "title": "이벤트5",
     "description": "This is a new event2.",
     "location": "Seoul",
     "startTime": "2023-07-25T10:00:00",
@@ -24,7 +24,7 @@
   {
       "eventId": 6,
       "memberId": null,
-      "title": "6월,7월 이벤트 추가테스트",
+      "title": "이벤트6",
       "description": "This is a new event2.",
       "location": "Seoul",
       "startTime": "2023-07-28T10:00:00",
