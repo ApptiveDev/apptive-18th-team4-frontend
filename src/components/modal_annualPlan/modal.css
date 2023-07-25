@@ -40,28 +40,26 @@
   align-items: center;
 }
 .modal_container .modal .modal-content .schedule_name, .modal_container .modal .modal-content .location, .modal_container .modal .modal-content .memo {
-  width: 93%;
+  width: 94%;
   height: 12.8571428571%;
   margin-bottom: 5%;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
-  letter-spacing: 0.2px;
   color: #959595;
-  padding-left: 20px;
+  padding-left: 1.25rem;
 }
 .modal_container .modal .modal-content .start_date, .modal_container .modal .modal-content .end_date {
   width: 45%;
-  height: 50%;
-  margin-bottom: 5%;
+  height: 100%;
   font-weight: 700;
   font-size: 20px;
   display: flex;
   align-items: center;
-  letter-spacing: 0.2px;
   color: #150000;
-  padding-left: 20px;
+  padding-left: 1.25rem;
+  font-family: "Asap";
 }
 .modal_container .modal .modal-content input::-moz-placeholder {
   font-size: 1.5rem;
@@ -83,9 +81,10 @@
   outline: none;
 }
 .modal_container .modal .modal-content .time_container {
-  border: 1px solid black;
-  width: 98%;
+  border: 1px solid #828282;
+  padding: 0.2rem 1.25rem;
   display: flex;
+  justify-content: space-between;
   margin-bottom: 5%;
 }
 .modal_container .modal .modal-content .time_container span {
@@ -112,28 +111,25 @@
   cursor: pointer;
 }
 .modal_container .modal .modal-content .color_container {
+  padding: 0.5rem 1.25rem;
   display: flex;
-  border: 1px solid black;
-  width: 98%;
-  display: flex;
+  justify-content: space-between;
+  border: 1px solid #828282;
   margin-bottom: 5%;
 }
 .modal_container .modal .modal-content .color_container span {
   display: flex;
   justify-content: center;
   font-weight: 700;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.2px;
+  font-size: 1.5rem;
   color: #08001F;
 }
 .modal_container .modal .modal-content .color_container .select_color {
+  text-align: center;
   width: 1.813rem;
   height: 1.813rem;
   border-radius: 50%;
   cursor: pointer;
-  margin-right: 0.88rem;
 }
 .modal_container .modal .modal-content .add_schedule {
   width: 120px;

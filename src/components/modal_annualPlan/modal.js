@@ -83,13 +83,13 @@ const Modal_annualPlan = ({selectedDate, selectedDayWeek}) => {
                     <div className='close_container' onClick={closeModal}>
                         <div className='close'>&times;</div>
                     </div>
-                    <div style={{width: '100%', height: '60%', background: 'pink'}}>
+                    <div style={{width: '100%', height: '55%'}}>
                         <input className='schedule_name' onChange={(e) => setTitle(e.target.value)} placeholder='일정 이름'/>
-                        <div style={{display: 'flex'}}>
-                            <input className='start_date' onChange={(e) => setStartDate(e.target.value)} type='date' placeholder='시작시간' value={`${selectedDate}`} />
+                        <div style={{display: 'flex', height: '13%',  marginBottom: '5%', justifyContent: 'space-between'}}>
+                            <input className='start_date' onChange={(e) => setStartDate(e.target.value)} type='date' placeholder='시작시간' /> {/*value={`${selectedDate}`}*/}
                             <input className='start_date' onChange={(e) => setStartTime(e.target.value)} type="time" />
                         </div>
-                        <div style={{display: 'flex'}}>
+                        <div style={{display: 'flex', height: '13%', marginBottom: '5%', justifyContent: 'space-between'}}>
                             <input className='end_date' onChange={(e) => setEndDate(e.target.value)} type='date' placeholder='종료시간'/>
                             <input className='end_date' onChange={(e) => setEndTime(e.target.value)} type="time" />
                         </div>
@@ -98,28 +98,26 @@ const Modal_annualPlan = ({selectedDate, selectedDayWeek}) => {
                     </div>
                     <div className='time_container'>
                         <span>알림</span>
-
-                        <div style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
-                        <div>
-                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '7px'}}>
-                            <button className='select_time' onClick={() => setAlarmTime(10)}>10분 전</button>
-                            <button className='select_time' onClick={() => setAlarmTime(15)}>15분 전</button>
-                            <button className='select_time' onClick={() => setAlarmTime(30)}>30분 전</button>
+                        <div style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center', width: '80%'}}>
+                            <div style={{width: '100%'}}>
+                                <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', marginBottom: '0.5rem'}}>
+                                    <button className='select_time' onClick={() => setAlarmTime(10)}>10분 전</button>
+                                    <button className='select_time' onClick={() => setAlarmTime(15)}>15분 전</button>
+                                    <button className='select_time' onClick={() => setAlarmTime(30)}>30분 전</button>
+                                </div>
+                                <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center'}}>
+                                    <button className='select_time' onClick={() => setAlarmTime(1)}>1일 전</button>
+                                    <button className='select_time' onClick={() => setAlarmTime(2)}>2일 전</button>
+                                    <button className='select_time' onClick={() => setAlarmTime(7)}>1주일 전</button>
+                                </div>
+                            </div>
                         </div>
-                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                            <button className='select_time' onClick={() => setAlarmTime(1)}>1일 전</button>
-                            <button className='select_time' onClick={() => setAlarmTime(2)}>2일 전</button>
-                            <button className='select_time' onClick={() => setAlarmTime(7)}>1주일 전</button>
-                        </div>
-                        </div>
-
-                        </div>
-
                     </div>
-                    <div className='color_container' style={{border: '1px solid black'}}>
+
+                    <div className='color_container'>
                         <span>색상</span>
 
-                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                        <div style={{display: 'flex', justifyContent: 'space-evenly', alignItems: 'center', width: '80%'}}>
                             <div className='select_color' style={{backgroundColor: '#FF7979'}} onClick={() => setColor('#FF7979')}>&#10003;</div>
                             <div className='select_color' style={{backgroundColor: '#FFB571'}} onClick={() => setColor('#FFB571')}/>
                             <div className='select_color' style={{backgroundColor: '#FFD910'}} onClick={() => setColor('#FFD910')}/>
@@ -127,7 +125,6 @@ const Modal_annualPlan = ({selectedDate, selectedDayWeek}) => {
                             <div className='select_color' style={{backgroundColor: '#AEC0F0'}} onClick={() => setColor('#AEC0F0')}/>
                             <div className='select_color' style={{backgroundColor: '#080038'}} onClick={() => setColor('#080038')}/>
                         </div>
-
                     </div>
                     <div style={{display: 'flex', justifyContent: 'center'}}>
                         <button className='add_schedule' onClick={handleSchedule}>일정 추가하기</button>
