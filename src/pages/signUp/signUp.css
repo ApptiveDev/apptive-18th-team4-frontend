@@ -33,6 +33,7 @@
   border-radius: 12px;
   margin-top: 4px;
   margin-bottom: 24px;
+  outline: none;
 }
 .signUp .form_container form ::-moz-placeholder {
   font-weight: 400;
@@ -56,6 +57,30 @@
   margin-top: 4px;
   margin-bottom: 24px;
 }
+.signUp .form_container form .state select {
+  width: 578px;
+  height: 56px;
+  border: 1px solid rgba(102, 102, 102, 0.35);
+  border-radius: 12px;
+  margin-top: 4px;
+  margin-bottom: 24px;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(102, 102, 102, 0.6);
+  padding-left: 24px;
+  outline: none;
+}
+.signUp .form_container form .enterNickname .nickname {
+  width: 470px;
+  margin-right: 1rem;
+}
+.signUp .form_container form .enterNickname button {
+  width: 5rem;
+  height: 2.5625rem;
+  border-radius: 0.75rem;
+  background: #D9D9D9;
+  border: none;
+}
 .signUp .form_container form .selectMajor select {
   width: 578px;
   height: 56px;
@@ -67,6 +92,7 @@
   font-size: 16px;
   color: rgba(102, 102, 102, 0.6);
   padding-left: 24px;
+  outline: none;
 }
 .signUp .form_container form .agreement {
   display: flex;

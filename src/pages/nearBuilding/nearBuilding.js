@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import useGeoLocation from '../../../src/pages/geolocation/useGeoLocation';
 import Navbar from "../../components/nav_bar/nav_bar";
 import Modal_nearBuilding from "../../components/modal_nearBuilding/modal";
 import Tab from "../../components/tab/tab";
@@ -34,6 +35,45 @@ export default function NearBuilding() {
     };
 
     /*두 지점 사이 이동 시간 및 거리 계산*/
+    // 현재 위치 가져오기
+    const location = useGeoLocation();
+    const [lat, setLat] = useState('');
+    const [lang, setLang] = useState('');
+
+    useEffect(() => {
+        setLat(location.coordinates.lat);
+        setLang(location.coordinates.lang);
+    }, [location]);
+console.log(modalData)
+    useEffect(() => {
+        let origin = new window.google.maps.LatLng(lat, lang);
+        let destination = new window.google.maps.LatLng(lat, lang);
+        if (modalData.length !== 0) {
+            destination = new window.google.maps.LatLng(modalData[0].buildingLat, modalData[0].buildingLng);
+        }
+        const service = new window.google.maps.DistanceMatrixService();
+        service.getDistanceMatrix(
+            {
+                origins: [origin],
+                destinations: [destination],
+                travelMode: "TRANSIT",
+                unitSystem: window.google.maps.UnitSystem.METRIC,
+            },
+          callback
+        );
+    });
+    
+    const [distance, setDist] = useState('');
+    const [walkingTime, setWalkingTime] = useState('');
+    const callback = (response, status) => {
+        if (status === 'OK') {
+            console.log(response)
+            setDist(response.rows[0].elements[0].distance.text);
+            setWalkingTime(response.rows[0].elements[0].duration.text);
+        } else {
+            console.error('Error fetching data:', status);
+        }
+    };
 
     return(
         <div style={{background: '#F9F9F9'}}>
@@ -67,7 +107,7 @@ export default function NearBuilding() {
                 <div style={{marginTop: '2.25rem', width: '100%'}}>
                     <label style={{fontWeight: '600', fontSize: '1.5rem'}}>현재 위치</label>
                     <div style={{display: 'flex', marginTop: '0.5rem'}}>
-                        <Map />
+                        <Map lat={lat} lang={lang} />
                         <div className="shortest-path-container">
                             <div style={{padding: '2.5rem 12%', borderBottom: '1px solid #D9D9D9'}}>
                                 <div>
@@ -82,11 +122,11 @@ export default function NearBuilding() {
                                         <span style={{color: '#BBB', fontWeight: '600'}}>{modalData && modalData.length > 0 ? modalData[0].buildingName : ''}</span>
                                     </div>
                                     <div style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center', fontSize: '1.25rem', fontWeight: '600', marginTop: '1.25rem'}}>
-                                        3 min 
+                                        {walkingTime.slice(0, 2)} min 
                                         <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none" style={{margin: '0 0.5rem'}}>
                                             <circle cx="2" cy="2" r="2" fill="#D9D9D9"/>
                                         </svg>
-                                        0.3 km
+                                        {distance}
                                     </div>
                                 </div>
                             </div>

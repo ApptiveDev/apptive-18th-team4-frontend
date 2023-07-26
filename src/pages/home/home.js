@@ -1,7 +1,12 @@
-import { useEffect, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useGeoLocation from '../geolocation/useGeoLocation';
-import { ScrollMenu } from 'react-horizontal-scrolling-menu';
+
+import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
+import { LeftArrow } from './leftArrow.tsx';
+import { RightArrow } from './rightArrow.tsx';
+
+import styled from 'styled-components';
 import './home.css';
 import WeeklyCalendar from './weeklyCalendar';
 import { instance } from '../../components/ApiContoller';
@@ -211,17 +216,32 @@ export default function Home() {
                         </div>
                     </div>
                     
+                    {/* horizontal scroll 구현 실패
+                    <Container>
+                        <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+                            <div style={{display: 'flex'}}>
+                                <div className='card-container'>
+                                    <div className='card'>
+                                        6208
+                                    </div>
+                                </div>
+                            </div>
+                        </ScrollMenu>
+                    </Container>
+                    */}
 
                     {select === '거리순' &&
                         <div style={{
                             display: 'flex',
                             marginTop: '4.6rem',
-                            overflowY: 'scroll'
+                            overflow: 'auto',
+                            whiteSpace: 'nowrap'
                             }}>
                             <div className='card-container'>
                                 <div id="map" className='card'></div>
                                 <span>현재 위치</span>
                             </div>
+
                             {roomsByLoc.map((item, index) => (
                                 <div className='card-container' key={index}>
                                     <div className='card'>
@@ -317,3 +337,19 @@ export default function Home() {
         </div>
     )
 }
+
+const Container = styled.div`  
+display: flex;
+width: 100%;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+overflow: hidden;
+  .react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+  .react-horizontal-scrolling-menu--scroll-container {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+`;

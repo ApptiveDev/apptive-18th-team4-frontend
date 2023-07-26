@@ -157,12 +157,13 @@ export default function Login() {
                     <input name='password' onChange={e => setPW(e.target.value)} value={password} className="password" placeholder='Password'/>
                 </div>
 
-                <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <button onClick={handleLogin}>Log In</button> 
-                </div>
-                <div className='rememberMe'>
+                <div className='rememberMe' style={{marginBottom: '3.2rem'}}>
                     <input type='checkbox' onChange={() => setRememberMe(!rememberMe)} checked={rememberMe} />
                     <label>아이디 저장하기</label>
+                </div>
+
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <button onClick={handleLogin}>Log In</button> 
                 </div>
 
                 <div className='link_to_signUp' style={{marginLeft: '60px'}}>

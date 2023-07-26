@@ -193,8 +193,10 @@ export default function Announcement() {
 
             <div style={{padding: '4.84% 14.4%'}}>
                 <div style={{display: 'flex', alignItems: 'center'}}>
-                    <button className="searchBtn" style={{width: '5.313rem'}}>분류</button>
-                    <div style={{display: 'flex', alignItems: 'center', width: '80%'}}>
+                    <button className="searchBtn" style={{width: '5.313rem'}}>
+                        <img src="/assets/img/searchIcon_white.png" />
+                    </button>
+                    <div style={{display: 'flex', alignItems: 'center', width: '100%'}}>
 
                             <select id="classification" value={selectedVal} onChange={handleValChange}>
                                 <option value="학사 공지사항">학사 공지사항</option>           
@@ -234,28 +236,45 @@ export default function Announcement() {
                 </div>
                 
                 <div style={{display: 'flex', alignItems: 'center', marginTop: '3.48%'}}>
-                    <input className="enterKeyword" onChange={(e) => setKeyword(e.target.value)}/>
+                    <input 
+                        className="enterKeyword" 
+                        onChange={(e) => setKeyword(e.target.value)}
+                        placeholder="검색어를 입력해주세요" />
                     <button 
                         onClick={handleResult}
                         className="searchBtn" 
-                        style={{width: '4.688rem'}}>조회</button>
+                        style={{width: '4.688rem', cursor: 'pointer'}}>조회</button>
                 </div>
                 
 
                 <div className="result">
-                    {show && res !== null && res.slice(startIndex_res, endIndex_res).map((item) => (
-                        <div>
-                            <div>
-                                <button onClick={handleLike}>즐겨찾기</button>
-                                {selectedDept || selectedInstt}
+                    <div>
+                        {show &&
+                            <div className="stripe">
+                                <div style={{height: '100%', display: 'flex', alignItems: 'center', margin: '0 5rem'}}>
+                                    <span style={{fontSize: '1.25rem', fontWeight: '700'}}>{selectedDept || selectedInstt} 공지사항</span>
+                                    <button className='startBtn' onClick={handleLike}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
+                                            <path d="M11 0L13.4697 7.60081H21.4616L14.996 12.2984L17.4656 19.8992L11 15.2016L4.53436 19.8992L7.00402 12.2984L0.538379 7.60081H8.53035L11 0Z" fill="#00045F"/>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
-                            <a href={item.urls} style={{color: '#000', textDecoration: 'none'}}>
-                                {item.title}
-                            </a>
-                            {item.date}
-                        </div>
-                        
-                    ))}
+                        }
+
+                        {show && res !== null && res.slice(startIndex_res, endIndex_res).map((item) => (
+                            <div className="stripe">
+                                <div style={{height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0 5rem'}}>
+                                    <Link to={item.urls}>
+                                        <div style={{fontSize: '1.125rem'}}>{item.title}</div>  
+                                    </Link>
+                                    <div style={{fontSize: '1.25rem'}}>{item.date}</div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    
 
                     {show && res !== null && <div>
                         <Pagination
@@ -267,8 +286,7 @@ export default function Announcement() {
                             nextPageText="›"
                             onChange={handleResPageChange}
                         />
-                    </div>}
-                    
+                    </div>} 
                 </div>
             </div>        
         </div>

@@ -25,7 +25,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "sass": "^1.62.0",
-    "styled-components": "^6.0.3",
+    "styled-components": "^6.0.5",
     "web-vitals": "^2.1.4"
   },
   "proxy": "http://3.34.82.40:8080",
