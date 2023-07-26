@@ -44,10 +44,13 @@ export default function NearBuilding() {
         setLat(location.coordinates.lat);
         setLang(location.coordinates.lang);
     }, [location]);
-
+console.log(modalData)
     useEffect(() => {
-        const origin = new window.google.maps.LatLng(lat, lang);
-        const destination = new window.google.maps.LatLng(35.234284, 129.081029);
+        let origin = new window.google.maps.LatLng(lat, lang);
+        let destination = new window.google.maps.LatLng(lat, lang);
+        if (modalData.length !== 0) {
+            destination = new window.google.maps.LatLng(modalData[0].buildingLat, modalData[0].buildingLng);
+        }
         const service = new window.google.maps.DistanceMatrixService();
         service.getDistanceMatrix(
             {
