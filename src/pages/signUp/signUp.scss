@@ -34,6 +34,7 @@
                 border-radius: 12px;
                 margin-top: 4px;
                 margin-bottom: 24px;
+                outline: none;
                 //padding-left: 24px;
             }
             ::placeholder {
@@ -54,6 +55,21 @@
                     margin-bottom: 24px;
                 }
             }
+            .state {
+                select {
+                    width: 578px;
+                    height: 56px;
+                    border: 1px solid rgba(102, 102, 102, 0.35);
+                    border-radius: 12px;
+                    margin-top: 4px;
+                    margin-bottom: 24px;
+                    font-weight: 400;
+                    font-size: 16px;
+                    color: rgba(102, 102, 102, 0.6);
+                    padding-left: 24px;
+                    outline: none;
+                }
+            }
             .selectMajor {
                 select {
                     width: 578px;
@@ -66,6 +82,7 @@
                     font-size: 16px;
                     color: rgba(102, 102, 102, 0.6);
                     padding-left: 24px;
+                    outline: none;
                 }
             }
             .agreement {

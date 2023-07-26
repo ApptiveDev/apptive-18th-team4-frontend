@@ -9,21 +9,23 @@ export default function SignUp() {
   const [password, setPW] = useState("");
   const [checkedPassword, setPW2] = useState("");
   const [nickname, setNickname] = useState("");
+  const [state, setState] = useState("");
   const [findQuesNum, setQuesNum] = useState("");
   const [findAnswer, setAnswer] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+  const state_list = ["Choose your state", "대학생", "대학원생", "휴학생", "신입생"];
   const question_list = [
     "Choose a question",
     "내가 다닌 초등학교는?",
     "인상 깊게 읽은 책 이름은?",
     "내 별명은?",
+    "내가 좋아하는 캐릭터는?",
+    "자신의 인생 좌우명은?", 
+    "내가 좋아하는 색깔은?"
   ];
   const [isNicknameValid, setIsNicknameValid] = useState(false);
-  console.log(email);
-  console.log(password);
-  console.log(nickname);
   console.log(findQuesNum);
-  console.log(findAnswer);
+
   const navigate = useNavigate();
   const handleCheckNickname = (e) => {
     e.preventDefault();
@@ -46,22 +48,18 @@ export default function SignUp() {
     e.preventDefault();
     if (email.length === 0) alert("아이디를 입력해주세요.");
     else if (!isNicknameValid) alert("닉네임 중복 확인이 필요합니다.");
-    else if (password.length < 6)
-      alert("비밀번호는 6자리 이상으로 설정해주세요.");
-    else if (password !== checkedPassword)
-      alert("비밀번호가 일치하지 않습니다.");
-    else if (findQuesNum == 0 && findAnswer.length !== 0)
-      alert("아이디 확인 질문을 선택해주세요.");
-    else if (findQuesNum != 0 && findAnswer.length === 0)
-      alert("아이디 확인 질문의 답을 최소 1자 이상 입력해주세요.");
-    else if (!isChecked)
-      alert("약관에 동의하지 않을 경우, 회원가입이 어렵습니다.");
+    else if (password.length < 6) alert("비밀번호는 6자리 이상으로 설정해주세요.");
+    else if (password !== checkedPassword) alert("비밀번호가 일치하지 않습니다.");
+    else if (state === 0 && state.length !== 0) alert("학적 상태를 선택해주세요.");
+    else if (findQuesNum == 0 && findAnswer.length !== 0) alert("아이디 확인 질문을 선택해주세요.");
+    else if (findQuesNum != 0 && findAnswer.length === 0) alert("아이디 확인 질문의 답을 최소 1자 이상 입력해주세요.");
+    else if (!isChecked) alert("약관에 동의하지 않을 경우, 회원가입이 어렵습니다.");
     else {
       const form = new FormData();
       form.append("username", email);
       form.append("password", password);
       form.append("nickname", nickname);
-      form.append("state", 1); //수정해야 됨
+      form.append("state", state); //수정해야 됨
       form.append("findQuesNum", findQuesNum);
       form.append("findAnswer", findAnswer);
       console.log(form);
@@ -131,6 +129,23 @@ export default function SignUp() {
               placeholder="Check your password"
             />
           </div>
+          <div className="state">
+            <div>
+              <label htmlFor="state">학적 상태</label>
+            </div>
+            <select
+              name={state}
+              onChange={(e) => setState(parseInt(e.target.value, 10))}
+              value={state}
+              className="select-state"
+            >
+              {state_list.map((state, idx) => (
+                <option value={idx} key={idx}>
+                  {state}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="enterNickname">
             <div>
               <label htmlFor="nickname">닉네임</label>
@@ -159,8 +174,7 @@ export default function SignUp() {
             >
               {question_list.map((question, idx) => (
                 <option value={idx} key={idx}>
-                  {" "}
-                  {question}{" "}
+                  {question}
                 </option>
               ))}
             </select>
