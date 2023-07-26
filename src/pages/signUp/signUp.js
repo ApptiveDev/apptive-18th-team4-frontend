@@ -161,6 +161,7 @@ export default function SignUp() {
               placeholder="Enter your nickname"
             />
             <button onClick={handleCheckNickname}>중복 확인</button>
+            
           </div>
           <div className="selectMajor">
             <div>
