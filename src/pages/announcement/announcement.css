@@ -1,9 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Asap&family=Montserrat&display=swap");
+.announcement_container {
+  font-family: "Asap";
+}
 .announcement_container .title {
   display: flex;
   align-items: center;
   margin-top: 5.25%;
-  padding-left: 16.8%;
+  padding-left: 14.4%;
   font-weight: 600;
   font-size: 3rem;
   letter-spacing: 0.013rem;
@@ -85,6 +88,10 @@
   font-size: 0.75rem;
   color: white;
 }
+.announcement_container .searchBtn img {
+  width: 1.31581rem;
+  height: 1.0725rem;
+}
 .announcement_container select {
   display: flex;
   appearance: none;
@@ -101,23 +108,44 @@
 }
 .announcement_container #classification {
   width: 20%;
+  height: 2.5rem;
+  font-size: 1rem;
 }
 .announcement_container #college {
   width: 20%;
+  height: 2.5rem;
+  font-size: 1rem;
 }
 .announcement_container #dept {
   width: 35%;
+  height: 2.5rem;
+  font-size: 1rem;
 }
 .announcement_container #instt {
   width: 20%;
+  height: 2.5rem;
+  font-size: 1rem;
 }
 .announcement_container .enterKeyword {
-  width: 13%;
+  width: 19.0625rem;
+  height: 2.5rem;
   border: none;
   border-bottom: 1px solid #000000;
   outline: none;
-  margin: 0 2.5%;
+  margin-left: 12%;
+  margin-right: 1.31rem;
   padding-left: 0.938rem;
+  font-size: 1rem;
+}
+.announcement_container .enterKeyword::-moz-placeholder {
+  color: #C4C4C4;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.announcement_container .enterKeyword::placeholder {
+  color: #C4C4C4;
+  font-size: 1rem;
+  font-weight: 600;
 }
 .announcement_container .keywords {
   height: 1.75rem;
@@ -129,11 +157,30 @@
   color: #AEC0F0;
 }
 .announcement_container .result {
-  margin-top: 8.34%;
-  padding: 0 14.4%;
-  height: 307px;
-  border: 1px solid #000000;
-  border-radius: 20px;
+  margin-top: 3rem;
+}
+.announcement_container .result .stripe {
+  width: 100%;
+  height: 3.75rem;
+}
+.announcement_container .result .stripe .startBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.3125rem;
+  height: 1.9375rem;
+  border-radius: 2.46875rem;
+  background: #AEC0F0;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+.announcement_container .result .stripe a {
+  color: #000;
+  text-decoration: none;
+}
+.announcement_container .result .stripe:nth-child(odd) {
+  background-color: #F4F5FA;
 }
 
 .notification_list.opened {
