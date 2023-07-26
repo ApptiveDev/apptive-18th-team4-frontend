@@ -1,23 +1,12 @@
-import { useState, useEffect } from 'react';
-import useGeoLocation from '../../../src/pages/geolocation/useGeoLocation';
+import { useEffect } from 'react';
 
-export default function Map() {
-    /*현재 위치 가져오기 */
-    const location = useGeoLocation();
-    const [lat, setLat] = useState('');
-    const [lang, setLang] = useState('');
-
-    useEffect(() => {
-        setLat(location.coordinates.lat);
-        setLang(location.coordinates.lang);
-    })
-
+export default function Map({lat, lang}) {
     /*현재 위치를 마커로 표시 */
     const { kakao } = window;
 
     useEffect(() => {
         drawMap();
-    });
+    }, [lat, lang]);
 
     const drawMap = () => {
         let container = document.getElementById("map");
