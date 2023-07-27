@@ -78,31 +78,44 @@ export default function Home() {
         marker.setMap(map);
     }
 
-    const [buildingName, setBuildingName] = useState(''); 
+    const [locBuildingName, setLocBuildingName] = useState(''); 
+    const [likeBuildingName, setLikeBuildingName] = useState('');
     const [roomsByLoc, setRoomByLoc] = useState([]);
+    const [roomsByLike, setRoomByLike] = useState([]);
     const [notices, setNotice] = useState([]);
+
     useEffect(() => {
         const latitude = location.coordinates.lat;
         const longitude = location.coordinates.lang;
         if (location.loaded === true) {
-            // 빈 강의실(거리순) -> 수정 필요
-            instance.get(`/api/nearest-buildings/test?user_latitude=${latitude}&user_longitude=${longitude}`)
-                .then((res) => {
-                    setBuildingName(res.data[0].buildingName); //현재 위치에서 가장 가까운 건물
-                    instance.get(`/api/lecture-rooms/available?buildingName=${res.data[0].buildingName}&setTime=60`)
-                        .then((response) => setRoomByLoc(response.data.availableNow)) //현재 위치에서 가장 가까운 건물의 사용 가능한 강의실
-                        .catch((error) => console.log(error))
-                })
-                .catch((err) => console.log(err));
-
-            // 빈 강의실(즐겨찾기순) -> 수정 필요
+            // 빈 강의실(거리순)
+            if (select === '거리순') {
+                instance.get(`/api/nearest-buildings/test?user_latitude=${latitude}&user_longitude=${longitude}`)
+                    .then((res) => {
+                        setLocBuildingName(res.data[0].buildingName); //현재 위치에서 가장 가까운 건물
+                        instance.get(`/api/lecture-rooms/available?buildingName=${res.data[0].buildingName}&setTime=60`)
+                            .then((response) => setRoomByLoc(response.data.availableNow)) //현재 위치에서 가장 가까운 건물의 사용 가능한 강의실
+                            .catch((error) => console.log(error))
+                    })
+                    .catch((err) => console.log(err));
+            }
+            // 빈 강의실(즐겨찾기순)
+            else {
+                instance.get(`/api/lecture-rooms/favorite-list?setTime=60`)
+                    .then((res) => {
+                        console.log(res.data)
+                        setLikeBuildingName(res.data[0].buildingName); //즐겨찾기한 건물 중 현재 위치와 가장 가까운 건물
+                        setRoomByLike(res.data[0].availableNow); //즐겨찾기한 건물 중 현재 위치와 가장 가까운 건물의 사용 가능한 강의실
+                    })
+                    .catch((err) => console.log(err));
+            }
         }
 
         // 공지사항(학지시)
         instance.get('/api/announce/onestop')
             .then((res) => setNotice(res.data.content.slice(0, 3)))
             .catch((err) => console.log(err));
-    }, [location]);
+    }, [location, select]);
 
     return (
         <div className='home'>
@@ -249,7 +262,7 @@ export default function Home() {
                             {roomsByLoc.map((item, index) => (
                                 <div className='card-container' key={index}>
                                     <div className='card'>
-                                        <div style={{fontSize: '2rem', fontWeight: '600', marginLeft: '2.75rem'}}>{buildingName}</div>
+                                        <div style={{fontSize: '2rem', fontWeight: '600', marginLeft: '2.75rem'}}>{locBuildingName}</div>
                                         <div style={{fontSize: '4rem', fontWeight: '600', marginLeft: '2.75rem'}}>{item.roomNum}</div>
                                     </div>
                                     <span>빈 강의실 : {index + 1}순위</span>
@@ -269,17 +282,16 @@ export default function Home() {
                                 <div id="map" className='card'></div>
                                 <span>현재 위치</span>
                             </div>
-                            {/*
-                            {roomsByLoc.map((item, index) => (
+
+                            {roomsByLike.map((item, index) => (
                                 <div className='card-container' key={index}>
                                     <div className='card'>
-                                        <div style={{fontSize: '2rem', fontWeight: '600', marginLeft: '2.75rem'}}>{buildingName}</div>
+                                        <div style={{fontSize: '2rem', fontWeight: '600', marginLeft: '2.75rem'}}>{likeBuildingName}</div>
                                         <div style={{fontSize: '4rem', fontWeight: '600', marginLeft: '2.75rem'}}>{item.roomNum}</div>
                                     </div>
                                     <span>빈 강의실 : {index + 1}순위</span>
                                 </div>
                             ))}
-                            */}
                         </div>
                     }
 
