@@ -17,14 +17,6 @@ const Modal_annualPlan = ({selectedDate, selectedDayWeek}) => {
     const navigate = useNavigate();
     const openModal = () => {
         setIsOpen(true);
-        /*
-        if (isLogin) setIsOpen(true);
-        else {
-            setIsOpen(false);
-            alert("일정 등록은 로그인 후 이용 가능합니다.");
-            navigate('/login');
-        }
-*/
     };
 
     const closeModal = () => {
@@ -44,8 +36,8 @@ const Modal_annualPlan = ({selectedDate, selectedDayWeek}) => {
     const [color, setColor] = useState('');
     const [alarmTime, setAlarmTime] = useState('');
 
-    const startTime = `${startDate}T${startT}:00+09:00`;
-    const endTime = `${endDate}T${endT}:00+09:00`;
+    const startTime = `${startDate}T${startT}:00`;
+    const endTime = `${endDate}T${endT}:00`;
 
     const handleSchedule = () => {
         if (title === '') alert("일정 이름을 입력해주세요.")

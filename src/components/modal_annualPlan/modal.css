@@ -132,14 +132,14 @@
   cursor: pointer;
 }
 .modal_container .modal .modal-content .add_schedule {
-  width: 120px;
-  height: 31px;
+  cursor: pointer;
+  width: 12.25rem;
+  height: 1.9375rem;
   background: #D6DCF5;
-  border-radius: 6px;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  font-size: 14px;
   text-align: center;
-  letter-spacing: 0.2px;
 }
 .modal_container .modal .modal-content .add_schedule {
   width: 12.25rem;

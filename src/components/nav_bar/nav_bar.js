@@ -28,7 +28,7 @@ export default function Navbar() {
     return(
         <div className='nav_bar'>
             <div style={{padding: '0 14%'}} className='nav_bar'>
-                <Link to="/"><img src='./assets/img/navbar_logo.png' className='logo'/></Link>
+                <Link to="/"><img src='./assets/img/logo_white.png' className='logo'/></Link>
                 <Link to="/nearBuilding">빈 강의실 찾기</Link>
                 <Link to="/annualPlan">학사일정</Link>
                 <Link to="/announcement">공지사항</Link>

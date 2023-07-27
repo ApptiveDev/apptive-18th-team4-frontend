@@ -85,7 +85,7 @@ export default function SignUp() {
     <div className="signUp">
       <div className="logo_container">
         <Link to="/">
-          <img src="/assets/img/logo.jpg" />
+          <img src="/assets/img/logo_black.png" />
         </Link>
       </div>
       <div className="title_container">회원가입</div>

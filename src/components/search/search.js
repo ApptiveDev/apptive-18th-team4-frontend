@@ -10,7 +10,6 @@ export default function Search({ onBuildingSelect }) {
         setBuilding(buildingName);
         setCur(false);
     }
-    console.log(building)
 
     const handleInput = () => {
         if (building === '') alert("건물을 선택해주세요.")

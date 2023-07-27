@@ -5,7 +5,7 @@ export default function GradationBox() {
         <div className='gradation'>
             <div style={{display: 'flex', justifyContent: 'center', marginTop: '74.38px'}}>
                 <div className='logo' style={{width: '538px'}}>
-                    <img src="/assets/img/logo_home.png" />
+                    <img src="/assets/img/logo_black.png" />
                 </div>
             </div>
             <div style={{display: 'flex', justifyContent: 'center'}}>

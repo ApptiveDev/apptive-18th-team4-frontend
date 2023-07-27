@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { instance } from '../ApiContoller';
 
 export default function ModalRevise({ closeModal, data }) {
-    console.log(data)
     const [title, setTitle] = useState(data.title);
     const [description, setDescript] = useState(data.description);
     const [location, setLocation] = useState(data.location);
@@ -14,8 +13,8 @@ export default function ModalRevise({ closeModal, data }) {
     const [color, setColor] = useState(data.color);
     const [alarmTime, setAlarmTime] = useState(data.alarmTime);
     
-    const startTime = `${startDate}T${startT}:00+09:00`;
-    const endTime = `${endDate}T${endT}:00+09:00`;
+    const startTime = `${startDate}T${startT}`;
+    const endTime = `${endDate}T${endT}`;
 
     const handleSchedule = () => {
         if (title === '') alert("일정 이름을 입력해주세요.")
@@ -35,9 +34,10 @@ export default function ModalRevise({ closeModal, data }) {
                 "color": color,
                 "alarmTime": alarmTime
             })
-                .then(() => {
+                .then((res) => {
                     alert("일정이 수정되었습니다.");
                     window.location.reload();
+                    console.log(res)
                 })
                 .catch((err) => console.log(err));
         }

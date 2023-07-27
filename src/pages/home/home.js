@@ -78,34 +78,51 @@ export default function Home() {
         marker.setMap(map);
     }
 
-    const [buildingName, setBuildingName] = useState(''); 
+    const [locBuildingName, setLocBuildingName] = useState(''); 
+    const [likeBuildingName, setLikeBuildingName] = useState('');
     const [roomsByLoc, setRoomByLoc] = useState([]);
+    const [roomsByLike, setRoomByLike] = useState([]);
     const [notices, setNotice] = useState([]);
-    useEffect(() => {
-        // 빈 강의실(거리순) -> 수정 필요
-        instance.get(`/api/nearest-buildings/test?user_latitude=${lat}&user_longitude=${lang}`)
-            .then((res) => {
-                setBuildingName(res.data[0].buildingName); //현재 위치에서 가장 가까운 건물
-                instance.get(`/api/lecture-rooms/available-with-lectures?buildingName=${res.data[0].buildingName}`)
-                    .then((response) => setRoomByLoc(response.data.availableNow)) //현재 위치에서 가장 가까운 건물의 사용 가능한 강의실
-                    .catch((error) => console.log(error))
-            })
-            .catch((err) => console.log(err));
 
-        // 빈 강의실(즐겨찾기순) -> 수정 필요
+    useEffect(() => {
+        const latitude = location.coordinates.lat;
+        const longitude = location.coordinates.lang;
+        if (location.loaded === true) {
+            // 빈 강의실(거리순)
+            if (select === '거리순') {
+                instance.get(`/api/nearest-buildings/test?user_latitude=${latitude}&user_longitude=${longitude}`)
+                    .then((res) => {
+                        setLocBuildingName(res.data[0].buildingName); //현재 위치에서 가장 가까운 건물
+                        instance.get(`/api/lecture-rooms/available?buildingName=${res.data[0].buildingName}&setTime=60`)
+                            .then((response) => setRoomByLoc(response.data.availableNow)) //현재 위치에서 가장 가까운 건물의 사용 가능한 강의실
+                            .catch((error) => console.log(error))
+                    })
+                    .catch((err) => console.log(err));
+            }
+            // 빈 강의실(즐겨찾기순)
+            else {
+                instance.get(`/api/lecture-rooms/favorite-list?setTime=60`)
+                    .then((res) => {
+                        console.log(res.data)
+                        setLikeBuildingName(res.data[0].buildingName); //즐겨찾기한 건물 중 현재 위치와 가장 가까운 건물
+                        setRoomByLike(res.data[0].availableNow); //즐겨찾기한 건물 중 현재 위치와 가장 가까운 건물의 사용 가능한 강의실
+                    })
+                    .catch((err) => console.log(err));
+            }
+        }
 
         // 공지사항(학지시)
         instance.get('/api/announce/onestop')
-            .then((res) => setNotice(res.data.content))
+            .then((res) => setNotice(res.data.content.slice(0, 3)))
             .catch((err) => console.log(err));
-    }, []);
+    }, [location, select]);
 
     return (
         <div className='home'>
             <div className="top_container">
                 {/*상단 navbar*/}
                 <div style={{padding: '0 14%'}} className='home_nav'>
-                    <Link to="/"><img src='./assets/img/navbar_logo.png' className='logo'/></Link>
+                    <Link to="/"><img src='./assets/img/logo_white.png' className='logo'/></Link>
                     <Link to="/nearBuilding">빈 강의실 찾기</Link>
                     <Link to="/annualPlan">학사일정</Link>
                     <Link to="/announcement">공지사항</Link>
@@ -136,7 +153,7 @@ export default function Home() {
                             background: '#fff',
                             borderRadius: '0.8125rem', 
                         }}>
-                            <img src="/assets/img/logo_home2.png" />
+                            <img src="/assets/img/logo_black.png" />
                         </div>
 
                         <div style={{display: 'flex'}}>
@@ -245,7 +262,7 @@ export default function Home() {
                             {roomsByLoc.map((item, index) => (
                                 <div className='card-container' key={index}>
                                     <div className='card'>
-                                        <div style={{fontSize: '2rem', fontWeight: '600', marginLeft: '2.75rem'}}>{buildingName}</div>
+                                        <div style={{fontSize: '2rem', fontWeight: '600', marginLeft: '2.75rem'}}>{locBuildingName}</div>
                                         <div style={{fontSize: '4rem', fontWeight: '600', marginLeft: '2.75rem'}}>{item.roomNum}</div>
                                     </div>
                                     <span>빈 강의실 : {index + 1}순위</span>
@@ -258,23 +275,23 @@ export default function Home() {
                         <div style={{
                             display: 'flex',
                             marginTop: '4.6rem',
-                            overflowY: 'scroll'
+                            overflow: 'auto',
+                            whiteSpace: 'nowrap'
                             }}>
                             <div className='card-container'>
                                 <div id="map" className='card'></div>
                                 <span>현재 위치</span>
                             </div>
-                            {/*
-                            {roomsByLoc.map((item, index) => (
+
+                            {roomsByLike.map((item, index) => (
                                 <div className='card-container' key={index}>
                                     <div className='card'>
-                                        <div style={{fontSize: '2rem', fontWeight: '600', marginLeft: '2.75rem'}}>{buildingName}</div>
+                                        <div style={{fontSize: '2rem', fontWeight: '600', marginLeft: '2.75rem'}}>{likeBuildingName}</div>
                                         <div style={{fontSize: '4rem', fontWeight: '600', marginLeft: '2.75rem'}}>{item.roomNum}</div>
                                     </div>
                                     <span>빈 강의실 : {index + 1}순위</span>
                                 </div>
                             ))}
-                            */}
                         </div>
                     }
 
@@ -317,9 +334,9 @@ export default function Home() {
                                         display: 'flex', 
                                         justifyContent: 'space-between',
                                         width: '90%'}}>
-                                        <Link to={notice.urls}>
+                                        <a href={notice.urls}>
                                             <div>{notice.title}</div>
-                                        </Link>
+                                        </a>
                                         <div>
                                             {notice.date}
                                         </div>

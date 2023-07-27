@@ -12,20 +12,16 @@ import { instance } from "../../components/ApiContoller";
 export default function AnnualPlan() {
   const [isLogin, setIsLogin] = useState(false);
   
+  const navigate = useNavigate('');
   useEffect(() => {
       if (localStorage.getItem('accessToken') !== null) {
           setIsLogin(true)
       }
+      else {
+        alert("학사일정 조회 및 등록은 로그인 후 이용 가능합니다.");
+        navigate('/login');
+      }
   }, [isLogin]);
-
-  const navigate = useNavigate('');
-  useEffect(() => {
-    if (!isLogin) {
-      alert("학사일정 조회 및 등록은 로그인 후 이용 가능합니다.");
-      navigate('/login');
-    }
-  }, []);
-  
 
   const [data, setData] = useState([]);
   const [date, showDate] = useState(new Date());
@@ -34,6 +30,7 @@ export default function AnnualPlan() {
   useEffect(() => {
     instance.get(`/api/events?month=${month}`)
       .then(response => {
+        console.log(response.data)
         setData(response.data);
       })
       .catch(error => {
@@ -93,7 +90,6 @@ export default function AnnualPlan() {
   const [detail, setDetail] = useState([]);
 
   const openReviseModal = (id) => {
-    console.log(id);
     const filteredData = data.find((item) => item.eventId === id);
     //console.log(filteredData);
     setDetail(filteredData);
@@ -114,8 +110,6 @@ export default function AnnualPlan() {
   const closeOverallModal = () => {
     setShowOverall(false);
   };
-
-  console.log(showOverall)
 
   return (
     <div>

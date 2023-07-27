@@ -49,6 +49,7 @@
   width: 80%;
 }
 .announcement_container .notification_container .notification_element .showBtn {
+  cursor: pointer;
   font-weight: 600;
   font-size: 0.75rem;
   width: 4.188rem;
@@ -73,7 +74,7 @@
   display: flex;
   font-weight: 500;
   font-size: 1.25rem;
-  padding: 1.73% 2.43%;
+  padding: 1.73% 5%;
 }
 .announcement_container .notification_container .isClickedDiv a {
   color: black;

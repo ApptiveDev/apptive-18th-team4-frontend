@@ -32,9 +32,7 @@ export default function ModalOverall({ closeModal, date }) {
     const [detail, setDetail] = useState([]);
 
     const openReviseModal = (id) => {
-        console.log(id);
         const filteredData = data.find((item) => item.eventId === id);
-        //console.log(filteredData);
         setDetail(filteredData);
         setShowRevise(true);
     }
