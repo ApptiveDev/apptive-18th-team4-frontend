@@ -4,10 +4,6 @@
   align-items: center;
   margin-top: 80px;
 }
-.signUp .logo_container img {
-  width: 3rem;
-  height: 3rem;
-}
 .signUp .title_container {
   display: flex;
   justify-content: center;
