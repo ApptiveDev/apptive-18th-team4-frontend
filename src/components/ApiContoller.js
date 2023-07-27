@@ -2,7 +2,9 @@ import axios from 'axios';
 
 export const instance = axios.create({
     baseURL: `${process.env.REACT_APP_API_URL}`,
-    headers: {'Content-Type': 'application/json'},
+    headers: {
+        'Content-Type': 'application/json'
+    },
     withCredentials: true
 })
 
@@ -16,11 +18,15 @@ export async function postRefreshToken() {
 }
 */
 
-/*요청에 대한 처리 */
+/*요청에 대한 처리*/
 instance.interceptors.request.use(
     function (config) {
-        config.headers["Content-Type"] = "application/json; charset=utf-8";
-        config.headers["Authorization"] = localStorage.getItem('accessToken');
+        const accessToken = localStorage.getItem('accessToken');
+        if (accessToken) {
+            config.headers['Authorization'] = `Bearer ${accessToken}`;
+        }
+        //config.headers["Content-Type"] = "application/json; charset=utf-8";
+        //config.headers["Authorization"] = localStorage.getItem('accessToken');
         return config;
     },
     function (error) {
@@ -38,9 +44,10 @@ instance.interceptors.response.use(
         }
         return response;
     },
+    /*
     function (error) {
         if (error.response.request.status === 401) {
-            alert("로그인 해주세요");
+            //alert("로그인 해주세요");
             window.location.reload();
             localStorage.clear();
         }
@@ -50,4 +57,5 @@ instance.interceptors.response.use(
         console.log(error);
         return Promise.reject(error);
     }
+    */
 );

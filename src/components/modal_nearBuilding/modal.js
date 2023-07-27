@@ -13,28 +13,21 @@ export default function Modal_nearBuilding({ handleModalData }) {
     const [selectedTime, setTime] = useState('');
 
     const location = useGeoLocation();
-    const [lat, setLat] = useState('');
-    const [lang, setLang] = useState('');
-
-    useEffect(() => {
-        setLat(location.coordinates.lat);
-        setLang(location.coordinates.lang);
-    }, [])
 
     let requestURL = '';
     const handleResult = () => {
         setShow(false);
-
+        const lat = location.coordinates.lat;
+        const lang = location.coordinates.lang;
         if (selectedTime === '') requestURL = `/api/lecture-rooms/available-list?user_latitude=${lat}&user_longitude=${lang}`;
-        else {
-            requestURL = `/api/lecture-rooms/available-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`;
-            instance.get(requestURL)
-                .then((res) => {
-                    console.log(res.data);
-                    handleModalData(res.data.slice(0, 3));
-                })
-                .catch((err) => console.log(err));
-        }
+        else requestURL = `/api/lecture-rooms/available-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`;
+        
+        instance.get(requestURL)
+            .then((res) => {
+                console.log(res.data);
+                handleModalData(res.data.slice(0, 3));
+            })
+            .catch((err) => console.log(err));
     }
 
     /*오늘 날짜*/

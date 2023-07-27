@@ -6,11 +6,12 @@ import { majors, institutions } from "../../components/dropdown";
 import './pagination.css';
 import './announcement.css';
 import { instance } from "../../components/ApiContoller";
+import axios from 'axios';
 
 export default function Announcement() {
     // 로그인 여부에 따라 다른 elem 보여주기
     const [isLogin, setIsLogin] = useState(false);
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
     useEffect(() => {
         if (localStorage.getItem('accessToken') !== null) {
             setIsLogin(true);
@@ -44,8 +45,8 @@ export default function Announcement() {
     const handleResPageChange = (pageNumber) => {
         setPageRes(pageNumber);
     }
-    const startIndex_res = (pageRes - 1) * 10;
-    const endIndex_res = startIndex_res + 10;
+    const startIndex_res = (pageRes - 1) * 5;
+    const endIndex_res = startIndex_res + 5;
 
     //단과대학 및 학부(학과) 또는 기관 선택
     const [selectedVal, setVal] = useState('학사 공지사항');
@@ -76,16 +77,20 @@ export default function Announcement() {
 
     let requestURL = '';
     const handleResult = () => {
+        console.log(selectedVal)
+        console.log(selectedDept)
+        console.log(selectedInstt)
         if (selectedDept === '' && selectedInstt === '') {
             alert("학과 또는 기관을 선택해주세요.");
         } else {
+            setShow(true);
             if (selectedVal === "학사 공지사항") {
                 if (keyword) {
                     requestURL = `/api/announce/${selectedDept}` + `?keyword=${keyword}`;
                 } else {
                     requestURL = `/api/announce/${selectedDept}`;
                 }
-                instance.post(requestURL)
+                instance.get(requestURL)
                     .then((res) => {
                         setRes(res.data.content);
                         setShow(true);
@@ -98,7 +103,7 @@ export default function Announcement() {
                 } else {
                     requestURL = `/api/announce/${selectedInstt}`;
                 }
-                instance.post(requestURL)
+                instance.get(requestURL)
                     .then((res) => {
                         setRes(res.data.content);
                         setShow(true);
@@ -134,10 +139,10 @@ export default function Announcement() {
                 <span style={{ paddingLeft: '1.92%' }}>공지사항</span>
             </div>
 
-            {isLogin && data !== null (
+            {isLogin && data.length > 0 && (
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <div className='notification_container'>
-                        {data.map((item, index) => (
+                        {data.length > 0 && data.map((item, index) => (
                             <div style={{}}>
                                 <div style={{width: '100%', height: '100%'}}>
                                 <div key={index} className={`notification_list ${clickedIndexes.includes(index) ? 'opened' : ''}`}>
@@ -252,7 +257,9 @@ export default function Announcement() {
                         {show &&
                             <div className="stripe">
                                 <div style={{height: '100%', display: 'flex', alignItems: 'center', margin: '0 5rem'}}>
-                                    <span style={{fontSize: '1.25rem', fontWeight: '700'}}>{selectedDept || selectedInstt} 공지사항</span>
+                                    <span style={{fontSize: '1.25rem', fontWeight: '700'}}>
+                                        {selectedVal === "학사 공지사항" ? `${selectedDept} 공지사항` : `${selectedInstt} 공지사항`}
+                                    </span>
                                     <button className='startBtn' onClick={handleLike}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
                                             <path d="M11 0L13.4697 7.60081H21.4616L14.996 12.2984L17.4656 19.8992L11 15.2016L4.53436 19.8992L7.00402 12.2984L0.538379 7.60081H8.53035L11 0Z" fill="#00045F"/>
@@ -265,9 +272,9 @@ export default function Announcement() {
                         {show && res !== null && res.slice(startIndex_res, endIndex_res).map((item) => (
                             <div className="stripe">
                                 <div style={{height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0 5rem'}}>
-                                    <Link to={item.urls}>
+                                    <a href={`${item.urls}`}>
                                         <div style={{fontSize: '1.125rem'}}>{item.title}</div>  
-                                    </Link>
+                                    </a>
                                     <div style={{fontSize: '1.25rem'}}>{item.date}</div>
                                 </div>
                             </div>
@@ -279,7 +286,7 @@ export default function Announcement() {
                     {show && res !== null && <div>
                         <Pagination
                             activePage={pageRes}
-                            itemsCountPerPage={10}
+                            itemsCountPerPage={5}
                             totalItemsCount={res.length}
                             pageRangeDisplayed={5}
                             prevPageText="‹"

@@ -83,7 +83,9 @@ export default function Home() {
     const [notices, setNotice] = useState([]);
     useEffect(() => {
         // 빈 강의실(거리순) -> 수정 필요
-        instance.get(`/api/nearest-buildings/test?user_latitude=${lat}&user_longitude=${lang}`)
+        let latitude = location.coordinates.lat;
+        let longitude = location.coordinates.lang;
+        instance.get(`/api/nearest-buildings/test?user_latitude=${location.coordinates.lat}&user_longitude=${longitude}`)
             .then((res) => {
                 setBuildingName(res.data[0].buildingName); //현재 위치에서 가장 가까운 건물
                 instance.get(`/api/lecture-rooms/available-with-lectures?buildingName=${res.data[0].buildingName}`)
@@ -96,7 +98,7 @@ export default function Home() {
 
         // 공지사항(학지시)
         instance.get('/api/announce/onestop')
-            .then((res) => setNotice(res.data.content))
+            .then((res) => setNotice(res.data.content.slice(0, 3)))
             .catch((err) => console.log(err));
     }, []);
 
@@ -105,7 +107,7 @@ export default function Home() {
             <div className="top_container">
                 {/*상단 navbar*/}
                 <div style={{padding: '0 14%'}} className='home_nav'>
-                    <Link to="/"><img src='./assets/img/navbar_logo.png' className='logo'/></Link>
+                    <Link to="/"><img src='./assets/img/navbar_ldogo.png' className='logo'/></Link>
                     <Link to="/nearBuilding">빈 강의실 찾기</Link>
                     <Link to="/annualPlan">학사일정</Link>
                     <Link to="/announcement">공지사항</Link>
@@ -258,7 +260,8 @@ export default function Home() {
                         <div style={{
                             display: 'flex',
                             marginTop: '4.6rem',
-                            overflowY: 'scroll'
+                            overflow: 'auto',
+                            whiteSpace: 'nowrap'
                             }}>
                             <div className='card-container'>
                                 <div id="map" className='card'></div>
@@ -317,9 +320,9 @@ export default function Home() {
                                         display: 'flex', 
                                         justifyContent: 'space-between',
                                         width: '90%'}}>
-                                        <Link to={notice.urls}>
+                                        <a href={notice.urls}>
                                             <div>{notice.title}</div>
-                                        </Link>
+                                        </a>
                                         <div>
                                             {notice.date}
                                         </div>

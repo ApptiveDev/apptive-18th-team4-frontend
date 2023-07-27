@@ -12,20 +12,16 @@ import { instance } from "../../components/ApiContoller";
 export default function AnnualPlan() {
   const [isLogin, setIsLogin] = useState(false);
   
+  const navigate = useNavigate('');
   useEffect(() => {
       if (localStorage.getItem('accessToken') !== null) {
           setIsLogin(true)
       }
+      else {
+        alert("학사일정 조회 및 등록은 로그인 후 이용 가능합니다.");
+        navigate('/login');
+      }
   }, [isLogin]);
-
-  const navigate = useNavigate('');
-  useEffect(() => {
-    if (!isLogin) {
-      alert("학사일정 조회 및 등록은 로그인 후 이용 가능합니다.");
-      navigate('/login');
-    }
-  }, []);
-  
 
   const [data, setData] = useState([]);
   const [date, showDate] = useState(new Date());
