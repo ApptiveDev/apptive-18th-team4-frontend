@@ -19,7 +19,7 @@ const WeeklyCalendar = () => {
                 .then((res) => setCalendarData(res.data))
                 .catch((err) => console.log(err));
         }
-    }, []);
+    }, [isLogin]);
 
     const [selectedDate, setSelectedDate] = useState(null);
 

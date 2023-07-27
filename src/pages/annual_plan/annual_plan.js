@@ -30,6 +30,7 @@ export default function AnnualPlan() {
   useEffect(() => {
     instance.get(`/api/events?month=${month}`)
       .then(response => {
+        console.log(response.data)
         setData(response.data);
       })
       .catch(error => {

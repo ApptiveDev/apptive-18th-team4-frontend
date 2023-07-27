@@ -4,7 +4,7 @@ import { instance } from "../ApiContoller";
 import useGeoLocation from "../../pages/geolocation/useGeoLocation";
 //import data from '../../components/tab/data.json';
 
-export default function Modal_nearBuilding({ onTimeSelect, handleModalData }) {
+export default function Modal_nearBuilding({ onTimeSelect, handleModalData, category }) {
     const [showModal, setShow] = useState(false);
     const dayOfWeeks = ['월', '화', '수', '목', '금'];
     const timeZones = ['0.5', '1', '2', '3'];
@@ -14,20 +14,55 @@ export default function Modal_nearBuilding({ onTimeSelect, handleModalData }) {
 
     const location = useGeoLocation();
 
+    const showData = () => {
+        const lat = location.coordinates.lat;
+        const lang = location.coordinates.lang;
+        if (category === '위치순') {
+            instance.get(`/api/lecture-rooms/available-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`)
+                .then((res) => {
+                    //console.log(res.data);
+                    handleModalData(res.data.slice(0, 3));
+                })
+                .catch((err) => console.log(err));
+        }
+        else {
+            instance.get(`/api/lecture-rooms/favorite-list?setTime=${selectedTime * 60}`)
+                .then((res) => {
+                    //console.log(res.data);
+                    handleModalData(res.data.slice(0, 3));
+                })
+                .catch((err) => console.log(err));
+        }
+    }
+
     const handleResult = () => {
         setShow(false);
         const lat = location.coordinates.lat;
         const lang = location.coordinates.lang;
         if (selectedTime === '') alert("사용할 시간을 선택해주세요.")
         else {
-            instance.get(`/api/lecture-rooms/available-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`)
-                .then((res) => {
-                    console.log(res.data);
-                    handleModalData(res.data.slice(0, 3));
-                })
-                .catch((err) => console.log(err));
+            if (category === '위치순') {
+                instance.get(`/api/lecture-rooms/available-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`)
+                    .then((res) => {
+                        //console.log(res.data);
+                        handleModalData(res.data.slice(0, 3));
+                    })
+                    .catch((err) => console.log(err));
+            }
+            else {
+                instance.get(`/api/lecture-rooms/favorite-list?setTime=${selectedTime * 60}`)
+                    .then((res) => {
+                        //console.log(res.data);
+                        handleModalData(res.data.slice(0, 3));
+                    })
+                    .catch((err) => console.log(err));
+            }
         }
     }
+
+    useEffect(() => {
+        showData();
+    }, [category])
 
     /*오늘 날짜*/
     const now = new Date();
