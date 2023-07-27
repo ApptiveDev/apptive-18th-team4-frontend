@@ -28,11 +28,7 @@ function Tab ({ selectedBuilding, selectedTime, modalData }) {
     }
 
     /*선택한 tab의 정보 보여주기*/
-    console.log(data)
     const clickedData = data.filter((item) => item.buildingName === selectedTab);
-    console.log(clickedData)
-    //console.log(clickedData.availableNow[0])
-    console.log(clickedData[0]?.availableNow);
 
     /*즐겨찾기 */
     const handleLike = (name) => {
@@ -60,7 +56,6 @@ function Tab ({ selectedBuilding, selectedTime, modalData }) {
         if (selectedBuilding) {
             instance.get(`/api/lecture-rooms/available?buildingName=${selectedBuilding}&setTime=${selectedTime * 60}`)
                 .then((res) => {
-                    console.log(res.data)
                     const newData = {
                         buildingName: selectedBuilding,
                         availableNow: res.data.availableNow,
@@ -80,7 +75,6 @@ function Tab ({ selectedBuilding, selectedTime, modalData }) {
         setSelectedTab(data.length > 0 ? data[0].buildingName : ''); 
     }, [data]);
 
-    console.log(data)
     return ( 
         <div className='tab' style={{ marginTop: '2rem' }}>
             <ul>

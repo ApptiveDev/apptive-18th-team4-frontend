@@ -120,8 +120,8 @@ export default function Announcement() {
             if (selectedVal === "학사 공지사항") likeReqURL = `/api/announce/${selectedDept}/like`;
             else if (selectedVal === "기관 공지사항") likeReqURL = `/api/announce/${selectedInstt}/like`;
             instance.post(likeReqURL)
-                .then(() => {
-                    alert("즐겨찾기 추가되었습니다.");
+                .then((res) => {
+                    alert(res.data);
                     window.location.reload();
                 })
                 .catch((err) => {
@@ -167,7 +167,7 @@ export default function Announcement() {
                                     <div style={{BorderBottomLeftRadius: '1.875rem', borderBottomLeftRadius: '1.875rem'}}>
                                         {clickedIndexes.includes(index) &&
                                             item.announcements.slice(startIndex, endIndex).map((notice) => (
-                                            <div className="isClickedDiv">
+                                            <div className="isClickedDiv"> 
                                                 <div style={{ width: '90%'}}>
                                                     <a href={notice.urls}>{notice.title}</a>
                                                 </div>

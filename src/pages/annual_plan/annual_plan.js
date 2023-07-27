@@ -89,7 +89,6 @@ export default function AnnualPlan() {
   const [detail, setDetail] = useState([]);
 
   const openReviseModal = (id) => {
-    console.log(id);
     const filteredData = data.find((item) => item.eventId === id);
     //console.log(filteredData);
     setDetail(filteredData);
@@ -110,8 +109,6 @@ export default function AnnualPlan() {
   const closeOverallModal = () => {
     setShowOverall(false);
   };
-
-  console.log(showOverall)
 
   return (
     <div>
