@@ -82,32 +82,34 @@ export default function Home() {
     const [roomsByLoc, setRoomByLoc] = useState([]);
     const [notices, setNotice] = useState([]);
     useEffect(() => {
-        // 빈 강의실(거리순) -> 수정 필요
-        let latitude = location.coordinates.lat;
-        let longitude = location.coordinates.lang;
-        instance.get(`/api/nearest-buildings/test?user_latitude=${location.coordinates.lat}&user_longitude=${longitude}`)
-            .then((res) => {
-                setBuildingName(res.data[0].buildingName); //현재 위치에서 가장 가까운 건물
-                instance.get(`/api/lecture-rooms/available-with-lectures?buildingName=${res.data[0].buildingName}`)
-                    .then((response) => setRoomByLoc(response.data.availableNow)) //현재 위치에서 가장 가까운 건물의 사용 가능한 강의실
-                    .catch((error) => console.log(error))
-            })
-            .catch((err) => console.log(err));
+        const latitude = location.coordinates.lat;
+        const longitude = location.coordinates.lang;
+        if (location.loaded === true) {
+            // 빈 강의실(거리순) -> 수정 필요
+            instance.get(`/api/nearest-buildings/test?user_latitude=${latitude}&user_longitude=${longitude}`)
+                .then((res) => {
+                    setBuildingName(res.data[0].buildingName); //현재 위치에서 가장 가까운 건물
+                    instance.get(`/api/lecture-rooms/available?buildingName=${res.data[0].buildingName}&setTime=60`)
+                        .then((response) => setRoomByLoc(response.data.availableNow)) //현재 위치에서 가장 가까운 건물의 사용 가능한 강의실
+                        .catch((error) => console.log(error))
+                })
+                .catch((err) => console.log(err));
 
-        // 빈 강의실(즐겨찾기순) -> 수정 필요
+            // 빈 강의실(즐겨찾기순) -> 수정 필요
+        }
 
         // 공지사항(학지시)
         instance.get('/api/announce/onestop')
             .then((res) => setNotice(res.data.content.slice(0, 3)))
             .catch((err) => console.log(err));
-    }, []);
+    }, [location]);
 
     return (
         <div className='home'>
             <div className="top_container">
                 {/*상단 navbar*/}
                 <div style={{padding: '0 14%'}} className='home_nav'>
-                    <Link to="/"><img src='./assets/img/navbar_ldogo.png' className='logo'/></Link>
+                    <Link to="/"><img src='./assets/img/logo_white.png' className='logo'/></Link>
                     <Link to="/nearBuilding">빈 강의실 찾기</Link>
                     <Link to="/annualPlan">학사일정</Link>
                     <Link to="/announcement">공지사항</Link>
@@ -138,7 +140,7 @@ export default function Home() {
                             background: '#fff',
                             borderRadius: '0.8125rem', 
                         }}>
-                            <img src="/assets/img/logo_home2.png" />
+                            <img src="/assets/img/logo_black.png" />
                         </div>
 
                         <div style={{display: 'flex'}}>

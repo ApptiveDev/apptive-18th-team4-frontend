@@ -10,9 +10,6 @@ import './nearBuilding.css';
 
 export default function NearBuilding() {
     const [isLogin, setIsLogin] = useState(false);
-    const [selectedTime, setTime] = useState('');
-    const timeZones = ['0.5', '1', '2', '3'];
-
     const [category, setCategory] = useState('위치순');
 
     useEffect(() => {
@@ -27,11 +24,17 @@ export default function NearBuilding() {
         setSelectedBuilding(buildingName);
     };
 
-    // Tab 컴포넌트에 전달할 state와 state를 변경하는 콜백 함수 정의
+    // Tab 컴포넌트에 state 전달하기
     const [modalData, setModalData] = useState([]);
 
     const handleModalData = (buildingData) => {
         setModalData(buildingData);
+    };
+
+    // Tab 컴포넌트에 selectedTime 전달하기
+    const [selectedTime, setSelectedTime] = useState('');
+    const handleSelectedTime = (t) => {
+        setSelectedTime(t)
     };
 
     /*두 지점 사이 이동 시간 및 거리 계산*/
@@ -44,10 +47,11 @@ export default function NearBuilding() {
         setLat(location.coordinates.lat);
         setLang(location.coordinates.lang);
     }, [location]);
-console.log(modalData)
+
     useEffect(() => {
         let origin = new window.google.maps.LatLng(lat, lang);
         let destination = new window.google.maps.LatLng(lat, lang);
+        console.log(destination)
         if (modalData.length !== 0) {
             destination = new window.google.maps.LatLng(modalData[0].buildingLat, modalData[0].buildingLng);
         }
@@ -98,11 +102,11 @@ console.log(modalData)
                 </div>
 
                 <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-                    <Modal_nearBuilding handleModalData={handleModalData} />
+                    <Modal_nearBuilding onTimeSelect={handleSelectedTime} handleModalData={handleModalData} />
                     <Search onBuildingSelect={handleBuildingSelect} />
                 </div>
-
-                <Tab selectedBuilding={selectedBuilding} modalData={modalData} />
+                    
+                <Tab selectedBuilding={selectedBuilding} selectedTime={selectedTime} modalData={modalData} />
 
                 <div style={{marginTop: '2.25rem', width: '100%'}}>
                     <label style={{fontWeight: '600', fontSize: '1.5rem'}}>현재 위치</label>

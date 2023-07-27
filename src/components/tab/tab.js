@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 import './tab.css';
 import { instance } from '../ApiContoller';
 
-function Tab ({ selectedBuilding, modalData }) {
-    const [data, setData] = useState(modalData);
+function Tab ({ selectedBuilding, selectedTime, modalData }) {
+    const [data, setData] = useState([]);
 
     useEffect(() => {
-        setData(modalData);
+        if (modalData.length > 0) {
+            setData(modalData);
+        }
       }, [modalData]);
-    //console.log(data)
-
+    
     /*로그인 여부 판단 */
     const [isLogin, setIsLogin] = useState(false);
 
@@ -27,7 +28,11 @@ function Tab ({ selectedBuilding, modalData }) {
     }
 
     /*선택한 tab의 정보 보여주기*/
+    console.log(data)
     const clickedData = data.filter((item) => item.buildingName === selectedTab);
+    console.log(clickedData)
+    //console.log(clickedData.availableNow[0])
+    console.log(clickedData[0]?.availableNow);
 
     /*즐겨찾기 */
     const handleLike = (name) => {
@@ -49,13 +54,13 @@ function Tab ({ selectedBuilding, modalData }) {
             setData(updatedData);
         }
     }
-    console.log(selectedBuilding)
+
     /*tab 추가하기*/
     useEffect(() => {
         if (selectedBuilding) {
-            //수정 필요
-            instance.post(`/api/lecture-rooms/available-with-lectures?buildingName=${selectedBuilding}`)
+            instance.get(`/api/lecture-rooms/available?buildingName=${selectedBuilding}&setTime=${selectedTime * 60}`)
                 .then((res) => {
+                    console.log(res.data)
                     const newData = {
                         buildingName: selectedBuilding,
                         availableNow: res.data.availableNow,
@@ -75,12 +80,12 @@ function Tab ({ selectedBuilding, modalData }) {
         setSelectedTab(data.length > 0 ? data[0].buildingName : ''); 
     }, [data]);
 
-      console.log(data)
+    console.log(data)
     return ( 
         <div className='tab' style={{ marginTop: '2rem' }}>
             <ul>
                 <li style={{display: 'flex'}}>
-                    {data !== null && data.map((item) => (
+                    {data.length > 0 && data.map((item) => (
                         <li 
                             style={{background: selectedTab === item.buildingName ? '#fff' : '#E2E2E2'}}
                             onClick={() => handleTabClick(item.buildingName)}>
@@ -109,8 +114,8 @@ function Tab ({ selectedBuilding, modalData }) {
                             <span>현재 빈 강의실 목록</span>
                             <span>사용 가능한 시간</span>
                         </div>
-                        {clickedData.length !==0 && clickedData[0].availableNow.map((item) => (
-                            <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '1.25rem', fontWeight: '600', fontSize: '1.25rem'}}>
+                        {clickedData !== undefined && clickedData.length > 0 && clickedData[0]?.availableNow?.map((item) => (
+                            <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '1.25rem', fontWeight: '600', fontSize: '1.25rem' }}>
                                 <div>{item.roomNum}</div>
                                 <div>~ {item.nextLectureStartTime === null ? '24:00' : item.nextLectureStartTime.slice(0, 5)}</div>
                             </div>
@@ -122,7 +127,7 @@ function Tab ({ selectedBuilding, modalData }) {
                             <span>수업이 곧 끝나는 강의실</span>
                             <span>사용 가능한 시간</span>
                         </div>
-                        {clickedData.length !==0 && clickedData[0].availableSoon.map((item) => (
+                        {clickedData.length !==0 && clickedData[0]?.availableSoon?.map((item) => (
                             <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '1.25rem', fontWeight: '600', fontSize: '1.25rem'}}>
                                 <div style={{width: '11.4rem', textAlign: 'center'}}>{item.roomNum}</div>
                                 <div>{item.startTime === null ? '24:00' : item.startTime.slice(0, 5)} ~ {item.endTime === null ? '24:00' : item.endTime.slice(0, 5)}</div>
