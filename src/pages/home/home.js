@@ -102,7 +102,7 @@ export default function Home() {
             }
             // 빈 강의실(즐겨찾기순)
             else {
-                instance.get(`/api/lecture-rooms/favorite-list?setTime=60`)
+                instance.get(`/api/lecture-rooms/favorite-list?user_latitude=${lat}&user_longitude=${lang}&setTime=60`)
                     .then((res) => {
                         console.log(res.data)
                         setLikeBuildingName(res.data[0].buildingName); //즐겨찾기한 건물 중 현재 위치와 가장 가까운 건물
