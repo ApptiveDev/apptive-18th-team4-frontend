@@ -33,6 +33,7 @@ export default function Home() {
         setIsLogin(false);
         navigate('/');
         localStorage.clear();
+        window.location.reload();
     }
 
     const [select, setSelect] = useState('거리순');

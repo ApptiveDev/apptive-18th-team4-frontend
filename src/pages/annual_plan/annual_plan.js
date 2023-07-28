@@ -28,15 +28,17 @@ export default function AnnualPlan() {
   const month = moment(date).format('M');
 
   useEffect(() => {
-    instance.get(`/api/events?month=${month}`)
-      .then(response => {
-        console.log(response.data)
-        setData(response.data);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }, [data]);
+    if (isLogin) {
+      instance.get('/api/events')
+        .then(response => {
+          console.log(response.data)
+          setData(response.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }, [data, isLogin]);
   
 
   /*날짜 형식 바꾸기*/
