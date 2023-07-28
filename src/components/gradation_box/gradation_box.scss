@@ -1,29 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Monda&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monda&display=swap');
 
 .gradation {
-    width: 720px;
-    height: 1024px;
-    border-radius: 0 45px 0 0;
+    width: 45%;
+    height: 100vh;
+    border-radius: 0 2.81rem 2.81rem 0; 
     background-image: url("/public/assets/img/gradation_background.png");
     background-repeat: no-repeat;
+    background-size: cover;
     .gradation_box {
-        margin-top: 125.25px;
-        width: 538px;
-        height: 526px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        border-radius: 1.25rem;
         background-color: rgba(255, 255, 255, 0.28);
-        border: 1px #FFFFFF;
+        width: 60%;
+        height: 60%;
+        font-family: 'Monda';
+        font-weight: 700;
+        font-size: 2.5rem;
+        margin-right: 4rem;
+        .logo-container {
+            margin-left: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.8125rem;
+            width: 3.125rem;
+            height: 3.125rem;
+            background: #fff;
+            img {
+                width: 2.5rem;
+            }
+        }
         .slogan {
-            margin-left: 66px;
-            margin-top: 139px;
-            font-family: 'Inter';
+            margin-left: 20%;
+            font-size: 0.875rem;
             font-weight: 400;
-            font-size: 20px;
-            line-height: 24px;
             color: #FFFFFF;
         }
-        font-family: 'Monda';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 96px;
     }
 }

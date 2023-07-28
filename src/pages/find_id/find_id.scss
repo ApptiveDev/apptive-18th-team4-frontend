@@ -4,32 +4,47 @@
     display: flex;
     .navbar {
         display: flex;
-        margin-top: 73.56px;
-        font-style: normal;
+        justify-content: space-between;
+        margin-left: 20%;
+        margin-top: 1.6rem;
+        color: #666;
+        font-size: 1rem;
         font-weight: 500;
-        font-size: 16px;
-        font-family: 'Inter';
         a {
             color: black;
             text-decoration: none;
-            display: flex;
-            margin-right: 7.5rem;
         }
     }
     .title {
-        margin-top: 119.44px;
+        margin-left: 20%;
+        display: flex;
+        margin-top: 25%;
         font-style: normal;
-        font-family: 'Inter';
-        font-weight: 500;
-        font-size: 36px;
-    }
+        font-family: 'Poppins';
+        font-weight: 600;
+        font-size: 2rem;
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 3.125rem;
+            height: 3.125rem;
+            border-radius: 0.8125rem;
+            background: #0B0039;
+            margin-right: 2rem;
+            img {
+                width: 2rem;
+            }
+        }
+    }  
+
     label {
-        font-family: 'Inter';
         font-weight: 400;
-        font-size: 16px;
+        font-size: 1rem;
     }
     .enterNickname {
-        margin-top: 40px;
+        margin-left: 20%;
+        margin-top: 2rem;
         input {
             margin-top: 6px;
             margin-bottom: 24px;
@@ -43,6 +58,7 @@
         }
     }
     .selectQues {
+        margin-left: 20%;
         select {
             margin-top: 6px;
             margin-bottom: 24px;
@@ -59,9 +75,10 @@
         }
     }
     .enterAnswer {
+        margin-left: 20%;
         input {
             margin-top: 6px;
-            margin-bottom: 88px;
+            margin-bottom: 2rem;
             width: 386px;
             height: 35px;
             border: 1px solid #A0A0A0;
@@ -72,7 +89,9 @@
         }
     }
     button {
-        width: 385px;
+        margin-left: 20%;
+        cursor: pointer;
+        width: 25rem;
         height: 40px;
         background: #AEC0F0;
         border-radius: 19px;

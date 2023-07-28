@@ -3,13 +3,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 80px;
+        margin-top: 10rem;
+        margin-bottom: 3rem;
     }
     .title_container {
         display: flex;
         justify-content: center;
         margin-top: 8px;
-        margin-bottom: 129px;
+        margin-bottom: 4rem;
         font-weight: 500;
         font-size: 32px;
     }
@@ -24,20 +25,20 @@
                 color: #666666;
             }
             input {
-                width: 578px;
+                width: 35rem;
                 height: 56px;
                 border: 1px solid rgba(102, 102, 102, 0.35);
                 border-radius: 12px;
                 margin-top: 4px;
                 margin-bottom: 24px;
                 outline: none;
-                //padding-left: 24px;
+                padding-left: 1.5rem;
             }
             ::placeholder {
                 font-weight: 400;
                 font-size: 16px;
                 color: rgba(102, 102, 102, 0.6);
-                padding-left: 24px;
+                
               }
             .enterPW {
                 input {
@@ -53,7 +54,7 @@
             }
             .state {
                 select {
-                    width: 578px;
+                    width: 37rem;
                     height: 56px;
                     border: 1px solid rgba(102, 102, 102, 0.35);
                     border-radius: 12px;
@@ -81,7 +82,7 @@
             }
             .selectMajor {
                 select {
-                    width: 578px;
+                    width: 37rem;
                     height: 56px;
                     border: 1px solid rgba(102, 102, 102, 0.35);
                     border-radius: 12px;
@@ -111,14 +112,14 @@
             }
             button[type='submit'] {
                 margin-top: 112px;
-                width: 578px;
+                width: 35rem;
                 height: 56px;
-                background: rgba(102, 102, 102, 0.35);
-                border-radius: 40px;
+                border-radius: 2.5rem;
                 border: none;
-                font-weight: 500;
-                font-size: 22px;
+                font-size: 1.375rem;
                 color: #FFFFFF;
+                opacity: 0.25;
+                background: #0038FF;
             }
             .link_to_login {
                 display: flex;

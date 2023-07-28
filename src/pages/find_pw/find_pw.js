@@ -34,21 +34,11 @@ export default function FindPw() {
   return (
     <div className="find_pw">
       <GradationBox />
-      <div style={{ marginLeft: "105px" }}>
-        <div className="navbar">
-          <div>
-            <Link to="/">Home</Link>
-          </div>
-          <div>
-            <Link to="/login" style={{ color: "#666666" }}>
-              Log in
-            </Link>
-          </div>
-          <div>
-            <Link to="/signUp" style={{ color: "#666666" }}>
-              Sign up
-            </Link>
-          </div>
+      <div style={{display: 'flex', flexDirection: 'column'}}>
+        <div className='navbar'>
+            <div><Link to='/'>Home</Link></div>
+            <div><Link to='/login' style={{fontWeight: '700', color: '#000'}}>Log in</Link></div>
+            <div><Link to='/signUp'>Sign up</Link></div>
         </div>
 
         <div className="title">비밀번호 찾기</div>

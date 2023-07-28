@@ -99,6 +99,9 @@
                     border: none;
                     cursor: pointer;
                 }
+                .select_time.selected {
+                    background-color: #6c6c6c;
+                }
             }
             .color_container {
                 padding: 0.5rem 1.25rem;

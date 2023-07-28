@@ -15,7 +15,7 @@ const WeeklyCalendar = () => {
     const [calendarData, setCalendarData] = useState([]);
     useEffect(() => {
         if (isLogin) {
-            instance.get('/api/annualplan/my')
+            instance.get('/api/events')
                 .then((res) => setCalendarData(res.data))
                 .catch((err) => console.log(err));
         }
@@ -50,8 +50,7 @@ const WeeklyCalendar = () => {
     return (
         <div className='weekly-calendar' 
             style={{
-                fontSize: '1.5625rem',
-                fontWeight: '600'
+                height: isLogin ? '' : '21.125rem'
             }}>
             <div style={{
                 display: 'flex',
@@ -82,15 +81,13 @@ const WeeklyCalendar = () => {
                         className={`calendar-date ${selectedDate === date ? 'selected' : ''}`}>
                         {date.getDate()}
 
-                        {/* startDate부터 endDate까지 해당 날짜에 이벤트가 있는지 확인 */}
+                        {/* startTime부터 startTime까지 해당 날짜에 이벤트가 있는지 확인 */}
                         {calendarData.map((event) => {
-                            const eventStartDate = moment(event.startDate, 'YYYY.MM.DD').toDate();
-                            const eventEndDate = moment(event.endDate, 'YYYY.MM.DD').toDate();
-                            if (date >= eventStartDate && date <= eventEndDate) {
+                            if (new Date(date) >= new Date(event.startTime) && new Date(date) <= new Date(event.endTime)) {
                                 return (
                                     <div style={{display: 'flex', justifyContent: 'center'}}>
-                                        <div key={event.startDate} className="purple-box">
-                                            {event.context}
+                                        <div key={event.startTime} className="purple-box">
+                                            {event.title}
                                         </div>
                                     </div>
                                 );

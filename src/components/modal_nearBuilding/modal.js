@@ -26,7 +26,7 @@ export default function Modal_nearBuilding({ onTimeSelect, handleModalData, cate
                 .catch((err) => console.log(err));
         }
         else {
-            instance.get(`/api/lecture-rooms/favorite-list?setTime=${selectedTime * 60}`)
+            instance.get(`/api/lecture-rooms/favorite-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`)
                 .then((res) => {
                     //console.log(res.data);
                     handleModalData(res.data.slice(0, 3));

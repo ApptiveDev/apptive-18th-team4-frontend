@@ -15,6 +15,9 @@ export default function FindId() {
     "내가 다닌 초등학교는?",
     "인상 깊게 읽은 책 이름은?",
     "내 별명은?",
+    "내가 좋아하는 캐릭터는?",
+    "자신의 인생 좌우명은?", 
+    "내가 좋아하는 색깔은?"
   ];
 
   const handleFindId = (e) => {
@@ -44,21 +47,11 @@ export default function FindId() {
   return (
     <div className="find_id">
       <GradationBox />
-      <div style={{ marginLeft: "105px" }}>
-        <div className="navbar">
-          <div>
-            <Link to="/">Home</Link>
-          </div>
-          <div>
-            <Link to="/login" style={{ color: "#666666" }}>
-              Log in
-            </Link>
-          </div>
-          <div>
-            <Link to="/signUp" style={{ color: "#666666" }}>
-              Sign up
-            </Link>
-          </div>
+      <div style={{display: 'flex', flexDirection: 'column'}}>
+        <div className='navbar'>
+            <div><Link to='/'>Home</Link></div>
+            <div><Link to='/login' style={{fontWeight: '700', color: '#000'}}>Log in</Link></div>
+            <div><Link to='/signUp'>Sign up</Link></div>
         </div>
 
         <div className="title">아이디 찾기</div>
