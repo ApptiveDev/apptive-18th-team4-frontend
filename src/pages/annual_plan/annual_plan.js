@@ -29,9 +29,8 @@ export default function AnnualPlan() {
 
   useEffect(() => {
     if (isLogin) {
-      instance.get('/api/events')
+      instance.get(`/api/events?month=${month}`)
         .then(response => {
-          console.log(response.data)
           setData(response.data);
         })
         .catch(error => {
@@ -116,7 +115,7 @@ export default function AnnualPlan() {
   return (
     <div>
       <Navbar />
-      <div style={{display: 'flex', justifyContent: 'center', marginTop: '4.813rem'}}>
+      <div style={{display: 'flex', justifyContent: 'center', marginTop: '2.8rem'}}>
         <div style={{display: 'flex', justifyContent: 'flex-end', width: '64rem'}}>
           <Modal_annualPlan selectedDate={moment(date).format("YYYY-MM-DD")} selectedDayWeek={date.getDay()} style={{marginRight: '0.625rem'}}/> {/* 모달에 선택한 날짜 전달 */}
           <button className="calendar_sub" style={{marginLeft: '0.625rem', cursor: 'pointer'}} onClick={openOverallModal}>
@@ -200,15 +199,18 @@ export default function AnnualPlan() {
                           </div>
                           <div style={{margin: '0 0.625rem', display: 'flex'}} >
                             <div style={{height: '5.3rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
-                              <div style={{width: '20rem', fontSize: '1.25rem', display: 'flex', justifyContent: 'space-between'}}>
-                                <div>{item.title}</div>
-                                <div>
-                                  <img src="/assets/img/memo.png" style={{marginRight: '0.54rem'}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}/>
-                                  <img src="/assets/img/pencil.png" onClick={() => openReviseModal(item.eventId)} style={{width: '1.25rem', height: '1.25rem', cursor: 'pointer'}} />
-                                </div>
+                              <div style={{width: '20rem', display: 'flex', justifyContent: 'space-between'}}>
+                                <div style={{width: '80%'}}>{item.title}</div>
+                                {item.eventId !== null &&
+                                  <div style={{display: 'flex', alignItems: 'center'}}>   
+                                    <img src="/assets/img/memo.png" style={{marginRight: '0.54rem'}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}/>
+                                    <img src="/assets/img/pencil.png" onClick={() => openReviseModal(item.eventId)} style={{width: '1.25rem', height: '1.25rem', cursor: 'pointer'}} />
+                                  </div>
+                                }
                               </div>
                               <div style={{color: '#ABABAB'}}>
-                                {item.startTime.slice(11, 16)} ~ {item.endTime.slice(11, 16)}, {item.location}
+                                {item.startTime.slice(11, 16)} ~ {item.endTime.slice(11, 16)}
+                                {item.description !== '' && ','} {item.location}
                               </div>
                             </div>
                           </div>

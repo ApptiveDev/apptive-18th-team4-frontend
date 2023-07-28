@@ -45,7 +45,6 @@ const Modal_annualPlan = ({selectedDate, selectedDayWeek}) => {
         else if (startT === '' ) alert("일정 시작 시간을 입력해주세요.")
         else if (endDate === '' ) alert("일정 종료 일자를 입력해주세요.")
         else if (endT === '' ) alert("일정 종료 시간을 입력해주세요.")
-        else if (alarmTime === '') alert("알림 시간을 선택해주세요.")
         else if (color === '') alert("색상을 선택해주세요.")
         else {
             instance.post('/api/events', {

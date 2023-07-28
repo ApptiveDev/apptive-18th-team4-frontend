@@ -31,6 +31,15 @@ export default function ModalOverall({ closeModal, date }) {
     const [showRevise, setShowRevise] = useState(false);
     const [detail, setDetail] = useState([]);
 
+    const handleDelete = (id) => {
+        instance.delete(`/api/events/${id}`)
+            .then(() => {
+                alert("일정이 삭제되었습니다.");
+                window.location.reload();
+            })
+            .catch((err) => console.log(err));
+    }
+
     const openReviseModal = (id) => {
         const filteredData = data.find((item) => item.eventId === id);
         setDetail(filteredData);
@@ -74,14 +83,21 @@ export default function ModalOverall({ closeModal, date }) {
 
                                 <div style={{display: 'flex', justifyContent: 'space-around', width: '100%'}}>
                                     <div style={{display: 'flex', alignItems: 'center', width: '80%'}}>
-                                        <div style={{fontSize: '0.875rem'}}>{item.title}</div>
-                                        <div style={{color: '#AFAFAF', fontSize: '0.75rem', marginLeft: '0.3rem'}}>
+                                        <div style={{fontSize: '0.875rem', width: '90%'}}>{item.title}</div>
+                                        <div style={{color: '#AFAFAF', fontSize: '0.75rem', marginLeft: '0.3rem', width: '40%'}}>
                                             {item.startTime.slice(11, 16)} ~ {item.endTime.slice(11, 16)}
                                         </div>
                                     </div>
-                                    <div>
-                                        <img src="/assets/img/pencil.png" onClick={() => openReviseModal(item.eventId)} style={{width: '0.8rem', height: '0.8rem', cursor: 'pointer'}} />
+                                    
+                                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '10%'}}>
+                                        {item.eventId !== null && 
+                                        <>
+                                            <span onClick={() => handleDelete(item.eventId)} style={{cursor: 'pointer', display: 'flex', alignItems: 'center'}}>x</span>
+                                            <img src="/assets/img/pencil.png" onClick={() => openReviseModal(item.eventId)} style={{width: '0.8rem', height: '0.8rem', cursor: 'pointer'}} />
+                                        </>
+                                        }
                                     </div>
+                                    
                                 </div>
                             </div>
                         </>

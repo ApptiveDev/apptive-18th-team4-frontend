@@ -16,6 +16,15 @@ export default function ModalRevise({ closeModal, data }) {
     const startTime = `${startDate}T${startT}`;
     const endTime = `${endDate}T${endT}`;
 
+    const handleDelete = (id) => {
+        instance.delete(`/api/events/${id}`)
+            .then(() => {
+                alert("일정이 삭제되었습니다.");
+                window.location.reload();
+            })
+            .catch((err) => console.log(err));
+    }
+
     const handleSchedule = () => {
         if (title === '') alert("일정 이름을 입력해주세요.")
         else if (startDate === '' ) alert("일정 시작 일자를 입력해주세요.")
@@ -34,10 +43,9 @@ export default function ModalRevise({ closeModal, data }) {
                 "color": color,
                 "alarmTime": alarmTime
             })
-                .then((res) => {
+                .then(() => {
                     alert("일정이 수정되었습니다.");
                     window.location.reload();
-                    console.log(res)
                 })
                 .catch((err) => console.log(err));
         }
@@ -93,7 +101,8 @@ export default function ModalRevise({ closeModal, data }) {
                             <div className='select_color' style={{backgroundColor: '#080038'}} onClick={() => setColor('#080038')}/>
                         </div>
                     </div>
-                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+                        <button className='add_schedule' onClick={() => handleDelete(data.eventId)}>일정 삭제하기</button>
                         <button className='add_schedule' onClick={handleSchedule}>일정 수정 완료</button>
                     </div>
                 </div>
