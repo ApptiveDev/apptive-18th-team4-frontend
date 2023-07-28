@@ -186,7 +186,7 @@ export default function AnnualPlan() {
                 if (moment(date).isBetween(start, end, null, '[]')) {
                   return (
                     <div>
-                      {showMemo && <div style={{background: 'pink', display: 'flex', justifyContent: 'flex-end', marginRight: '0.8rem', marginBottom: '0.1rem'}}>
+                      {showMemo && <div style={{background: 'pink', display: 'flex', justifyContent: 'flex-end', marginRight: '1.5rem', marginBottom: '0.1rem'}}>
                         <div className="speech_bubble">{item.description}</div>
                       </div>}
 
@@ -199,7 +199,7 @@ export default function AnnualPlan() {
                           </div>
                           <div style={{margin: '0 0.625rem', display: 'flex'}} >
                             <div style={{height: '5.3rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
-                              <div style={{width: '20rem', display: 'flex', justifyContent: 'space-between'}}>
+                              <div style={{width: '20rem', display: 'flex'}}>
                                 <div style={{width: '80%'}}>{item.title}</div>
                                 {item.eventId !== null &&
                                   <div style={{display: 'flex', alignItems: 'center'}}>   
@@ -210,7 +210,7 @@ export default function AnnualPlan() {
                               </div>
                               <div style={{color: '#ABABAB'}}>
                                 {item.startTime.slice(11, 16)} ~ {item.endTime.slice(11, 16)}
-                                {item.description !== '' && ','} {item.location}
+                                {item.location !== '' && ','} {item.location}
                               </div>
                             </div>
                           </div>

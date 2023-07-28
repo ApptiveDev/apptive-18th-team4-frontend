@@ -110,6 +110,9 @@
   border: none;
   cursor: pointer;
 }
+.modal_container .modal .modal-content .time_container .select_time.selected {
+  background-color: #6c6c6c;
+}
 .modal_container .modal .modal-content .color_container {
   padding: 0.5rem 1.25rem;
   display: flex;

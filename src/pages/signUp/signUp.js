@@ -93,7 +93,7 @@ export default function SignUp() {
         <form onSubmit={handleSignup}>
           <div className="enterEmail">
             <div>
-              <label htmlFor="email">아이디</label>
+              <label htmlFor="email">아이디 (이메일 형식)</label>
             </div>
             <input
               name="email"
@@ -206,7 +206,7 @@ export default function SignUp() {
             <button type="submit">회원가입</button>
           </div>
           <div className="link_to_login">
-            Already have an account? <Link to="/login">Log in</Link>
+            Already have an account? <Link to="/login" style={{marginLeft: '0.5rem'}}>Log in</Link>
           </div>
         </form>
       </div>

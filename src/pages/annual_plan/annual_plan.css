@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap&display=swap');
+
 .calendar_sub {
   font-size: 1.5rem;
   display: flex;
@@ -21,12 +23,11 @@
 /*calendar library css*/
 .react-calendar {
   width: 64rem;
-  height: 40rem;
+  height: 35rem;
   border-radius: 1.5625rem;
   border: 1px solid #C8C8C8;
   background: #FFF;
   box-shadow: 8px 6px 6px 0px rgba(0, 0, 0, 0.25);
-  line-height: 1.56rem;
 }
 
 .react-calendar--doubleView {
@@ -104,12 +105,6 @@
   font-weight: bold;
 }
 
-/*주말 빨간색으로 표시
-.react-calendar__month-view__days__day--weekend {
-  color: #d10000;
-}
-*/
-
 .react-calendar__month-view__days__day--neighboringMonth {
   color: #757575;
 }
@@ -125,7 +120,7 @@
   padding: 10px 6.6667px;
   background: none;
   text-align:center;
-  line-height: 4rem; /*여기 수정*/
+  line-height: 3rem;
 }
 
 .react-calendar__tile:disabled {
@@ -142,7 +137,6 @@
   color: #ACB3F0;
 }
 
-/*..?*/
 .react-calendar__tile--now {
   color: black;
   font-weight: bold;
@@ -220,17 +214,16 @@
   border-radius: 50%;
  }
 
-
-
  /*클릭한 날짜의 일정 표시*/
  .context_container {
+  position: relative;
+  font-family: 'Asap';
   width: 64rem;
   margin-top: 0.938rem;
  }
 
  .content_container {
-  position: relative;
-  z-index: 3;
+  font-family: 'Asap';
   width: 27.25rem;
   height: 6.4375rem;
   border: 1px solid #080038;
@@ -238,8 +231,15 @@
  }
 
  .context_container .speech_bubble {
-  position: relative;
-  z-index: 1000;
+  position: absolute; /* 변경: 포지션을 absolute로 설정 */
+  top: -2.5rem;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Asap';
+  font-weight: 700;
+  font-size: 0.6875rem;
   width: 6.25rem;
   height: 4rem;
 	background: #100033;
@@ -247,7 +247,6 @@
  }
 
  .context_container .speech_bubble:after {
-  z-index: 10;
   content: '';
 	position: absolute;
 	bottom: 0;
