@@ -62,7 +62,7 @@ export default function NearBuilding() {
             .catch((err) => console.log(err));
     
 
-        instance.get(`/api/lecture-rooms/favorite-list?setTime=${selectedTime * 60}`)
+        instance.get(`/api/lecture-rooms/favorite-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`)
             .then((res) => {
                 setDataByLike(res.data.slice(0, 3));
             })
