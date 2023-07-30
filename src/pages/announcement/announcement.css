@@ -107,6 +107,8 @@
   padding-left: 0.938rem;
   margin-left: 4%;
   height: 2rem;
+  font-family: "Asap";
+  font-weight: 600;
 }
 .announcement_container #classification {
   width: 20%;
@@ -138,6 +140,8 @@
   margin-right: 1.31rem;
   padding-left: 0.938rem;
   font-size: 1rem;
+  font-family: "Asap";
+  font-weight: 600;
 }
 .announcement_container .enterKeyword::-moz-placeholder {
   color: #C4C4C4;

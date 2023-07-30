@@ -44,6 +44,7 @@ export default function SignUp() {
         console.log(error);
       });
   };
+
   const handleSignup = (e) => {
     e.preventDefault();
     if (email.length === 0) alert("아이디를 입력해주세요.");
@@ -62,19 +63,17 @@ export default function SignUp() {
       form.append("state", state); //수정해야 됨
       form.append("findQuesNum", findQuesNum);
       form.append("findAnswer", findAnswer);
-      console.log(form);
       instance
         .post("/auth/signup", form)
         .then(function (response) {
           console.log(response);
           if (response.data.nickname) {
-            //alert --님 회원가입 환영합니다.
             alert(`${response.data.nickname}님, 회원가입을 환영합니다!`);
+            
           } else {
             alert("회원가입을 환영합니다!");
           }
-          // 메인 페이지 리다이렉트
-          navigate("/");
+          navigate("/login");
         })
         .catch(function (error) {
           alert(error);
