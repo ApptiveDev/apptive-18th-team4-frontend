@@ -61,6 +61,7 @@
   margin-right: 0.75rem;
 }
 .announcement_container .notification_container .notification_element .removeBtn {
+  cursor: pointer;
   font-weight: 600;
   font-size: 0.75rem;
   width: 4.188rem;
