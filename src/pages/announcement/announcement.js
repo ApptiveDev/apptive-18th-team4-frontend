@@ -122,13 +122,22 @@ export default function Announcement() {
             instance.post(likeReqURL)
                 .then((res) => {
                     alert(res.data);
-                    window.location.reload();
                 })
                 .catch((err) => {
                     console.log(err);
                     alert("즐겨찾기를 실패하였습니다.")
                 });
         }
+    }
+
+    const handleRemove = (departmentName) => {
+        instance.post(`/api/announce/${departmentName}/unlike`)
+            .then((res) => {
+                alert(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     return (
@@ -161,7 +170,7 @@ export default function Announcement() {
                                         <button className="showBtn" onClick={() => handleShowing(index)}>
                                             {clickedIndexes.includes(index) ? '닫기' : '보기'}
                                         </button>
-                                        <button className="removeBtn">제거</button>
+                                        <button className="removeBtn" onClick={() => handleRemove(item.departmentName)}>제거</button>
                                     </div>
 
                                     <div style={{BorderBottomLeftRadius: '1.875rem', borderBottomLeftRadius: '1.875rem'}}>
