@@ -53,7 +53,7 @@ export default function NearBuilding() {
 
     const [dataByLoc, setDataByLoc] = useState([]); //위치순 data
     const [dataByLike, setDataByLike] = useState([]); //즐겨찾기순 data
-
+    
     useEffect(() => {
         if ((location.loaded)) {
             const lat = location.coordinates.lat;
