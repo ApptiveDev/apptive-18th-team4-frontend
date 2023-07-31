@@ -44,9 +44,11 @@ export default function Home() {
     const [lang, setLang] = useState('');
 
     useEffect(() => {
-        setLat(location.coordinates.lat);
-        setLang(location.coordinates.lang);
-    })
+        if (location.loaded) {
+            setLat(location.coordinates.lat);
+            setLang(location.coordinates.lang);
+        }
+    }, [location]);
 
     /*현재 위치를 마커로 표시 */
     const { kakao } = window;
@@ -62,21 +64,23 @@ export default function Home() {
             level: 2,
         };
         
-        const map = new kakao.maps.Map(container, options);
+        if (location.loaded) {
+            const map = new kakao.maps.Map(container, options);
 
-        // 마커가 표시될 위치
-        let markerPosition = new kakao.maps.LatLng(
-            lat,
-            lang
-        );
+            // 마커가 표시될 위치
+            let markerPosition = new kakao.maps.LatLng(
+                lat,
+                lang
+            );
 
-        // 마커 생성
-        let marker = new kakao.maps.Marker({
-            position: markerPosition,
-        });
+            // 마커 생성
+            let marker = new kakao.maps.Marker({
+                position: markerPosition,
+            });
 
-        // 지도 위에 마커 표시
-        marker.setMap(map);
+            // 지도 위에 마커 표시
+            marker.setMap(map);
+        }
     }
 
     const [locBuildingName, setLocBuildingName] = useState(''); 

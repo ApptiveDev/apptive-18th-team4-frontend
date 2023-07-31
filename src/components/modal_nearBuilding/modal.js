@@ -15,23 +15,25 @@ export default function Modal_nearBuilding({ onTimeSelect, handleModalData, cate
     const location = useGeoLocation();
 
     const showData = () => {
-        const lat = location.coordinates.lat;
-        const lang = location.coordinates.lang;
-        if (category === '위치순') {
-            instance.get(`/api/lecture-rooms/available-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`)
-                .then((res) => {
-                    //console.log(res.data);
-                    handleModalData(res.data.slice(0, 3));
-                })
-                .catch((err) => console.log(err));
-        }
-        else {
-            instance.get(`/api/lecture-rooms/favorite-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`)
-                .then((res) => {
-                    //console.log(res.data);
-                    handleModalData(res.data.slice(0, 3));
-                })
-                .catch((err) => console.log(err));
+        if ((location.loaded) && (selectedTime !== '')) {
+            const lat = location.coordinates.lat;
+            const lang = location.coordinates.lang;
+            if (category === '위치순') {
+                instance.get(`/api/lecture-rooms/available-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`)
+                    .then((res) => {
+                        //console.log(res.data);
+                        handleModalData(res.data.slice(0, 3));
+                    })
+                    .catch((err) => console.log(err));
+            }
+            else {
+                instance.get(`/api/lecture-rooms/favorite-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`)
+                    .then((res) => {
+                        //console.log(res.data);
+                        handleModalData(res.data.slice(0, 3));
+                    })
+                    .catch((err) => console.log(err));
+            }
         }
     }
 
