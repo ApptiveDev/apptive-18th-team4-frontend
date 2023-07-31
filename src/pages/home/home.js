@@ -44,18 +44,20 @@ export default function Home() {
     const [lang, setLang] = useState('');
 
     useEffect(() => {
-        if (location.loaded) {
+        if (location.loaded && location.coordinates !== 'undefined') {
             setLat(location.coordinates.lat);
             setLang(location.coordinates.lang);
         }
     }, [location]);
 
+    useEffect(() => {
+        if (lat !== '' && lang !== '') {
+          drawMap();
+        }
+    }, [lat, lang, select]);
+
     /*현재 위치를 마커로 표시 */
     const { kakao } = window;
-
-    useEffect(() => {
-        drawMap();
-    });
 
     const drawMap = () => {
         let container = document.getElementById("map");
@@ -90,9 +92,9 @@ export default function Home() {
     const [notices, setNotice] = useState([]);
 
     useEffect(() => {
-        const latitude = location.coordinates.lat;
-        const longitude = location.coordinates.lang;
-        if (location.loaded === true) {
+        if (location.loaded && location.coordinates !== 'undefined') {
+            const latitude = location.coordinates.lat;
+            const longitude = location.coordinates.lang;
             // 빈 강의실(거리순)
             if (select === '거리순') {
                 instance.get(`/api/nearest-buildings/test?user_latitude=${latitude}&user_longitude=${longitude}`)
