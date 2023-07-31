@@ -45,28 +45,31 @@ export default function NearBuilding() {
     const [lang, setLang] = useState('');
 
     useEffect(() => {
-        setLat(location.coordinates.lat);
-        setLang(location.coordinates.lang);
+        if (location.loaded) {
+            setLat(location.coordinates.lat);
+            setLang(location.coordinates.lang);
+        }
     }, [location]);
 
     const [dataByLoc, setDataByLoc] = useState([]); //위치순 data
     const [dataByLike, setDataByLike] = useState([]); //즐겨찾기순 data
 
     useEffect(() => {
-        const lat = location.coordinates.lat;
-        const lang = location.coordinates.lang;
-        instance.get(`/api/lecture-rooms/available-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`)
-            .then((res) => {
-                setDataByLoc(res.data.slice(0, 3));
-            })
-            .catch((err) => console.log(err));
-    
-
-        instance.get(`/api/lecture-rooms/favorite-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`)
-            .then((res) => {
-                setDataByLike(res.data.slice(0, 3));
-            })
-            .catch((err) => console.log(err));    
+        if ((location.loaded)) {
+            const lat = location.coordinates.lat;
+            const lang = location.coordinates.lang;
+            instance.get(`/api/lecture-rooms/available-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`)
+                .then((res) => {
+                    setDataByLoc(res.data.slice(0, 3));
+                })
+                .catch((err) => console.log(err));
+        
+            instance.get(`/api/lecture-rooms/favorite-list?user_latitude=${lat}&user_longitude=${lang}&setTime=${selectedTime * 60}`)
+                .then((res) => {
+                    setDataByLike(res.data.slice(0, 3));
+                })
+                .catch((err) => console.log(err));    
+        }
     }, [location]);
 
     useEffect(() => {
@@ -83,7 +86,7 @@ export default function NearBuilding() {
                 travelMode: "TRANSIT",
                 unitSystem: window.google.maps.UnitSystem.METRIC,
             },
-          callback
+            callback
         );
     }, [dataByLoc]);
 
@@ -101,7 +104,7 @@ export default function NearBuilding() {
                 travelMode: "TRANSIT",
                 unitSystem: window.google.maps.UnitSystem.METRIC,
             },
-          callback2
+            callback2
         );
     }, [dataByLike]);
 
