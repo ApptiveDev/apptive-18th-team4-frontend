@@ -44,6 +44,7 @@ export default function Home() {
     const [lang, setLang] = useState('');
 
     useEffect(() => {
+        console.log(location);
         if (location.loaded && location.coordinates !== 'undefined') {
             setLat(location.coordinates.lat);
             setLang(location.coordinates.lang);
